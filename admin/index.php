@@ -20,13 +20,15 @@ if (isset($_GET['act'])) {
             }
             include "./danhmuc/add.php";
             break;
+        case 'listdm':
+            $listdanhmuc = list_danhmuc();
+            include "./danhmuc/list.php";
+            break;
         default:
             include 'home.php';
             break;
     }
 } else {
     include 'home.php';
-
 }
 include 'footer.php';
-?>
