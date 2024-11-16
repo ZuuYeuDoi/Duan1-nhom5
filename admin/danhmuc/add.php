@@ -1,5 +1,4 @@
 <div class="container-fluid">
-
     <!-- ghi trong đây -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -15,7 +14,7 @@
                             <div class="mb-3">
                                 <label for="product-name" class="form-label">ID Danh Mục</label>
                                 <input type="text" name="id" id="id" class="form-control" placeholder="Auto Number"
-                                    readonly>
+                                    disabled>
                             </div>
                             <div class="mb-3">
                                 <label for="product-price" class="form-label">Tên Danh Mục</label>
@@ -32,7 +31,7 @@
                                 <input type="date" name="ngaysua" id="ngaysua" class="form-control"
                                     placeholder="Nhập tên danh mục" required>
                             </div>
-                            <button type="submit" name="themmoi" class="btn btn-primary">Thêm danh mục</button>
+                            <input type="submit" name="themmoi" id="" class="btn btn-primary" value="Thêm danh mục">
                             <?php
                             if (isset($thongbao) && ($thongbao != "")) echo $thongbao;
                             ?>
