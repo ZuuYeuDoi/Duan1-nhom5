@@ -10,4 +10,17 @@ function list_danhmuc() {
     $listdanhmuc= pdo_query( $sql);
     return $listdanhmuc;
 }
-?>
+
+function loadone_danhmuc($id){
+    $sql="select * from Danh_muc where id_dm=$id";
+    // echo $sql;
+    $dm=pdo_query_one($sql);
+    return $dm;
+}
+
+// function 
+function update_danhmuc($id,$tenloai){
+    $sql="update danh_muc set ten_danhmuc='".$tenloai."' where id=".$id;
+    pdo_execute($sql);
+}
+// ?>
