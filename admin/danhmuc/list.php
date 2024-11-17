@@ -1,6 +1,5 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- ghi trong đây -->
                     <!-- Content Row -->
                     <div class="card shadow mb-4">
@@ -49,8 +48,10 @@
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
-                                                    <?php foreach ($listdanhmuc as $key) { ?>
-                                                    
+                                                    <?php foreach ($listdanhmuc as $key) { 
+                                                        $suadm="index.php?act=suadm&id=".$key ['id_dm'];
+                                                        
+                                                        ?>
                                                    
                                                         
                                                     
@@ -59,11 +60,12 @@
                                                         <td><?php echo $key ['ten_danhmuc'] ?></td>
                                                         <td><?php echo $key ['ngay_tao'] ?></td>
                                                         <td><?php echo $key ['ngay_sua'] ?></td>
-                                                        <td><a href="SuaDM.html" class="btn btn-info btn-circle">
+                                                        <td><a href="<?php echo $suadm; ?>"  class="btn btn-info btn-circle">
                                                                 <i class="fas fa-info-circle"></i>
                                                             </a> <a href="#" class="btn btn-danger btn-circle">
                                                                 <i class="fas fa-trash"></i>
-                                                            </a></td>
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                 <?php } ?>
 
