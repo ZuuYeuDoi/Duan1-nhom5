@@ -63,7 +63,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="sanpham.html">Danh sách sản phẩm</a>
+                        <a class="collapse-item" href="index.php?act=listsp">Danh sách sản phẩm</a>
                         <a class="collapse-item" href="themsanpham.html">Thêm sản phẩm</a>
                     </div>
                 </div>
