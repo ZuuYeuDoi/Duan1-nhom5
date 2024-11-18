@@ -88,20 +88,23 @@
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
-                                                    <?php foreach ($listdanhmuc as $key) { ?>
-                                                        <tr class="even">
-                                                            <td class="sorting_1"><?php echo $key['id_dm'] ?></td>
-                                                            <td><?php echo $key['ten_danhmuc'] ?></td>
-                                                            <td><?php echo $key['ngay_tao'] ?></td>
-                                                            <td><?php echo $key['ngay_sua'] ?></td>
-                                                            <td><a href="SuaDM.html" class="btn btn-info btn-circle">
-                                                                    <i class="fas fa-info-circle"></i>
-                                                                </a> <a href="#" class="btn btn-danger btn-circle">
-                                                                    <i class="fas fa-trash"></i>
-                                                                </a></td>
-                                                        </tr>
-                                                    <?php } ?>
-
+                                                    <?php foreach ($listdanhmuc as $key) { 
+                                                        $suadm="index.php?act=suadm&id=".$key ['id_dm'];
+                                                        
+                                                        ?>
+                                                   <tr class="even">
+                                                        <td class="sorting_1"><?php echo $key ['id_dm'] ?></td>
+                                                        <td><?php echo $key ['ten_danhmuc'] ?></td>
+                                                        <td><?php echo $key ['ngay_tao'] ?></td>
+                                                        <td><?php echo $key ['ngay_sua'] ?></td>
+                                                        <td><a href="<?php echo $suadm; ?>"  class="btn btn-info btn-circle">
+                                                                <i class="fas fa-info-circle"></i>
+                                                            </a> <a href="#" class="btn btn-danger btn-circle">
+                                                                <i class="fas fa-trash"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>
