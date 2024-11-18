@@ -20,7 +20,12 @@ function loadone_danhmuc($id){
 
 // function 
 function update_danhmuc($id,$tenloai){
-    $sql="update danh_muc set ten_danhmuc='".$tenloai."' where id=".$id;
+    $sql="update Danh_muc set ten_danhmuc='".$tenloai."' where id=".$id;
     pdo_execute($sql);
+}
+function delete_danhmuc($id){
+    $sql=" DELETE FROM `Danh_muc` WHERE id_dm=".$id;
+    pdo_execute($sql);
+
 }
 // ?>

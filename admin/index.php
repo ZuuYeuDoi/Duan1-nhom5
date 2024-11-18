@@ -35,6 +35,14 @@ if (isset($_GET['act'])) {
             }
             include "./danhmuc/update.php";
             break;
+        case 'xoadm':
+                if(isset($_GET['id'])&&($_GET['id']>0)){
+                    $id= $_GET['id'];
+                    $xoadm= delete_danhmuc($id);
+                }
+                $listdanhmuc =list_danhmuc();
+                include "./danhmuc/list.php";
+                break;
         case 'updatedm':
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
                 

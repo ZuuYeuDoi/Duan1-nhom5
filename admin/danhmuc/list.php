@@ -90,6 +90,7 @@
                                                 <tbody>
                                                     <?php foreach ($listdanhmuc as $key) { 
                                                         $suadm="index.php?act=suadm&id=".$key ['id_dm'];
+                                                        $xoadm="index.php?act=xoadm&id=".$key ['id_dm'];
                                                         
                                                         ?>
                                                    <tr class="even">
@@ -99,7 +100,7 @@
                                                         <td><?php echo $key ['ngay_sua'] ?></td>
                                                         <td><a href="<?php echo $suadm; ?>"  class="btn btn-info btn-circle">
                                                                 <i class="fas fa-info-circle"></i>
-                                                            </a> <a href="#" class="btn btn-danger btn-circle">
+                                                            </a> <a href="<?php echo $xoadm?>" class="btn btn-danger btn-circle">
                                                                 <i class="fas fa-trash"></i>
                                                             </a>
                                                         </td>
