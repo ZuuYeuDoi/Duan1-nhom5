@@ -45,7 +45,7 @@ if (isset($_GET['act'])) {
                 break;
         case 'updatedm':
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                
+
                 $id = $_POST['id'];
                 $ten_danhmuc = $_POST['tendm'];
                 $ngay_sua = $_POST['ngaysua'];
