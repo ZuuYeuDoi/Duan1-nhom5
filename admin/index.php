@@ -73,7 +73,30 @@ if (isset($_GET['act'])) {
                 $listsanpham = GetAllProduct();
                 include './sanpham/list.php';
                 break;
+            case 'addsp':
+                $listdanhmuc = list_danhmuc();
+                if (isset($_POST['themsp']) && ($_POST['themsp'])) {
+                    $id_dm = $_POST['id_dm'];
+                    $hang = $_POST['hangsp'];
+                    $tensp = $_POST['tensp'];
+                    $giatien = $_POST['pricesp'];
+                    $soluong= $_POST['soluongsp'];
+                    $giamgia = $_POST['price1sp'];
+                    
+                    $anhsp = $_FILES['imgsp']['name'];
+                    $stmt = $_FILES['imgsp']['tmp_name'];
+                    move_uploaded_file($stmt, '../upload/' . $anhsp);
 
+                    $mota = $_POST['motasp'];
+                    $ngaytao = $_POST['ngaytaosp'];
+                    
+                    add_sanpham($id_dm,$hang,$tensp,$giatien,$soluong,$giamgia,$mota,$anhsp,$ngaytao);
+                    $_SESSION['success'] = "";
+                    header('location:index.php?act=listsp');
+                    exit();
+                }
+                include "./sanpham/add.php";
+            break;
 
 
 
