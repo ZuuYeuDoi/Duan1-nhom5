@@ -9,4 +9,11 @@ function add_sanpham($id_dm,$hang,$tensp,$giatien,$soluong,$giamgia,$mota,$anhsp
     $sql = "insert into san_pham(id_dm,hang,tensp,giatien,soluong,giamgia,mota,anhsp,ngaytao) values('$id_dm','$hang','$tensp','$giatien','$soluong','$giamgia','$mota','$anhsp','$ngaytao')";
     pdo_execute($sql);
 }
+
+function delete_sanpham($id){
+    $sql=" DELETE FROM `san_pham` WHERE id_sp=".$id;
+    pdo_execute($sql);
+}
+
 ?>
+
