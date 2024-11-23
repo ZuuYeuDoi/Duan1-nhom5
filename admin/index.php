@@ -98,8 +98,17 @@ if (isset($_GET['act'])) {
                 include "./sanpham/add.php";
             break;
 
-
-
+            case 'xoasp':
+                if (isset($_GET['id_sp']) && is_numeric($_GET['id_sp']) && $_GET['id_sp'] > 0) {
+                    $id = intval($_GET['id_sp']); // Chuyển về số nguyên
+                    delete_sanpham($id); // Gọi hàm xóa
+                    echo "Xóa sản phẩm thành công!";
+                } else {
+                    echo "ID sản phẩm không hợp lệ!";
+                }
+                $listsanpham = GetAllProduct();
+                include "./sanpham/list.php";
+                break;
 
 
         default:
