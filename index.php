@@ -14,22 +14,20 @@ if (isset($_GET['act'])) {
     switch ($act) {
         case 'login':
             if (isset($_POST['dangnhap']) && ($_POST['dangnhap'] > 0)) {
-                
+
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
-                $checkuser=checkuser($user,$pass);
-                if (is_array($checkuser)) 
-                {
-                    $_SESSION['user']=$checkuser;
+                $checkuser = checkuser($user, $pass);
+                if (is_array($checkuser)) {
+                    $_SESSION['user'] = $checkuser;
                     $_SESSION['success'] = "";
                     header('location:index.php');
                 }
-                
             }
             include './view/dkdn/login.php';
             break;
         case 'register':
-            session_start();
+
             if (isset($_POST['dangky']) && ($_POST['dangky'] > 0)) {
                 $email = $_POST['email'];
                 $ten = $_POST['user'];
@@ -41,6 +39,11 @@ if (isset($_GET['act'])) {
                 $_SESSION['success'] = "";
             }
             include './view/dkdn/register.php';
+            break;
+
+        case 'logout':
+            session_unset();
+            header("Location: index.php"); // Hoặc trang chủ index.php
             break;
 
         default:
