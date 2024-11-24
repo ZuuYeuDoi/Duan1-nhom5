@@ -147,7 +147,6 @@
     color: #0056b3;
 }
 
-
 .box-tong .settingtk{
     width: 350px;
     height: 250px;
@@ -203,11 +202,12 @@ a:hover {
 
     <div class="box-tong" style="padding-right:40px;">
         <!--  -->
-        <form action="" class="settingtk">
+        
             <?php
             if (isset($_SESSION['user'])) {
                 extract($_SESSION['user']);
                 ?>
+            <form action="" class="settingtk">
             <div class="boxtitle">
                 Xin chào
                 <?= $hoten ?>
@@ -225,7 +225,7 @@ a:hover {
                 </li>
                 <?php } ?>
                 <li>
-                    <a href="index.php?act=thoat">Thoát</a>
+                    <a href="index.php?act=logout">Thoát</a>
                 </li>
             </ul>
             <?php
