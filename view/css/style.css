@@ -11701,13 +11701,13 @@ ul.form-list {
 
 #collection_tmt12 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
 }
-#collection_tmt12 [type="checkbox"]:not(:checked)+label:before, [type="checkbox"]:checked+label:before {
-	content: '';
+#collection_tmt12 [type="checkbox"]:not(:checked)+label, [type="checkbox"]:checked+label {
+	/* content: ''; */
 	width: 26px;
 	height: 25px;
 	border: none;
 	background: #eaeaea;
-	border-radius: 50%;
+	/* border-radius: 50%; */
 	outline: 0;
 	display: inline-block;
 	vertical-align: top;
