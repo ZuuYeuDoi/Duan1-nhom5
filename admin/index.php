@@ -60,16 +60,17 @@ if (isset($_GET['act'])) {
             $sql = "select * from danh_muc order by id_dm desc";
             $listdanhmuc = pdo_query($sql);
             include "./danhmuc/list.php";
+            // include "./danhmuc/update.php";
             break;
             // 
             // Hết phần danh mục
             //update san pham
 
-            case 'updatesp':
-                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                    $id = $_GET['id'];
-                    $dm = loadone_sanpham($id);
-                    
+            case 'suasp':
+                $listdanhmuc = list_danhmuc();
+                if (isset($_GET['id_sp']) && ($_GET['id_sp'] > 0)) {
+                    $id = $_GET['id_sp'];
+                    $sp = loadone_sanpham($id);            
                     // Kiểm tra nếu có dữ liệu cập nhật từ POST
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $id_dm = $_POST['id_dm'];
@@ -79,7 +80,7 @@ if (isset($_GET['act'])) {
                         $soluong = $_POST['soluongsp'];
                         $giamgia = $_POST['price1sp'];
                         $mota = $_POST['motasp'];
-                        $ngaytao = $_POST['ngaytaosp'];
+                        $ngaycapnhat = $_POST['ngaycapnhat'];
             
                         // Xử lý ảnh
                         $anhsp = $_FILES['imgsp']['name'];
@@ -92,52 +93,53 @@ if (isset($_GET['act'])) {
                                 $anhsp = $anhsp;
                             } else {
                                 // Nếu không thành công, giữ ảnh cũ
-                                $anhsp = $dm['anhsp'];
+                                $anhsp = $sp['anhsp'];
                             }
                         } else {
                             // Giữ lại ảnh cũ nếu không có ảnh mới
-                            $anhsp = $dm['anhsp'];
+                            $anhsp = $sp['anhsp'];
                         }
             
                         // Câu lệnh SQL để cập nhật
                         $sql = "UPDATE San_pham SET 
-                                    id_dm = :id_dm,
-                                    hang = :hang,
-                                    tensp = :tensp,
-                                    giatien = :giatien,
-                                    soluong = :soluong,
-                                    giamgia = :giamgia,
-                                    mota = :mota,
-                                    anhsp = :anhsp,
-                                    ngaytao = :ngaytao
-                                WHERE id_sp = :id";
+                                    id_dm ='" . $id_dm . "',
+                                    id_dm ='" . $id_dm . "',
+                                    tensp ='" . $tensp . "',
+                                    giatien ='" . $giatien . "',
+                                    soluong ='" . $soluong . "',
+                                    giamgia ='" . $giamgia . "',
+                                    mota ='" . $mota . "',
+                                    anhsp ='" . $anhsp . "',
+                                    ngaycapnhat ='" . $ngaycapnhat . "'
+                                WHERE id_sp =" .$id;
             
                         // Sử dụng câu lệnh chuẩn bị để ngăn chặn SQL injection
-                        $stmt = $pdo->prepare($sql);
-                        $stmt->execute([
-                            ':id_dm' => $id_dm,
-                            ':hang' => $hang,
-                            ':tensp' => $tensp,
-                            ':giatien' => $giatien,
-                            ':soluong' => $soluong,
-                            ':giamgia' => $giamgia,
-                            ':mota' => $mota,
-                            ':anhsp' => $anhsp,
-                            ':ngaytao' => $ngaytao,
-                            ':id' => $id
-                        ]);
-            
+                        // $stmt = $pdo->prepare($sql);
+                        // $stmt->execute([
+                        //     ':id_dm' => $id_dm,
+                        //     ':hang' => $hang,
+                        //     ':tensp' => $tensp,
+                        //     ':giatien' => $giatien,
+                        //     ':soluong' => $soluong,
+                        //     ':giamgia' => $giamgia,
+                        //     ':mota' => $mota,
+                        //     ':anhsp' => $anhsp,
+                        //     ':ngaycapnhat' => $ngaycapnhat,
+                        //     ':id' => $id
+                        // ]);
+                        pdo_execute($sql);
                         $thongbao = "Cập Nhật thành công";
+                        header("Location: index.php?act=listsp");
+                exit(); // Dừng xử lý tiếp
                     }
-            
                     // Hiển thị form cập nhật
                     include "./sanpham/update.php";
                 }
             
-            // Lấy danh sách sản phẩm
-            $sql = "SELECT * FROM San_pham ORDER BY id_sp DESC";
-            $listdanhmuc = pdo_query($sql);
-            include "./danhmuc/list.php";
+            // // // Lấy danh sách sản phẩm
+            // $sql = "SELECT * FROM San_pham ORDER BY id_sp DESC";
+            // $listdanhmuc = pdo_query($sql);
+            // include "./danhmuc/list.php";
             break;
             
 

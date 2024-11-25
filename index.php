@@ -40,12 +40,20 @@ if (isset($_GET['act'])) {
             }
             include './view/dkdn/register.php';
             break;
+        case 'trangchu':
+            $listsanpham = GetAllProduct();
+
+            include './view/loadsp/loadsp.php';
+            
+            break;
 
         case 'logout':
             session_unset();
             header("Location: index.php"); // Hoặc trang chủ index.php
             break;
 
+        case 'search':
+            
         default:
             # code...
             break;
@@ -53,4 +61,5 @@ if (isset($_GET['act'])) {
 } else {
     # code...
 }
+
 include 'view/footer.php';

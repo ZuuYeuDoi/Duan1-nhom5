@@ -48,7 +48,7 @@
 
 
                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
-                                        <a   href="index.php" title="Trang chủ">Trang chủ</a>
+                                        <a   href="index.php?act=trangchu" title="Trang chủ">Trang chủ</a>
                                         <ul class="sub-menu">
 
 
@@ -222,10 +222,10 @@
                                 <div class="ct">
 
 
-                                    <form class="search-fr" action="/search">
+                                    <form class="search-fr" action="index.php?act=product">
                                         <div class="form-input">
-                                            <input name="q" id="search" placeholder="Tìm kiếm..." value="" type="text" required="required">
-                                            <button type="submit">
+                                            <input name="kw" id="search" placeholder="Tìm kiếm..." value="" type="text" required="required">
+                                            <button type="submit" name="timkiem">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </div>

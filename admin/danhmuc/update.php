@@ -35,8 +35,7 @@
                             </div>
                             <input type="submit" name="capnhat" id="" class="btn btn-primary" value="Sửa danh mục">
                             <?php
-                            if (isset($thongbao) && ($thongbao != "")) echo $thongbao;
-                            ?>
+                            if (isset($thongbao) && ($thongbao != "")) echo $thongbao       ?>
                         </form>
                     </div>
                 </div>
