@@ -79,8 +79,8 @@
                                 
                                 <h3>Trợ giúp</h3>
                                 <ul>
-                                    <li><a href="/kiem-tra-don-hang">Kiểm tra đơn h�&nbsp;ng</a></li>
-                                    <li><a href="/hinh-thuc-giao-hang">Hình thức giao h�&nbsp;ng</a></li>
+                                    <li><a href="/kiem-tra-don-hang">Kiểm tra đơn hàng</a></li>
+                                    <li><a href="/hinh-thuc-giao-hang">Hình thức giao hàng</a></li>
                                     <li><a href="/hinh-thuc-thanh-toan">Hình thức thanh toán</a></li>
                                     <li><a href="/chinh-sach-doi-tra">Chính sách đổi trả</a></li>`x
                                 </ul>
@@ -118,7 +118,7 @@
                                         <p>HỘ KINH DOANH LOCAL &amp; LOCAL</p>
                                         <p>Địa chỉ: 238 Nguyễn Trãi, Thanh Xuân, Hà Nội - Số điện thoại: (+84)987654321</p>
                                         <p>
-                                            Giấy CNĐK: 41Y8008386 Cấp ng�&nbsp;y 17/04/2023 tại Phòng T�&nbsp;i chính - Kế hoạch UBND Th�&nbsp;nh phố Hà Nội
+                                            Giấy CNĐK: 41Y8008386 Cấp ngày 17/04/2023 tại Phòng Tài chính - Kế hoạch UBND Thành phố Hà Nội
                                         </p>
                                         <p>© Bản quyền thuộc về Wine King | <a> All Rights Reserved</a></p>
                                     </div>

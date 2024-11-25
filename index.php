@@ -11,7 +11,7 @@ include 'view/header.php';
 
 
 //giỏ hàng- SECTION lưu dữ liệu
-if(!isset($_SESSION['mycart'])) $_SESSION['mycart']=[];
+if (!isset($_SESSION['mycart'])) $_SESSION['mycart'] = [];
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -46,8 +46,8 @@ if (isset($_GET['act'])) {
             break;
         case 'trangchu':
             $listsanpham = GetAllProduct();
-            include './view/loadsp/loadsp.php';
-            
+            include './view/home.php';
+
             break;
 
         case 'logout':
@@ -57,24 +57,28 @@ if (isset($_GET['act'])) {
 
         case 'search':
             break;
-        
+
         case 'addtocart':
             if (isset($_POST['addtocart']) && ($_POST['addtocart'] > 0)) {
-                $id_sp=$_POST['id_sp'];
-                $tensp=$_POST['tensp'];
-                $giamgia=$_POST['giamgia'];
-                $anhsp=$_POST['anhsp'];
+                $id_sp = $_POST['id_sp'];
+                $tensp = $_POST['tensp'];
+                $giamgia = $_POST['giamgia'];
+                $anhsp = $_POST['anhsp'];
                 $soluong = 1;
-                $ttien = $soluong*$giamgia;
-                $spadd=[$id_sp,$tensp,$anhsp,$giamgia,$soluong,$ttien];
+                $ttien = $soluong * $giamgia;
+                $spadd = [$id_sp, $tensp, $anhsp, $giamgia, $soluong, $ttien];
                 array_push($_SESSION['mycart'], $spadd);
-
             }
         case 'cart':
             include './view/cart/viewcart.php';
             break;
 
-        include './view/cart/viewcart.php';
+
+        case 'gioithieu':
+            
+            include './view/page/gioithieu.php';
+
+            break;
         default:
             # code...
             break;
@@ -82,5 +86,6 @@ if (isset($_GET['act'])) {
 } else {
     # code...
 }
+// include 'view/home.php';
 
 include 'view/footer.php';
