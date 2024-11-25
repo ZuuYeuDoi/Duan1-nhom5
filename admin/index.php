@@ -63,11 +63,83 @@ if (isset($_GET['act'])) {
             break;
             // 
             // Hết phần danh mục
-            // 
+            //update san pham
 
-            // 
-            // Phần sản phẩm
-            // 
+            case 'updatesp':
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    $id = $_GET['id'];
+                    $dm = loadone_sanpham($id);
+                    
+                    // Kiểm tra nếu có dữ liệu cập nhật từ POST
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $id_dm = $_POST['id_dm'];
+                        $hang = $_POST['hangsp'];
+                        $tensp = $_POST['tensp'];
+                        $giatien = $_POST['pricesp'];
+                        $soluong = $_POST['soluongsp'];
+                        $giamgia = $_POST['price1sp'];
+                        $mota = $_POST['motasp'];
+                        $ngaytao = $_POST['ngaytaosp'];
+            
+                        // Xử lý ảnh
+                        $anhsp = $_FILES['imgsp']['name'];
+                        $tmp_name = $_FILES['imgsp']['tmp_name'];
+            
+                        if (!empty($anhsp)) {
+                            // Di chuyển tệp tới thư mục upload
+                            if (move_uploaded_file($tmp_name, '../upload/' . $anhsp)) {
+                                // Nếu di chuyển thành công, sử dụng ảnh mới
+                                $anhsp = $anhsp;
+                            } else {
+                                // Nếu không thành công, giữ ảnh cũ
+                                $anhsp = $dm['anhsp'];
+                            }
+                        } else {
+                            // Giữ lại ảnh cũ nếu không có ảnh mới
+                            $anhsp = $dm['anhsp'];
+                        }
+            
+                        // Câu lệnh SQL để cập nhật
+                        $sql = "UPDATE San_pham SET 
+                                    id_dm = :id_dm,
+                                    hang = :hang,
+                                    tensp = :tensp,
+                                    giatien = :giatien,
+                                    soluong = :soluong,
+                                    giamgia = :giamgia,
+                                    mota = :mota,
+                                    anhsp = :anhsp,
+                                    ngaytao = :ngaytao
+                                WHERE id_sp = :id";
+            
+                        // Sử dụng câu lệnh chuẩn bị để ngăn chặn SQL injection
+                        $stmt = $pdo->prepare($sql);
+                        $stmt->execute([
+                            ':id_dm' => $id_dm,
+                            ':hang' => $hang,
+                            ':tensp' => $tensp,
+                            ':giatien' => $giatien,
+                            ':soluong' => $soluong,
+                            ':giamgia' => $giamgia,
+                            ':mota' => $mota,
+                            ':anhsp' => $anhsp,
+                            ':ngaytao' => $ngaytao,
+                            ':id' => $id
+                        ]);
+            
+                        $thongbao = "Cập Nhật thành công";
+                    }
+            
+                    // Hiển thị form cập nhật
+                    include "./sanpham/update.php";
+                }
+            
+            // Lấy danh sách sản phẩm
+            $sql = "SELECT * FROM San_pham ORDER BY id_sp DESC";
+            $listdanhmuc = pdo_query($sql);
+            include "./danhmuc/list.php";
+            break;
+            
 
             case 'listsp':
                 $listsanpham = GetAllProduct();
