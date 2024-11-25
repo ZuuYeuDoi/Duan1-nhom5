@@ -63,7 +63,7 @@
 
 
                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
-                                        <a href="/about-us" title="Giới thiệu">Giới thiệu</a>
+                                        <a href="index.php?act=gioithieu" title="Giới thiệu">Giới thiệu</a>
                                         <ul class="sub-menu">
 
 
