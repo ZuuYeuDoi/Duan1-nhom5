@@ -42,6 +42,12 @@ if (isset($_GET['act'])) {
             }
             include './view/dkdn/register.php';
             break;
+        case 'trangchu':
+            $listsanpham = GetAllProduct();
+
+            include './view/loadsp/loadsp.php';
+            
+            break;
 
         default:
             # code...
