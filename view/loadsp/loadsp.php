@@ -5,13 +5,14 @@
 
     /* Slideshow container */
     .slideshow-container {
-        max-width: 1000px;
+        max-width: 100%;
         position: relative;
         margin: auto;
     }
 
     /* Hide the images by default */
     .mySlides {
+        
         display: none;
         opacity: 0;
         transition: opacity 1s ease-in-out;
@@ -90,6 +91,9 @@
     .dot:hover {
         background-color: #717171;
     }
+    .anhbanner{
+        width: 100%;
+    }
 </style>
 
 <!-- Slideshow container -->
@@ -98,19 +102,19 @@
     <!-- Full-width images with number and caption text -->
     <div class="mySlides">
         <div class="numbertext">1 / 3</div>
-        <img src="view/images/banner1.png" style="width:100%">
+        <img class="anhbanner" src="view/images/banner1.png" >
         <div class="text">Caption Text</div>
     </div>
 
     <div class="mySlides">
         <div class="numbertext">2 / 3</div>
-        <img src="view/images/banner2.png" style="width:100%">
+        <img class="anhbanner" src="view/images/banner2.png" >
         <div class="text">Caption Two</div>
     </div>
 
     <div class="mySlides">
         <div class="numbertext">3 / 3</div>
-        <img src="view/images/banner1.png" style="width:100%">
+        <img class="anhbanner"  src="view/images/banner1.png" >
         <div class="text">Caption Three</div>
     </div>
 
