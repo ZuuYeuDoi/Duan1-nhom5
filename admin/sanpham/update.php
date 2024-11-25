@@ -1,24 +1,19 @@
 <?php
-if (is_array($sanpham)) {
-    extract($sanpham);
-}
-$hinhpath = "../upload/" . $key['anhsp'];
-if (is_file($hinhpath)) {
-    $key['anhsp'] = "<img src='$hinhpath' width='80'>";
-} else {
-    $key['anhsp'] = "no photo";
+if (is_array($sp)) {
+    // extract($sanpham);
+    // var_dump ($sp);
 }
 ?>
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Thêm Sản Phẩm</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Cập nhật Sản Phẩm</h6>
         </div>
         <div class="card-body">
             <div class="table">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                     <div class="container mt-5">
-                        <h2 class="mb-4">Thêm Mới Sản Phẩm</h2>
+                        <h2 class="mb-4">Cập nhật Mới Sản Phẩm</h2>
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="product-name" class="form-label">ID Sản Phẩm</label>
@@ -26,12 +21,12 @@ if (is_file($hinhpath)) {
                             </div>
                             <div class="mb-3">
                                 <label for="product-name" class="form-label">Tên Sản Phẩm</label>
-                                <input type="text" name="tensp" id="tensp" class="form-control" required value="<?php echo isset($tensp) ? $tensp : ''; ?>">
+                                <input type="text" name="tensp" id="tensp" class="form-control" required value="<?php echo isset($sp["tensp"]) ? $sp["tensp"] : ''; ?>">
                             </div>
 
                             <div class="mb-3">
                                 <label for="product-price" class="form-label">Hãng Sản Phẩm</label>
-                                <input type="text" name="hangsp" id="hangsp" class="form-control" required value="<?php echo isset($hang) ? $hang : ''; ?>">
+                                <input type="text" name="hangsp" id="hangsp" class="form-control" required value="<?php echo isset($sp["hang"]) ? $sp["hang"] : ''; ?>">
                             </div>
 
                             <div class="mb-3">
@@ -42,27 +37,27 @@ if (is_file($hinhpath)) {
 
                             <div class="mb-3">
                                 <label for="product-price" class="form-label">Giá Sản Phẩm</label>
-                                <input type="text" name="pricesp" id="pricesp" class="form-control" required value="<?php echo isset($giatien) ? $giatien : ''; ?>">
+                                <input type="text" name="pricesp" id="pricesp" class="form-control" required value="<?php echo isset($sp["giatien"]) ? $sp["giatien"] : ''; ?>">
                             </div>
 
                             <div class="mb-3">
                                 <label for="product-detail" class="form-label">Số Lượng Sản Phẩm</label>
-                                <input type="text" name="soluongsp" id="soluongsp" class="form-control" required value="<?php echo isset($soluong) ? $soluong : ''; ?>">
+                                <input type="text" name="soluongsp" id="soluongsp" class="form-control" required value="<?php echo isset($sp["soluong"]) ? $sp["soluong"] : ''; ?>">
                             </div>
 
                             <div class="mb-3">
                                 <label for="product-price" class="form-label">Giảm Giá Sản Phẩm</label>
-                                <input type="text" name="price1sp" id="price1sp" class="form-control" required value="<?php echo isset($giamgia) ? $giamgia : ''; ?>">
+                                <input type="text" name="price1sp" id="price1sp" class="form-control" required value="<?php echo isset($sp["giamgia"]) ? $sp["giamgia"] : ''; ?>">
                             </div>
 
                             <div class="mb-3">
                                 <label for="product-price" class="form-label">Mô Tả</label>
-                                <input type="text" name="motasp" id="motasp" class="form-control" required value="<?php echo isset($mota) ? $mota : ''; ?>">
+                                <input type="text" name="motasp" id="motasp" class="form-control" required value="<?php echo isset($sp["mota"]) ? $sp["mota"] : ''; ?>">
                             </div>
 
                             <div class="mb-3">
-                                <label for="product-price" class="form-label">Ngày Tạo</label>
-                                <input type="date" name="ngaytaosp" id="ngaytaosp" class="form-control" required value="<?php echo isset($ngaytao) ? $ngaytao : ''; ?>">
+                                <label for="product-price" class="form-label">Ngày Cập Nhật</label>
+                                <input type="date" name="ngaycapnhat" id="ngaycapnhat" class="form-control" required value="">
                             </div>
 
                             <div class="mb-3">
@@ -76,8 +71,10 @@ if (is_file($hinhpath)) {
                                     <?php } ?>
                                 </select>
                             </div>
-
                             <input type="submit" name="suasp" class="btn btn-primary" value="Sửa Sản Phẩm">
+                            <?php 
+                            if (isset($thongbao) && ($thongbao != "")) echo $thongbao;
+                            ?>
                         </form>
                     </div>
                 </div>

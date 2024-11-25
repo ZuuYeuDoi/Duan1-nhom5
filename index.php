@@ -46,6 +46,8 @@ if (isset($_GET['act'])) {
             header("Location: index.php"); // Hoặc trang chủ index.php
             break;
 
+        case 'search':
+            
         default:
             # code...
             break;
@@ -53,4 +55,5 @@ if (isset($_GET['act'])) {
 } else {
     # code...
 }
+
 include 'view/footer.php';
