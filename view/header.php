@@ -34,7 +34,7 @@
 
                         <div class="col-md-2 col-xs-12 centermb">
 
-                            <a class="logo" title="" href="/">
+                            <a class="logo" title="" href="index.php?act=trangchu">
 
                                 <img src="./view/images/logo.jpg" alt="logo ">
 
@@ -236,7 +236,7 @@
                             </div>
 
                             <div class="search fixacc">
-                                <a class="cart-head" href="index.php?act=addtocart" style="position:relative;">
+                                <a class="cart-head" href="index.php?act=login" style="position:relative;">
                                     <img src="./view/images/iconfinder-41-user-2123927.png" alt="Account" title="Account" style="padding-top: 6px;margin-right: 8px;
             ">
                                 </a>

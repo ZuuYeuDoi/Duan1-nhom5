@@ -13,19 +13,28 @@ include 'view/header.php';
 //giỏ hàng- SECTION lưu dữ liệu
 if (!isset($_SESSION['mycart'])) $_SESSION['mycart'] = [];
 
+
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
         case 'login':
             if (isset($_POST['dangnhap']) && ($_POST['dangnhap'] > 0)) {
-
+        
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
                 $checkuser = checkuser($user, $pass);
+                
                 if (is_array($checkuser)) {
                     $_SESSION['user'] = $checkuser;
+        
+                    // Lưu vai trò vào session
+                    $_SESSION['role'] = $checkuser['role']; // Giả sử trường 'role' có trong cơ sở dữ liệu
+                    
                     $_SESSION['success'] = "";
-                    header('location:index.php');
+                    header('location:index.php?act=trangchu');
+                    exit(); // Đảm bảo dừng script
+                } else {
+                    $_SESSION['error'] = "Tên đăng nhập hoặc mật khẩu không đúng.";
                 }
             }
             include './view/dkdn/login.php';
@@ -52,7 +61,7 @@ if (isset($_GET['act'])) {
 
         case 'logout':
             session_unset();
-            header("Location: index.php"); // Hoặc trang chủ index.php
+            header("Location:index.php?act=trangchu"); // Hoặc trang chủ index.php
             break;
 
         case 'search':
@@ -80,11 +89,11 @@ if (isset($_GET['act'])) {
 
             break;
         default:
-            # code...
+        header('location:index.php?act=trangchu');
             break;
     }
 } else {
-    # code...
+    header('location:index.php?act=trangchu');
 }
 // include 'view/home.php';
 

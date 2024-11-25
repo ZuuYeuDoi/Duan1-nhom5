@@ -3,10 +3,24 @@ ini_set(option: 'display_errors', value: 1);
 ini_set(option: 'display_startup_errors', value: 1);
 error_reporting(error_level: E_ALL);
 ob_start();
+
 include '../model/pdo.php';
 include '../model/danhmuc.php';
 include '../model/product.php';
+include_once '../model/taikhoan.php';
 include 'header.php';
+session_start();
+
+// Kiểm tra vai trò người dùng
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php'); // Chuyển hướng nếu chưa đăng nhập
+    exit();
+} 
+$userRole = $_SESSION['role'];
+if ($userRole !== 1) { // Giả sử 'admin' là vai trò cần quyền truy cập
+    header('Location: login.php');
+    exit();
+}
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
 
@@ -183,22 +197,6 @@ if (isset($_GET['act'])) {
                 $listsanpham = GetAllProduct();
                 include "./sanpham/list.php";
                 break;
-            case 'register':
-
-            if (isset($_POST['dangky']) && ($_POST['dangky'] > 0)) {
-                $email = $_POST['email'];
-                $ten = $_POST['user'];
-                $matkhau = $_POST['pass'];
-                $address = $_POST['addr'];
-                $sdt = $_POST['phone'];
-                $role = 0;
-                pdo_dangky_taikhoan($email, $matkhau, $ten, $sdt, $address);
-                $_SESSION['success'] = "";
-            }
-            include './view/dkdn/register.php';
-            break;
-
-
         default:
             include 'home.php';
             break;

@@ -148,17 +148,20 @@
 }
 
 .box-tong .settingtk{
-    width: 350px;
-    height: 250px;
+    /* width: 350px;
+    height: 250px; */
     margin: 0 auto;
     margin-top:40px ;
+    margin-bottom:40px ;
+
     border: 1px solid darkgrey;
-    border-radius: 40px;
+    border-radius: 20px;
 }
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa; /* Màu nền nhẹ */
     margin: 0;
+    padding-bottom: 40px;
   
 }
 
@@ -166,9 +169,8 @@ body {
     background-color: #ffffff; /* Màu nền trắng cho form */
     border-radius: 8px; /* Bo góc */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
-    padding: 20px;
-    max-width: 400px; /* Chiều rộng tối đa */
-    margin: auto; /* Căn giữa */
+    padding: 5px;
+    max-width: 450px; /* Chiều rộng tối đa */
 }
 
 .boxtitle {
@@ -244,7 +246,7 @@ a:hover {
                 <input type="password" name="pass" id="pass" required>
             </div>
             <div class="form-group">
-                <input type="checkbox" name="remember" id="remember"> Ghi nhớ tài khoản?
+                <input type="checkbox" name="remember" id="remember" required> Ghi nhớ tài khoản?
             </div>
             <div class="">
                 <input type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" name="dangnhap" value="Đăng nhập">

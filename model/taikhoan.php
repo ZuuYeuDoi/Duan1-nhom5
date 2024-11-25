@@ -20,5 +20,4 @@ function checkuser($user,$pass)
     $sp = pdo_query_one($sql);
     return $sp;
 }
-
 ?>
