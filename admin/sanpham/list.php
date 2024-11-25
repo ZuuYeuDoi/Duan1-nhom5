@@ -39,7 +39,6 @@
                                         style="width: 5px;">Số Lượng</th>
                                     <th class="sorting" tabindex="0" aria-controls="dataTable"
                                         rowspan="1" colspan="1"
-                                        aria-label="Salary: activate to sort column ascending"
                                         style="width: 100px;">Mô Tả</th>
                                     <th class="sorting" tabindex="0" aria-controls="dataTable"
                                         rowspan="1" colspan="1"
@@ -83,8 +82,7 @@
                                 ?>
                                     <tr class="even">
                                         <td class="sorting_1"><?php echo $key['id_sp'] ?></td>
-                                        <td><?php echo $key['hang'] ?></td>
-                                        <td><img src="<?php echo $hinhpath ?>" alt="" width="100"></td>
+                                        <td><?php echo $key['hang'] ?></td> <td><img src="<?php echo $hinhpath ?>" alt="" width="100"></td>
                                         <td><?php echo $key['tensp'] ?></td>
                                         <td><?php echo number_format($key['giatien'], 0, ',', '.'); ?> VNĐ</td>
                                         <td><?php echo number_format($key['soluong'], 0, ',', '.'); ?></td>
@@ -93,6 +91,7 @@
                                         <td><?php echo $key['ngaycapnhat'] ?></td>
 
                                         <?php
+
                                             
                                                 $suasp="index.php?act=suasp&id_sp=".$key ['id_sp'];
                                                 $xoasp="index.php?act=xoasp&id_sp=".$key ['id_sp'];
@@ -102,6 +101,7 @@
 
                                         <td><a href="<?= $suasp?>" class="btn btn-info btn-circle">
                                                 <i class="fas fa-info-circle"></i>
+
                                             </a> <a href="<?= $xoasp ?>" class="btn btn-danger btn-circle">
                                                 <i class="fas fa-trash"></i>
                                             </a></td>
