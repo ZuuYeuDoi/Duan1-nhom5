@@ -91,16 +91,18 @@
                                         <td><?php echo $key['ngaycapnhat'] ?></td>
 
                                         <?php
-                                            foreach($listsanpham as $key){
+
+                                            
                                                 $suasp="index.php?act=suasp&id_sp=".$key ['id_sp'];
                                                 $xoasp="index.php?act=xoasp&id_sp=".$key ['id_sp'];
 
-                                            }
+                                            
                                         ?>
 
                                         <td><a href="<?= $suasp?>" class="btn btn-info btn-circle">
                                                 <i class="fas fa-info-circle"></i>
-                                            </a> <a href="<?= $xoasp?>" class="btn btn-danger btn-circle">
+
+                                            </a> <a href="<?= $xoasp ?>" class="btn btn-danger btn-circle">
                                                 <i class="fas fa-trash"></i>
                                             </a></td>
                                     </tr>

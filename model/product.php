@@ -9,6 +9,7 @@ function add_sanpham($id_dm,$hang,$tensp,$giatien,$soluong,$giamgia,$mota,$anhsp
     $sql = "insert into san_pham(id_dm,hang,tensp,giatien,soluong,giamgia,mota,anhsp,ngaytao) values('$id_dm','$hang','$tensp','$giatien','$soluong','$giamgia','$mota','$anhsp','$ngaytao')";
     pdo_execute($sql);
 }
+
 function loadone_sanpham($id) {
     $sql = "SELECT * FROM San_pham WHERE id_sp = :id";
     $sp = pdo_query_one($sql, [':id' => $id]); // Giả sử pdo_query_one hỗ trợ tham số
@@ -68,4 +69,13 @@ function update_sanpham($id, $id_dm, $hang, $tensp, $giatien, $soluong, $giamgia
     // Thực thi câu lệnh
     $stmt->execute($params);
 }
+
+
+function delete_sanpham($id){
+    $sql=" DELETE FROM `san_pham` WHERE id_sp=".$id;
+    pdo_execute($sql);
+}
 ?>
+
+
+
