@@ -48,7 +48,7 @@
                             <form action="index.php?act=register" method="post">
 
                                 <div data-mdb-input-init class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example1cg">Họ Tên</label>
+                                    <label class="form-label" for="form3Example1cg">Tên người dùng</label>
 
                                     <input type="text" name="user" id="form3Example1cg" class="form-control form-control-lg" required />
 

@@ -11,8 +11,8 @@ function add_sanpham($id_dm,$hang,$tensp,$giatien,$soluong,$giamgia,$mota,$anhsp
 }
 
 function loadone_sanpham($id) {
-    $sql = "SELECT * FROM San_pham WHERE id_sp = :id";
-    $sp = pdo_query_one($sql, [':id' => $id]); // Giả sử pdo_query_one hỗ trợ tham số
+    $sql = "SELECT * FROM San_pham WHERE id_sp = $id";
+    $sp = pdo_query_one($sql);
     return $sp;
 }
 
