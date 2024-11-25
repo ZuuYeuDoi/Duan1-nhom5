@@ -103,19 +103,19 @@
     <div class="mySlides">
         <div class="numbertext">1 / 3</div>
         <img class="anhbanner" src="view/images/banner1.png" >
-        <div class="text">Caption Text</div>
+        <!-- <div class="text">Caption Text</div> -->
     </div>
 
     <div class="mySlides">
         <div class="numbertext">2 / 3</div>
         <img class="anhbanner" src="view/images/banner2.png" >
-        <div class="text">Caption Two</div>
+        <!-- <div class="text">Caption Two</div> -->
     </div>
 
     <div class="mySlides">
         <div class="numbertext">3 / 3</div>
         <img class="anhbanner"  src="view/images/banner1.png" >
-        <div class="text">Caption Three</div>
+        <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <!-- Next and previous buttons -->
@@ -171,7 +171,7 @@
 <div class="info">
     <a href="#">
         <div class="section-title">
-            <h2>GIÁ TỐT NHẤT TẠI WEB</h2>
+            <h2 style="color: black">GIÁ TỐT NHẤT TẠI WEB</h2>
         </div>
     </a>
     <p>Duy nhất tại website WineKing.Vn - từ 2024 mọi sản phẩm đều có chương trình ưu đãi tốt nhất, kết hợp đồng giá ship 10K mọi tỉnh thành</p>
@@ -183,8 +183,8 @@
             <!--Section Title Start-->
 
             <div class="col-xs-12 col-sm-6">
-                <a href="shop-verus" title="/wine/">
-                    <img src="view\images\img1.png" alt="Verus">
+                <a href="shop-WineKing" title="/wine/">
+                    <img src="view\images\img1.png" alt="WineKing">
                 </a>
                 <div class="cap-xxx">
                     <h3>
@@ -220,8 +220,8 @@
             <div class="col-12">
                 <div class="section-title text-center mb-50">
                     <h2>
-                        <a href="/shop-verus" title="VERUS® new arrival">
-                            VERUS® new arrival
+                        <a href="/shop-wineKing" title="wineKing® new arrival">
+                            WineKing® new arrival
                         </a>
                     </h2>
                 </div>
@@ -235,29 +235,39 @@
 
 
                     <!--Single Product Start-->
+
                     <?php foreach ($listsanpham as $key => $value) {
 
                     ?>
+                    <form action="index.php?act=addtocart"method="post">
+                        <input type="hidden" name="id_sp" value="<?= $value['id_sp']?>">
+                        <input type="hidden" name="tensp" value="<?= $value['tensp']?>">
+                        <input type="hidden" name="anhsp" value="<?= $value['anhsp']?>">
+                        <input type="hidden" name="giamgia" value="<?= $value['giamgia']?>">
+
                         <div class="col-xs-6 col-md-4">
 
                             <div class="single-product mb-10">
-                                <div class="product-img img-full">
+                                <div style="height: 400px" class="product-img img-full">
                                     <a href="/universe-is-ready-1" title="Universe Is Ready">
-
+                                        <input type="hidden" name="id" value="<?= $value['id_sp']?>">
                                         <span class="onsale">- 16%</span>
 
-                                        <img class="visible-xs lazyload" src="upload/<?php echo $value['anhsp'] ?>">
+                                        <img  class="visible-xs lazyload" src="upload/<?php echo $value['anhsp'] ?>">
 
 
                                         <img class="hidden-xs lazyload protmt1 " src="upload/<?php echo $value['anhsp'] ?>">
-                                        <img class="pro-img2 hidden-xs" src="view\images\2.jpg" alt="Universe Is Ready">
+                                        <img  class="pro-img2 hidden-xs" src="view\images\1.png" alt="Universe Is Ready">
                                     </a>
-                                    <a href="#" class="product-action btn-quickview-1" data-handle="/universe-is-ready-1">
+                                    <!-- <button class="product-action btn-quickview-1" style="padding: 10px;" name="addtocart" >Thêm vào giỏ hàng</button> -->
+                                    <div class="product-action btn-quickview-1" style="padding:10px">  <input type="submit" name="addtocart" value="Thêm vào giỏ hàng" style="border-box:none"> </div>
+                                                                     
+                                    <!-- <a href="" class="product-action btn-quickview-1" data-handle="/universe-is-ready-1">
                                         <ul>
-                                            <li>XEM NHANH</li>
+                                            <li>XEM CHI TIẾT</li>
 
-                                        </ul>
-                                    </a>
+                                        </ul> -->
+                                    <!-- </a> -->
                                 </div>
                                 <div class="product-content">
                                     <h3><a href="/universe-is-ready-1" title="Universe Is Ready"><?php echo $value['tensp'] ?></a></h3>
@@ -265,9 +275,9 @@
                                         <div class="price-box">
 
 
-                                            <span class="regular-price"><?php echo $value['giatien'] ?></span>
+                                            <span class="regular-price"><?php echo number_format($value['giamgia'], 0, ',', '.'); ?> VNĐ </span>
 
-                                            <!-- <span class="price ml5">130.000₫</span> -->
+                                            <span class="price ml5" style = "color: red"><?php echo number_format($value['giamgia'], 0, ',', '.'); ?></span>
 
                                         </div>
 
@@ -275,7 +285,9 @@
                                 </div>
                             </div>
 
-                        </div> <!--Single Product End-->
+                        </div>
+                    </form>
+                    <!--Single Product End-->
                     <?php } ?>
 
 

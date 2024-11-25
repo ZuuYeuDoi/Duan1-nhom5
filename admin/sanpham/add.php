@@ -88,7 +88,7 @@
                                 </select>
                             </div>
 
-                            <input type="submit" name="suasp" class="btn btn-primary" value="Sửa Sản Phẩm">
+                            <input type="submit" name="themsp" class="btn btn-primary" value="Thêm Sản Phẩm">
                         </form>
                     </div>
 

@@ -9,6 +9,10 @@ include './model/product.php';
 include './model/taikhoan.php';
 include 'view/header.php';
 
+
+//giỏ hàng- SECTION lưu dữ liệu
+if(!isset($_SESSION['mycart'])) $_SESSION['mycart']=[];
+
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
@@ -42,7 +46,6 @@ if (isset($_GET['act'])) {
             break;
         case 'trangchu':
             $listsanpham = GetAllProduct();
-
             include './view/loadsp/loadsp.php';
             
             break;
@@ -53,7 +56,25 @@ if (isset($_GET['act'])) {
             break;
 
         case 'search':
-            
+            break;
+        
+        case 'addtocart':
+            if (isset($_POST['addtocart']) && ($_POST['addtocart'] > 0)) {
+                $id_sp=$_POST['id_sp'];
+                $tensp=$_POST['tensp'];
+                $giamgia=$_POST['giamgia'];
+                $anhsp=$_POST['anhsp'];
+                $soluong = 1;
+                $ttien = $soluong*$giamgia;
+                $spadd=[$id_sp,$tensp,$anhsp,$giamgia,$soluong,$ttien];
+                array_push($_SESSION['mycart'], $spadd);
+
+            }
+        case 'cart':
+            include './view/cart/viewcart.php';
+            break;
+
+        include './view/cart/viewcart.php';
         default:
             # code...
             break;

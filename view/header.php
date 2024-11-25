@@ -236,7 +236,7 @@
                             </div>
 
                             <div class="search fixacc">
-                                <a class="cart-head" href="index.php?act=login" style="position:relative;">
+                                <a class="cart-head" href="index.php?act=addtocart" style="position:relative;">
                                     <img src="./view/images/iconfinder-41-user-2123927.png" alt="Account" title="Account" style="padding-top: 6px;margin-right: 8px;
             ">
                                 </a>
@@ -245,7 +245,7 @@
 
 
                             <div class="search">
-                                <a class="cart-head" href="/cart" style="position:relative;">
+                                <a class="cart-head" href="index.php?act=addtocart" style="position:relative;">
                                     <img src="./view/images/shopping-bag-2x.png" alt="Cart" title="Cart" style="padding-top: 2px; margin-left: 0.5px
             ">
                                     <span class="hd-cart-count">0</span>

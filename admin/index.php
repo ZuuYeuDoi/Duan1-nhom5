@@ -183,6 +183,20 @@ if (isset($_GET['act'])) {
                 $listsanpham = GetAllProduct();
                 include "./sanpham/list.php";
                 break;
+            case 'register':
+
+            if (isset($_POST['dangky']) && ($_POST['dangky'] > 0)) {
+                $email = $_POST['email'];
+                $ten = $_POST['user'];
+                $matkhau = $_POST['pass'];
+                $address = $_POST['addr'];
+                $sdt = $_POST['phone'];
+                $role = 0;
+                pdo_dangky_taikhoan($email, $matkhau, $ten, $sdt, $address);
+                $_SESSION['success'] = "";
+            }
+            include './view/dkdn/register.php';
+            break;
 
 
         default:
