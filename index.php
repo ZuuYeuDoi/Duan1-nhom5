@@ -114,8 +114,16 @@ if (isset($_GET['act'])) {
             include './view/page/ruoumanh.php';
 
             break;
+<<<<<<< HEAD
         case 'bill':
             include './view/cart/bill.php';
+=======
+            case 'lienhe':
+                
+                include './view/page/lienhe.php';
+    
+                break;
+>>>>>>> be3049b037f69d3538f3c2b473f32261a29c29bf
         default:
             header('location:index.php?act=trangchu');
             break;

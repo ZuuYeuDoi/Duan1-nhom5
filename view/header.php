@@ -249,7 +249,7 @@
 
                                     <li
                                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
-                                        <a href="/contact" title="Liên hệ">Liên hệ</a>
+                                        <a href="index.php?act=lienhe" title="Liên hệ">Liên hệ</a>
                                         <ul class="sub-menu">
 
 
