@@ -19,17 +19,17 @@ if (isset($_GET['act'])) {
     switch ($act) {
         case 'login':
             if (isset($_POST['dangnhap']) && ($_POST['dangnhap'] > 0)) {
-        
+
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
                 $checkuser = checkuser($user, $pass);
-                
+
                 if (is_array($checkuser)) {
                     $_SESSION['user'] = $checkuser;
-        
+
                     // Lưu vai trò vào session
                     $_SESSION['role'] = $checkuser['role']; // Giả sử trường 'role' có trong cơ sở dữ liệu
-                    
+
                     $_SESSION['success'] = "";
                     header('location:index.php?act=trangchu');
                     exit(); // Đảm bảo dừng script
@@ -84,12 +84,22 @@ if (isset($_GET['act'])) {
 
 
         case 'gioithieu':
-            
+
             include './view/page/gioithieu.php';
 
             break;
+        case 'ruouvang':
+            $listsanpham = GetAllProduct();
+            include './view/page/ruouvang.php';
+
+            break;
+        case 'ruoumanh':
+            $listsanpham = GetAllProduct();
+            include './view/page/ruoumanh.php';
+
+            break;
         default:
-        header('location:index.php?act=trangchu');
+            header('location:index.php?act=trangchu');
             break;
     }
 } else {

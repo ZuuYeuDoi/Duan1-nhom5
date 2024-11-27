@@ -96,7 +96,7 @@
     }
 </style>
 
-<!-- Slideshow container -->
+<!-- Slideshow container --> 
 <div class="slideshow-container">
 
     <!-- Full-width images with number and caption text -->
