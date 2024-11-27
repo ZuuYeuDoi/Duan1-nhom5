@@ -249,7 +249,7 @@
 
                             <div class="single-product mb-10">
                                 <div style="height: 400px" class="product-img img-full">
-                                    <a href="/universe-is-ready-1" title="Universe Is Ready">
+                                    <a href="" title="Universe Is Ready">
                                         <input type="hidden" name="id" value="<?= $value['id_sp']?>">
                                         <span class="onsale">- 16%</span>
 
@@ -257,7 +257,10 @@
 
 
                                         <img class="hidden-xs lazyload protmt1 " src="upload/<?php echo $value['anhsp'] ?>">
-                                        <img  class="pro-img2 hidden-xs" src="view\images\1.png" alt="Universe Is Ready">
+                                        <a href="index.php?act=ruouvang">
+                                            <img  class="pro-img2 hidden-xs" src="view\images\1.png" alt="Universe Is Ready">
+                                        </a>
+                                        
                                     </a>
                                     <!-- <button class="product-action btn-quickview-1" style="padding: 10px;" name="addtocart" >Thêm vào giỏ hàng</button> -->
                                     <div class="product-action btn-quickview-1" style="padding:10px"> <a href="index.php?act=addtocart" class="product-action btn-quickview-1" data-handle="/universe-is-ready-1">   </div>
@@ -271,7 +274,7 @@
                                     <!-- </a> -->
                                 </div>
                                 <div class="product-content">
-                                    <h3><a href="/universe-is-ready-1" title="Universe Is Ready"><?php echo $value['tensp'] ?></a></h3>
+                                    <h3><a href="" title="Universe Is Ready"><?php echo $value['tensp'] ?></a></h3>
                                     <div class="product-price">
                                         <div class="price-box">
 

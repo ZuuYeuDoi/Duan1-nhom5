@@ -49,5 +49,35 @@ function deletetk($id_nguoidung) {
     pdo_execute($sql);
 }
 
+function loadone_taikhoan($id) {
+    $sql = "SELECT * FROM Nguoi_dung WHERE id_nguoidung = $id";
+    $sp = pdo_query_one($sql);
+    return $sp;
+}
+
+
+function update_taikhoan( $user, $password, $email, $address, $phone, $role, $id)
+{
+    // Cập nhật câu truy vấn SQL để thay đổi các trường trong bảng `Nguoi_dung`
+    $sql = "UPDATE `Nguoi_dung` 
+            SET `hoten` = :user, 
+                `matkhau` = :password, 
+                `email` = :email, 
+                `diachi` = :address, 
+                `sdt` = :phone, 
+                `role` = :role 
+            WHERE `id_nguoidung` = :id";
+    
+    // Truyền tham số vào câu truy vấn
+    return pdo_execute($sql, [
+        ':user' => $user,
+        ':password' => $password,
+        ':email' => $email,
+        ':address' => $address,
+        ':phone' => $phone,
+        ':role' => $role,
+        ':id' => $id
+    ]);
+}
 
 ?>
