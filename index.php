@@ -98,6 +98,11 @@ if (isset($_GET['act'])) {
             include './view/page/ruoumanh.php';
 
             break;
+            case 'lienhe':
+                
+                include './view/page/lienhe.php';
+    
+                break;
         default:
             header('location:index.php?act=trangchu');
             break;
