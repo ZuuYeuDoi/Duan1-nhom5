@@ -106,8 +106,8 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="/index.php?act=listtk">Danh sách tài khoản</a>
-                        <a class="collapse-item" href="/index.php?act=addtk">Đăng ký thành viên</a>
+                        <a class="collapse-item" href="index.php?act=listtk">Danh sách tài khoản</a>
+                        <a class="collapse-item" href="index.php?act=addtk">Đăng ký thành viên</a>
                         <!-- <a class="collapse-item" href="forgot-password.html">Quên mật khẩu</a> -->
                         <!-- <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
