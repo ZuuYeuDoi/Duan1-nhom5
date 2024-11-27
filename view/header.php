@@ -129,7 +129,7 @@
 
                                     <li
                                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
-                                        <a href="/shop-verus" title="Shop ">Rượu Vang </a>
+                                        <a href="index.php?act=ruouvang" title="Shop ">Rượu Vang </a>
                                         <!-- <ul class="sub-menu">
                                             
                                             
@@ -189,7 +189,7 @@
 
                                     <li
                                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
-                                        <a href="/shop-verus" title="Bộ sưu tập">Rượu Mạnh</a>
+                                        <a href="index.php?act=ruoumanh" title="Bộ sưu tập">Rượu Mạnh</a>
                                         <!-- <ul class="sub-menu">
                                             
                                             
