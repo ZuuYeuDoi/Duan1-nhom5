@@ -15,7 +15,7 @@ session_start();
 if (!isset($_SESSION['user'])) {
     header('Location: login.php'); // Chuyển hướng nếu chưa đăng nhập
     exit();
-} 
+}
 $userRole = $_SESSION['role'];
 if ($userRole !== 1) { // Giả sử 'admin' là vai trò cần quyền truy cập
     header('Location: login.php');
@@ -80,42 +80,42 @@ if (isset($_GET['act'])) {
             // Hết phần danh mục
             //update san pham
 
-            case 'suasp':
-                $listdanhmuc = list_danhmuc();
-                if (isset($_GET['id_sp']) && ($_GET['id_sp'] > 0)) {
-                    $id = $_GET['id_sp'];
-                    $sp = loadone_sanpham($id);            
-                    // Kiểm tra nếu có dữ liệu cập nhật từ POST
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                        $id_dm = $_POST['id_dm'];
-                        $hang = $_POST['hangsp'];
-                        $tensp = $_POST['tensp'];
-                        $giatien = $_POST['pricesp'];
-                        $soluong = $_POST['soluongsp'];
-                        $giamgia = $_POST['price1sp'];
-                        $mota = $_POST['motasp'];
-                        $ngaycapnhat = $_POST['ngaycapnhat'];
-            
-                        // Xử lý ảnh
-                        $anhsp = $_FILES['imgsp']['name'];
-                        $tmp_name = $_FILES['imgsp']['tmp_name'];
-            
-                        if (!empty($anhsp)) {
-                            // Di chuyển tệp tới thư mục upload
-                            if (move_uploaded_file($tmp_name, '../upload/' . $anhsp)) {
-                                // Nếu di chuyển thành công, sử dụng ảnh mới
-                                $anhsp = $anhsp;
-                            } else {
-                                // Nếu không thành công, giữ ảnh cũ
-                                $anhsp = $sp['anhsp'];
-                            }
+        case 'suasp':
+            $listdanhmuc = list_danhmuc();
+            if (isset($_GET['id_sp']) && ($_GET['id_sp'] > 0)) {
+                $id = $_GET['id_sp'];
+                $sp = loadone_sanpham($id);
+                // Kiểm tra nếu có dữ liệu cập nhật từ POST
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $id_dm = $_POST['id_dm'];
+                    $hang = $_POST['hangsp'];
+                    $tensp = $_POST['tensp'];
+                    $giatien = $_POST['pricesp'];
+                    $soluong = $_POST['soluongsp'];
+                    $giamgia = $_POST['price1sp'];
+                    $mota = $_POST['motasp'];
+                    $ngaycapnhat = $_POST['ngaycapnhat'];
+
+                    // Xử lý ảnh
+                    $anhsp = $_FILES['imgsp']['name'];
+                    $tmp_name = $_FILES['imgsp']['tmp_name'];
+
+                    if (!empty($anhsp)) {
+                        // Di chuyển tệp tới thư mục upload
+                        if (move_uploaded_file($tmp_name, '../upload/' . $anhsp)) {
+                            // Nếu di chuyển thành công, sử dụng ảnh mới
+                            $anhsp = $anhsp;
                         } else {
-                            // Giữ lại ảnh cũ nếu không có ảnh mới
+                            // Nếu không thành công, giữ ảnh cũ
                             $anhsp = $sp['anhsp'];
                         }
-            
-                        // Câu lệnh SQL để cập nhật
-                        $sql = "UPDATE San_pham SET 
+                    } else {
+                        // Giữ lại ảnh cũ nếu không có ảnh mới
+                        $anhsp = $sp['anhsp'];
+                    }
+
+                    // Câu lệnh SQL để cập nhật
+                    $sql = "UPDATE San_pham SET 
                                     id_dm ='" . $id_dm . "',
                                     id_dm ='" . $id_dm . "',
                                     tensp ='" . $tensp . "',
@@ -125,78 +125,101 @@ if (isset($_GET['act'])) {
                                     mota ='" . $mota . "',
                                     anhsp ='" . $anhsp . "',
                                     ngaycapnhat ='" . $ngaycapnhat . "'
-                                WHERE id_sp =" .$id;
-            
-                        // Sử dụng câu lệnh chuẩn bị để ngăn chặn SQL injection
-                        // $stmt = $pdo->prepare($sql);
-                        // $stmt->execute([
-                        //     ':id_dm' => $id_dm,
-                        //     ':hang' => $hang,
-                        //     ':tensp' => $tensp,
-                        //     ':giatien' => $giatien,
-                        //     ':soluong' => $soluong,
-                        //     ':giamgia' => $giamgia,
-                        //     ':mota' => $mota,
-                        //     ':anhsp' => $anhsp,
-                        //     ':ngaycapnhat' => $ngaycapnhat,
-                        //     ':id' => $id
-                        // ]);
-                        pdo_execute($sql);
-                        $thongbao = "Cập Nhật thành công";
-                        header("Location: index.php?act=listsp");
-                exit(); // Dừng xử lý tiếp
-                    }
-                    // Hiển thị form cập nhật
-                    include "./sanpham/update.php";
+                                WHERE id_sp =" . $id;
+
+                    // Sử dụng câu lệnh chuẩn bị để ngăn chặn SQL injection
+                    // $stmt = $pdo->prepare($sql);
+                    // $stmt->execute([
+                    //     ':id_dm' => $id_dm,
+                    //     ':hang' => $hang,
+                    //     ':tensp' => $tensp,
+                    //     ':giatien' => $giatien,
+                    //     ':soluong' => $soluong,
+                    //     ':giamgia' => $giamgia,
+                    //     ':mota' => $mota,
+                    //     ':anhsp' => $anhsp,
+                    //     ':ngaycapnhat' => $ngaycapnhat,
+                    //     ':id' => $id
+                    // ]);
+                    pdo_execute($sql);
+                    $thongbao = "Cập Nhật thành công";
+                    header("Location: index.php?act=listsp");
+                    exit(); // Dừng xử lý tiếp
                 }
-            
+                // Hiển thị form cập nhật
+                include "./sanpham/update.php";
+            }
+
             // // // Lấy danh sách sản phẩm
             // $sql = "SELECT * FROM San_pham ORDER BY id_sp DESC";
             // $listdanhmuc = pdo_query($sql);
             // include "./danhmuc/list.php";
             break;
-            
 
-            case 'listsp':
-                $listsanpham = GetAllProduct();
-                include './sanpham/list.php';
-                break;
-            case 'addsp':
-                $listdanhmuc = list_danhmuc();
-                if (isset($_POST['themsp']) && ($_POST['themsp'])) {
-                    $id_dm = $_POST['id_dm'];
-                    $hang = $_POST['hangsp'];
-                    $tensp = $_POST['tensp'];
-                    $giatien = $_POST['pricesp'];
-                    $soluong= $_POST['soluongsp'];
-                    $giamgia = $_POST['price1sp'];
-                    
-                    $anhsp = $_FILES['imgsp']['name'];
-                    $stmt = $_FILES['imgsp']['tmp_name'];
-                    move_uploaded_file($stmt, '../upload/' . $anhsp);
 
-                    $mota = $_POST['motasp'];
-                    $ngaytao = $_POST['ngaytaosp'];
-                    
-                    add_sanpham($id_dm,$hang,$tensp,$giatien,$soluong,$giamgia,$mota,$anhsp,$ngaytao);
-                    $_SESSION['success'] = "";
-                    header('location:index.php?act=listsp');
-                    exit();
-                }
-                include "./sanpham/add.php";
+        case 'listsp':
+            $listsanpham = GetAllProduct();
+            include './sanpham/list.php';
+            break;
+        case 'addsp':
+            $listdanhmuc = list_danhmuc();
+            if (isset($_POST['themsp']) && ($_POST['themsp'])) {
+                $id_dm = $_POST['id_dm'];
+                $hang = $_POST['hangsp'];
+                $tensp = $_POST['tensp'];
+                $giatien = $_POST['pricesp'];
+                $soluong = $_POST['soluongsp'];
+                $giamgia = $_POST['price1sp'];
+
+                $anhsp = $_FILES['imgsp']['name'];
+                $stmt = $_FILES['imgsp']['tmp_name'];
+                move_uploaded_file($stmt, '../upload/' . $anhsp);
+
+                $mota = $_POST['motasp'];
+                $ngaytao = $_POST['ngaytaosp'];
+
+                add_sanpham($id_dm, $hang, $tensp, $giatien, $soluong, $giamgia, $mota, $anhsp, $ngaytao);
+                $_SESSION['success'] = "";
+                header('location:index.php?act=listsp');
+                exit();
+            }
+            include "./sanpham/add.php";
             break;
 
-            case 'xoasp':
-                if (isset($_GET['id_sp']) && is_numeric($_GET['id_sp']) && $_GET['id_sp'] > 0) {
-                    $id = intval($_GET['id_sp']); // Chuyển về số nguyên
-                    delete_sanpham($id); // Gọi hàm xóa
-                    echo "Xóa sản phẩm thành công!";
-                } else {
-                    echo "ID sản phẩm không hợp lệ!";
-                }
-                $listsanpham = GetAllProduct();
-                include "./sanpham/list.php";
-                break;
+        case 'xoasp':
+            if (isset($_GET['id_sp']) && is_numeric($_GET['id_sp']) && $_GET['id_sp'] > 0) {
+                $id = intval($_GET['id_sp']); // Chuyển về số nguyên
+                delete_sanpham($id); // Gọi hàm xóa
+                echo "Xóa sản phẩm thành công!";
+            } else {
+                echo "ID sản phẩm không hợp lệ!";
+            }
+            $listsanpham = GetAllProduct();
+            include "./sanpham/list.php";
+            break;
+
+        case 'addtk':
+            if (isset($_POST['themmoitk']) && ($_POST['themmoitk'] > 0)) {
+                $email = $_POST['email']; 
+                $matkhau = $_POST['pass'];
+                $ten = $_POST['user'];
+                $sdt = $_POST['sdt']; 
+                $address = $_POST['diachi'];
+                
+                $role = $_POST['phanquyen'];
+               
+                pdo_dangky_taikhoanbenadmin($email, $matkhau, $ten, $sdt, $address , $role);
+            }
+            include "./taikhoan/add.php";
+            break;
+
+
+        case 'listtk':
+            $listtk = list_tk();
+            include "./taikhoan/list.php";
+
+            break;
+
         default:
             include 'home.php';
             break;

@@ -28,7 +28,7 @@
                         $tong+=$ttien;
                         echo '
                             <tr>
-                                <td><img src="/upload/'.$cart[3].'" alt="" height="80px"></td>
+                                <td><img src="upload/'.$cart[2].'" alt="" height="80px"></td>
                                 <td>'.$cart[1].'</td>
                                 <td>'.number_format($cart[5], 0, ',', '.').'vnd</td>
                                 <td>'.$cart[4].'</td>
