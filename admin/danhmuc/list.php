@@ -16,7 +16,7 @@
                                                 cellspacing="0" role="grid" aria-describedby="dataTable_info"
                                                 style="width: 100%;">
                                                 <?php
-                                                session_start(); // Bắt đầu session để có thể sử dụng $_SESSION
+                                                
 
                                                 // Kiểm tra và hiển thị thông báo nếu có
                                                 if (isset($_SESSION['success'])) {

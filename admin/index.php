@@ -200,15 +200,15 @@ if (isset($_GET['act'])) {
 
         case 'addtk':
             if (isset($_POST['themmoitk']) && ($_POST['themmoitk'] > 0)) {
-                $email = $_POST['email']; 
+                $email = $_POST['email'];
                 $matkhau = $_POST['pass'];
                 $ten = $_POST['user'];
-                $sdt = $_POST['sdt']; 
+                $sdt = $_POST['sdt'];
                 $address = $_POST['diachi'];
-                
+
                 $role = $_POST['phanquyen'];
-               
-                pdo_dangky_taikhoanbenadmin($email, $matkhau, $ten, $sdt, $address , $role);
+
+                pdo_dangky_taikhoanbenadmin($email, $matkhau, $ten, $sdt, $address, $role);
             }
             include "./taikhoan/add.php";
             break;
@@ -217,6 +217,17 @@ if (isset($_GET['act'])) {
         case 'listtk':
             $listtk = list_tk();
             include "./taikhoan/list.php";
+
+            break;
+
+        case 'xoatk':
+            if (isset($_GET['id_nguoidung']) && ($_GET['id_nguoidung'] > 0)) {
+                $id_nguoidung = $_GET['id_nguoidung'];
+                deletetk($id_nguoidung);
+            }
+            $listtk = list_tk();
+            include "./taikhoan/list.php";
+
 
             break;
 

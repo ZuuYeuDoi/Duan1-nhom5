@@ -75,7 +75,8 @@
                                                 <tbody>
                                                     <?php
                                                     foreach ($listtk  as $key ) {
-                                                        
+                                                        $suatk = 'index.php?act=suatk&id_nguoidung='.$key['id_nguoidung'];
+                                                        $xoatk = 'index.php?act=xoatk&id_nguoidung='.$key['id_nguoidung'];
 
                                                     ?>
                                                    <tr class="even">
@@ -89,7 +90,7 @@
                                                         <td><?php echo $key['role']?></td>
                                                         <td><a href="" class="btn btn-info btn-circle">
                                                                 <i class="fas fa-info-circle"></i>
-                                                            </a> <a href="" class="btn btn-danger btn-circle">
+                                                            </a> <a href="<?= $xoatk ?>" class="btn btn-danger btn-circle">
                                                                 <i class="fas fa-trash"></i>
                                                             </a>
                                                         </td>

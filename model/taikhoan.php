@@ -44,5 +44,10 @@ function pdo_dangky_taikhoanbenadmin($email, $matkhau, $ten, $sdt, $address ,$ro
     ]);  
 }
 
+function deletetk($id_nguoidung) {
+    $sql=" DELETE FROM `Nguoi_dung` WHERE id_nguoidung=".$id_nguoidung;
+    pdo_execute($sql);
+}
+
 
 ?>
