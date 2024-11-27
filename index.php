@@ -78,13 +78,29 @@ if (isset($_GET['act'])) {
                 $spadd = [$id_sp, $tensp, $anhsp, $giamgia, $soluong, $ttien];
                 array_push($_SESSION['mycart'], $spadd);
             }
-        case 'cart':
+        case 'viewcart':
             include './view/cart/viewcart.php';
             break;
+        
+            case 'delcart':
+                if (isset($_GET['idcart'])) {
+                    // Xóa sản phẩm dựa trên chỉ số
+                    unset($_SESSION['mycart'][$_GET['idcart']]);
+                    // Đánh lại chỉ số mảng
+                    $_SESSION['mycart'] = array_values($_SESSION['mycart']);
+                } else {
+                    // Nếu không có idcart, xóa toàn bộ giỏ hàng
+                    $_SESSION['mycart'] = [];
+                }
+                // Chuyển hướng về trang giỏ hàng
+                if (!headers_sent()) {
+                    header('Location: index.php?act=viewcart');
+                    exit;
+                }
+                break;
 
 
         case 'gioithieu':
-
             include './view/page/gioithieu.php';
 
             break;
@@ -98,14 +114,20 @@ if (isset($_GET['act'])) {
             include './view/page/ruoumanh.php';
 
             break;
+<<<<<<< HEAD
+        case 'bill':
+            include './view/cart/bill.php';
+=======
             case 'lienhe':
                 
                 include './view/page/lienhe.php';
     
                 break;
+>>>>>>> be3049b037f69d3538f3c2b473f32261a29c29bf
         default:
             header('location:index.php?act=trangchu');
             break;
+            
     }
 } else {
     header('location:index.php?act=trangchu');

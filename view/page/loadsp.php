@@ -260,10 +260,11 @@
                                         <img  class="pro-img2 hidden-xs" src="view\images\1.png" alt="Universe Is Ready">
                                     </a>
                                     <!-- <button class="product-action btn-quickview-1" style="padding: 10px;" name="addtocart" >Thêm vào giỏ hàng</button> -->
-                                    <div class="product-action btn-quickview-1" style="padding:10px">  <input type="submit" name="addtocart" value="Thêm vào giỏ hàng" style="border-box:none"> </div>
+                                    <div class="product-action btn-quickview-1" style="padding:10px"> <a href="index.php?act=addtocart" class="product-action btn-quickview-1" data-handle="/universe-is-ready-1">   </div>
                                                                      
-                                    <!-- <a href="" class="product-action btn-quickview-1" data-handle="/universe-is-ready-1">
-                                        <ul>
+                                    
+                                     <input type="submit" name="addtocart" value="Thêm vào giỏ hàng" style="border-box:none">
+                                    <!--    <ul>
                                             <li>XEM CHI TIẾT</li>
 
                                         </ul> -->
