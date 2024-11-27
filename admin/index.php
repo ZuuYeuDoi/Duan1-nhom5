@@ -29,7 +29,6 @@ if (isset($_GET['act'])) {
             // Phần danh mục
             // 
         case 'adddm':
-            session_start();
             if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
                 $ten_danhmuc = $_POST['tendm'];
                 $ngaytao = $_POST['ngaytao'];
