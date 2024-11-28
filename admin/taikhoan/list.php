@@ -88,7 +88,7 @@
                                                         <td><?php echo $key['diachi']?></td>
                                                         <td><?php echo $key['ngaydangky']?></td>
                                                         <td><?php echo $key['role']?></td>
-                                                        <td><a href="" class="btn btn-info btn-circle">
+                                                        <td><a href="<?= $suatk ?>" class="btn btn-info btn-circle">
                                                                 <i class="fas fa-info-circle"></i>
                                                             </a> <a href="<?= $xoatk ?>" class="btn btn-danger btn-circle">
                                                                 <i class="fas fa-trash"></i>

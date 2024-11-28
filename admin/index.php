@@ -10,7 +10,6 @@ include '../model/product.php';
 include_once '../model/taikhoan.php';
 include 'header.php';
 session_start();
-
 // Kiểm tra vai trò người dùng
 if (!isset($_SESSION['user'])) {
     header('Location: login.php'); // Chuyển hướng nếu chưa đăng nhập
@@ -208,17 +207,15 @@ if (isset($_GET['act'])) {
                 $role = $_POST['phanquyen'];
 
                 pdo_dangky_taikhoanbenadmin($email, $matkhau, $ten, $sdt, $address, $role);
+                header('location:index.php?act=listtk');
             }
             include "./taikhoan/add.php";
             break;
-
-
         case 'listtk':
             $listtk = list_tk();
             include "./taikhoan/list.php";
 
             break;
-
         case 'xoatk':
             if (isset($_GET['id_nguoidung']) && ($_GET['id_nguoidung'] > 0)) {
                 $id_nguoidung = $_GET['id_nguoidung'];
@@ -226,8 +223,24 @@ if (isset($_GET['act'])) {
             }
             $listtk = list_tk();
             include "./taikhoan/list.php";
+            break;
 
-
+        case 'suatk':
+            if (isset($_GET['id_nguoidung']) && ($_GET['id_nguoidung'] > 0)) {
+                $tk = loadone_taikhoan($_GET['id_nguoidung']);
+            }
+            if (isset($_POST['uptkmoi']) && ($_POST['uptkmoi'] > 0)) {
+                $id = $_GET['id_nguoidung'];
+                $email = $_POST['email'];
+                $password = $_POST['pass'];
+                $user = $_POST['user'];
+                $phone = $_POST['sdt'];
+                $address = $_POST['diachi'];
+                $role = $_POST['phanquyen'];
+                update_taikhoan( $user, $password, $email, $address, $phone, $role, $id);
+                header('location:index.php?act=listtk');
+            }
+            include "./taikhoan/update.php";
             break;
 
         default:
