@@ -10,7 +10,6 @@ include '../model/product.php';
 include_once '../model/taikhoan.php';
 include 'header.php';
 session_start();
-
 // Kiểm tra vai trò người dùng
 if (!isset($_SESSION['user'])) {
     header('Location: login.php'); // Chuyển hướng nếu chưa đăng nhập
