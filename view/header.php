@@ -336,7 +336,7 @@
                                 <a class="cart-head" href="index.php?act=viewcart" style="position:relative;">
                                     <img src="./view/images/shopping-bag-2x.png" alt="Cart" title="Cart" style="padding-top: 2px; margin-left: 0.5px
             ">
-                                    <span class="hd-cart-count">0</span>
+                                    <span class="hd-cart-count"> </span>
                                 </a>
 
                             </div>
@@ -348,7 +348,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="sub-head">
+                <!-- <div class="sub-head">
                     <button class="snav-btn">
                         <i></i>
                         <i></i>
@@ -557,9 +557,3 @@
                 </div>
             </header>
 
-
-
-
-
-
-           
