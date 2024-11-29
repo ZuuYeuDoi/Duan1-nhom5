@@ -244,15 +244,21 @@ if (isset($_SESSION['user'])) {
                             <div style="padding: 10px;">
                                 <input type="submit" name="" id="" class="btn btn-primary btn-sm" style="height: 32px;
                                         width: 130px; margin-left: 10px;" value="Quên mật khẩu">
-                                <input type="submit" name="" id="" class="btn btn-warning btn-sm" style="height: 32px;
-                                        width: 130px; margin-left: 10px;" value="Đổi thông tin">
+                                <!-- <input type="submit" name="" id="" class="btn btn-warning btn-sm" style="height: 32px;
+                                        width: 130px; margin-left: 10px;" value="Đổi thông tin"> -->
+                                <a href="index.php?act=update_user" class="btn btn-warning btn-sm" style="height: 32px;
+                                        width: 130px; margin-left: 10px;">Sửa Thông Tin</a>
+
                             </div>
 
                             <div class="d-flex justify-content-center mb-2" style="margin-top: 15px;">
                                 <div class="d-flex justify-content-center mb-2" style="margin-top: 15px; ">
-                                    <?php if ($_SESSION['user']['role'] == 1) { ?>
-                                        <input type="submit" name="" id="" class="btn btn-success btn-sm" style="height: 32px;
-                                        width: 130px; margin-left: 10px;" value="Đăng nhập admin">
+                                <?php if ($_SESSION['user']['role'] == 1) { ?>
+                                        <form action="./admin/index.php" method="post" style="display: inline;">
+                                            <button type="submit" class="btn btn-success btn-sm" style="height: 32px; width: 130px; margin-left: 10px;">
+                                                Đăng nhập admin
+                                            </button>
+                                        </form>
                                     <?php } ?>
                                     <input type="submit" name="" id="" class="btn btn-danger btn-sm" style="height: 32px;
                                         width: 130px; margin-left: 10px;" value="Đăng xuất">

@@ -40,22 +40,45 @@ if (isset($_GET['act'])) {
             }
             include './view/dkdn/login.php';
             break;
-        case 'register':
+        // case 'register':
 
+        //     if (isset($_POST['dangky']) && ($_POST['dangky'] > 0)) {
+        //         $email = $_POST['email'];
+        //         $ten = $_POST['user'];
+        //         $matkhau = $_POST['pass'];
+        //         $address = $_POST['addr'];
+        //         $sdt = $_POST['phone'];
+        //         $role = 0;
+        //         pdo_dangky_taikhoan($email, $matkhau, $ten, $sdt, $address);
+        //         $_SESSION['success'] = "";
+
+        //           // Sau khi đăng ký, lấy thông tin user mới
+        //         $userInfo = pdo_get_user_info($conn->lastInsertId()); // Lấy thông tin từ ID mới đăng ký
+        //         $_SESSION['user'] = $userInfo; // Lưu thông tin user vào session
+
+        //     }
+        //     include './view/dkdn/register.php';
+        //     break;
+
+        case 'register':
             if (isset($_POST['dangky']) && ($_POST['dangky'] > 0)) {
                 $email = $_POST['email'];
                 $ten = $_POST['user'];
                 $matkhau = $_POST['pass'];
                 $address = $_POST['addr'];
                 $sdt = $_POST['phone'];
-                $role = 0;
-                pdo_dangky_taikhoan($email, $matkhau, $ten, $sdt, $address);
-                $_SESSION['success'] = "";
-
-                  // Sau khi đăng ký, lấy thông tin user mới
-                $userInfo = pdo_get_user_info($conn->lastInsertId()); // Lấy thông tin từ ID mới đăng ký
-                $_SESSION['user'] = $userInfo; // Lưu thông tin user vào session
-
+        
+                // Đăng ký tài khoản và nhận ID của tài khoản mới
+                $userId = pdo_dangky_taikhoan_user($email, $matkhau, $ten, $sdt, $address);
+        
+                if ($userId) {
+                    // Lấy thông tin user mới dựa vào ID
+                    $userInfo = pdo_get_user_info($userId);
+                    $_SESSION['user'] = $userInfo; // Lưu thông tin user vào session
+                    $_SESSION['success'] = "Đăng ký thành công!";
+                } else {
+                    $_SESSION['error'] = "Đăng ký thất bại!";
+                }
             }
             include './view/dkdn/register.php';
             break;
@@ -173,6 +196,11 @@ if (isset($_GET['act'])) {
             include './view/cart/billconfirm.php';
 
             break;
+
+    case 'update_user':
+
+        include './view/dkdn/update_user.php';
+        break;
             
         default:
             header('location:index.php?act=trangchu');
