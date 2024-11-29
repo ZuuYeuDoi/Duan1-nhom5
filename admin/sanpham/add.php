@@ -80,8 +80,7 @@
                                     <option value="">Lựa Chọn Danh Mục</option>
                                     <?php
                                     foreach ($listdanhmuc as $key => $value) { ?>
-                                        <option value="<?php echo $value['id_dm'] ?>">
-                                            <?php echo $value['ten_danhmuc'] ?></option>
+                                        <option value="<?php echo $value['id_dm'] ?>"><?php echo $value['ten_danhmuc'] ?></option>
                                     <?php } ?>
                                 </select>
 

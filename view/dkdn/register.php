@@ -46,6 +46,7 @@
                             <h2 class="text-uppercase text-center mb-5">Đăng Ký</h2>
 
                             <form action="index.php?act=register" method="post">
+                                
 
                                 <div data-mdb-input-init class="form-outline mb-4">
                                     <label class="form-label" for="form3Example1cg">Tên người dùng</label>

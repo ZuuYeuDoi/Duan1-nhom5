@@ -5,10 +5,22 @@
     <main role="main">
         <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
         <div class="container mt-4">
-            <form class="needs-validation" name="frmthanhtoan" method="post"
-                action="#">
-                <input type="hidden" name="kh_tendangnhap" value="dnpcuong">
+            <form class="needs-validation" name="billconfirm" method="post" action="index.php?act=billconfirm">
 
+                 <?php 
+                    if (isset($_SESSION['user'])) {
+                        $name = $_SESSION['user']['hoten']; // Hoặc tên cột từ bảng của bạn
+                        $addr = $_SESSION['user']['diachi'];
+                        $phone = $_SESSION['user']['sdt'];
+                        $email = $_SESSION['user']['email'];
+                    } else {
+                        $name = "";
+                        $addr = "";
+                        $phone = "";
+                        $email = "";
+                    }
+
+                ?> 
                 <div class="py-5 text-center">
                     <i class="fa fa-credit-card fa-4x" aria-hidden="true"></i>
                     <h2>Thanh toán</h2>
@@ -21,40 +33,39 @@
                             <span class="text-muted">Giỏ hàng</span>
                             <span class="badge badge-secondary badge-pill">2</span>
                         </h4>
-                        <ul class="list-group mb-3">
-                            <input type="hidden" name="sanphamgiohang[1][sp_ma]" value="2">
-                            <input type="hidden" name="sanphamgiohang[1][gia]" value="11800000.00">
-                            <input type="hidden" name="sanphamgiohang[1][soluong]" value="2">
+                        
 
-                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h6 class="my-0">Apple Ipad 4 Wifi 16GB</h6>
-                                    <small class="text-muted">11800000.00 x 2</small>
-                                </div>
-                                <span class="text-muted">23600000</span>
-                            </li>
-                            <input type="hidden" name="sanphamgiohang[2][sp_ma]" value="4">
-                            <input type="hidden" name="sanphamgiohang[2][gia]" value="14990000.00">
-                            <input type="hidden" name="sanphamgiohang[2][soluong]" value="8">
+                            <?php
+                                $tong= 0 ;
+                                $i=0;
+                                foreach($_SESSION['mycart'] as $cart){
+                                    $ttien = $cart[5]*$cart[4];
+                                    $tong+=$ttien;
+                                    // var_dump($cart[2]);
+                                    // $xoasp = '<a href="index.php?act=delcart&idcart='.$i.'"><button class="btn btn-danger btn-sm">Xóa</button></a>';
+                                    echo '
+                                        <ul class="list-group mb-3">
+                                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                                <div>
+                                                    <h6 class="my-0">'.$cart[1].'</h6>
+                                                    <small class="text-muted">'.number_format($cart[5], 0, ',', '.').' x '.$cart[4].'</small>
+                                                </div>
+                                                <span class="text-muted">'.$ttien.'</span>
+                                            </li>';
+                                    $i++;
 
-                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h6 class="my-0">Apple iPhone 5 16GB White</h6>
-                                    <small class="text-muted">14990000.00 x 8</small>
-                                </div>
-                                <span class="text-muted">119920000</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Tổng thành tiền</span>
-                                <strong>143520000</strong>
-                            </li>
-                        </ul>
-
+                                }
+                                echo '
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <span>Tổng thành tiền</span>
+                                            <strong>'.$tong.'</strong>
+                                        </li>
+                                    </ul>';
+                            ?>
 
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Mã khuyến mãi">
                             <div class="input-group-append">
-                                <button type="submit" class="btn btn-secondary">Xác nhận</button>
+                                <!-- <button type="submit" class="btn btn-secondary" name="btn_dathang" >Xác nhận</button> -->
                             </div>
                         </div>
 
@@ -64,62 +75,60 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="kh_ten">Họ tên</label>
-                                <input type="text" class="form-control" name="kh_ten" id="kh_ten"
-                                    value="Dương Nguyễn Phú Cường" readonly="">
+                                <input type="text" class="form-control" name="name" id="tenkh"
+                                    value="<?= $name?>" >
                             </div>
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-12">
                                 <label for="kh_gioitinh">Giới tính</label>
                                 <input type="text" class="form-control" name="kh_gioitinh" id="kh_gioitinh" value="Nam"
-                                    readonly="">
-                            </div>
+                                    >
+                            </div> -->
                             <div class="col-md-12">
                                 <label for="kh_diachi">Địa chỉ</label>
-                                <input type="text" class="form-control" name="kh_diachi" id="kh_diachi"
-                                    value="130 Xô Viết Nghệ Tỉnh" readonly="">
+                                <input type="text" class="form-control" name="addr" id="addr"
+                                    value="<?= $addr?>" >
                             </div>
                             <div class="col-md-12">
                                 <label for="kh_dienthoai">Điện thoại</label>
-                                <input type="text" class="form-control" name="kh_dienthoai" id="kh_dienthoai"
-                                    value="0915659223" readonly="">
+                                <input type="text" class="form-control" name="phone" id="phone"
+                                    value="<?= $phone?>" >
                             </div>
                             <div class="col-md-12">
                                 <label for="kh_email">Email</label>
-                                <input type="text" class="form-control" name="kh_email" id="kh_email"
-                                    value="phucuong@ctu.edu.vn" readonly="">
+                                <input type="text" class="form-control" name="email" id="email"
+                                    value="<?= $email?>" >
                             </div>
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-12">
                                 <label for="kh_ngaysinh">Ngày sinh</label>
                                 <input type="text" class="form-control" name="kh_ngaysinh" id="kh_ngaysinh"
-                                    value="11/6/1989" readonly="">
-                            </div>
-                            <div class="col-md-12">
+                                    value="11/6/1989" >
+                            </div> -->
+                            <!-- <div class="col-md-12">
                                 <label for="kh_cmnd">CMND</label>
                                 <input type="text" class="form-control" name="kh_cmnd" id="kh_cmnd" value="362209685"
-                                    readonly="">
-                            </div>
+                                    >
+                            </div> -->
                         </div>
 
                         <h4 class="mb-3">Hình thức thanh toán</h4>
 
                         <div class="d-block my-3">
-                            <div class="custom-control custom-radio">
-                                <input id="httt-1" name="httt_ma" type="radio" class="custom-control-input" required=""
-                                    value="1">
-                                <label class="custom-control-label" for="httt-1">Tiền mặt</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input id="httt-2" name="httt_ma" type="radio" class="custom-control-input" required=""
-                                    value="2">
-                                <label class="custom-control-label" for="httt-2">Chuyển khoản</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input id="httt-3" name="httt_ma" type="radio" class="custom-control-input" required=""
-                                    value="3">
-                                <label class="custom-control-label" for="httt-3">Ship COD</label>
-                            </div>
+                        <div class="custom-control custom-radio">
+                            <input id="httt-1" name="httt_ma" type="radio" class="custom-control-input" required value="1">
+                            <label class="custom-control-label" for="httt-1">Tiền mặt</label>
                         </div>
+                        <div class="custom-control custom-radio">
+                            <input id="httt-2" name="httt_ma" type="radio" class="custom-control-input" required value="2">
+                            <label class="custom-control-label" for="httt-2">Chuyển khoản</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="httt-3" name="httt_ma" type="radio" class="custom-control-input" required value="3">
+                            <label class="custom-control-label" for="httt-3">Ship COD</label>
+                        </div>
+                    </div>
+
                         <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit" name="btnDatHang">Đặt
+                        <button class="btn btn-primary btn-lg btn-block" type="submit" name="btn_dathang">Đặt
                             hàng</button>
                     </div>
                 </div>

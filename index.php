@@ -8,6 +8,7 @@ include './model/pdo.php';
 include './model/product.php';
 include './model/taikhoan.php';
 include 'view/header.php';
+include './model/cart.php';
 
 
 //giỏ hàng- SECTION lưu dữ liệu
@@ -50,6 +51,11 @@ if (isset($_GET['act'])) {
                 $role = 0;
                 pdo_dangky_taikhoan($email, $matkhau, $ten, $sdt, $address);
                 $_SESSION['success'] = "";
+
+                  // Sau khi đăng ký, lấy thông tin user mới
+                $userInfo = pdo_get_user_info($conn->lastInsertId()); // Lấy thông tin từ ID mới đăng ký
+                $_SESSION['user'] = $userInfo; // Lưu thông tin user vào session
+
             }
             include './view/dkdn/register.php';
             break;
@@ -122,6 +128,46 @@ if (isset($_GET['act'])) {
 
         case 'bill':
             include './view/cart/bill.php';
+
+            break;
+        
+        case 'billconfirm':
+                // Tạo đơn hàng
+                // if (isset($_POST['btn_dathang']) && ($_POST['btn_dathang'])) {
+                //     $name = $_POST['name'];
+                //     $addr = $_POST['addr'];
+                //     $phone = $_POST['phone'];
+                //     $pttt = $_POST['httt_ma'];
+                //     $email = $_POST['email'];
+                //     $ngaydathang = date('h:i:sa d/m/y');
+                //     $tongbill = tongbill();
+            
+                //     // Insert đơn hàng vào bảng "don_hang" và lấy id của đơn hàng vừa tạo
+                //     $idbill = insert_bill($name, $addr, $pttt, $phone, $ngaydathang, $tongbill);
+            
+                //     // Kiểm tra nếu $idbill không null
+                //     if ($idbill) {
+                //         // Insert các sản phẩm vào bảng "chi_tiet_don_hang"
+                //         foreach ($_SESSION['mycart'] as $cart) {
+                //             insert_cart($_SESSION['user']['id'], $cart[0], $idbill, $cart[4], $cart[5], $cart[2], $cart[1], $cart[3]);
+                //         }
+                //     } else {
+                //         // Thông báo lỗi nếu không tạo được đơn hàng
+                //         $_SESSION['error'] = "Lỗi tạo đơn hàng!";
+                //     }
+                // }
+            
+                // // Lấy thông tin hóa đơn vừa tạo
+                // if (isset($idbill)) {
+                //     $listbill = loadone_bill($idbill);
+                //     include './view/cart/billconfirm.php';
+                // } else {
+                //     $_SESSION['error'] = "Không tìm thấy hóa đơn!";
+                //     // header('Location: index.php?act=trangchu');
+                //     exit();
+                // }
+
+            include './view/cart/billconfirm.php';
 
             break;
             
