@@ -1,4 +1,45 @@
-<br><br><br><br><br>
+<br><br><br>
+<style>
+    .bn1 {
+        display: flex;
+        margin-left: 180px;
+        width: 1200px;
+    }
+
+    .bn2 {
+        margin-left: 60px;
+        margin-right: 30px;
+    }
+
+    .anhbn1 {
+
+        background-size: cover;
+        height: 300px;
+        /* Chiều cao của banner */
+    }
+
+    .content {
+        padding: 15px;
+    }
+    .mt-4{
+        font-size: 60px;
+        color: blue;
+    }
+</style>
+<!-- <div>
+    <img src=".\upload\bannerr1.jpg" alt="">
+    <h1>Rượu Vang</h1>
+    <h3>Rượu vang là một thức uống có cồn làm từ nho lên men . Nấm men tiêu thụ đường trong nho và chuyển đổi nó thành ethanol , carbon dioxide và nhiệt. Các giống nho và chủng nấm men khác nhau tạo ra các kiểu rượu khác nhau</h3>
+</div> -->
+<div class="bn1">
+    <img class="anhbn1" src=".\upload\bannerr2.jpg" alt="">
+    <div class="bn2">
+        <h1 class="mt-4 text-primary">Rượu Mạnh</h1>
+        <h2>Rượu mạnh là các loại rượu có nồng độ cồn cao từ 40% alc– 50% alc. Các dòng rượu mạnh gồm có 6 loại chính như sau: Brandy, Whisky, Gin, Vodka, Rum và Tequila. Mỗi loại rượu đều được sản xuất từ các nguyên liệu đặc trưng, qua quá trình lên men, chưng cất và ủ riêng biệt để có hương vị say nồng, ấn tượng.</h2>
+    </div>
+</div>
+<br><br>
+<hr><br>
 <div class="indor-plant-product">
             <div class="row">
                 <div class="indoor-product-active">
@@ -6,7 +47,7 @@
 
                     <!--Single Product Start-->
 
-                    <?php foreach ($listsanpham as $key => $value) {
+                    <?php foreach ($listidsp2 as $key => $value) {
 
                     ?>
                     <form action="index.php?act=addtocart"method="post">

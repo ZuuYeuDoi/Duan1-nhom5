@@ -105,12 +105,15 @@ if (isset($_GET['act'])) {
 
             break;
         case 'ruouvang':
-            $listsanpham = GetAllProduct();
+        //    $listidsp1 = laysp1($listidsp1);
+        $listidsp1 = [];
+        $listidsp1 = laysp1($listidsp1);
             include './view/page/ruouvang.php';
 
             break;
         case 'ruoumanh':
-            $listsanpham = GetAllProduct();
+           $listidsp2 = [];
+            $listidsp2 = laysp2($listidsp2);
             include './view/page/ruoumanh.php';
 
             break;

@@ -75,6 +75,19 @@ function delete_sanpham($id){
     $sql=" DELETE FROM `san_pham` WHERE id_sp=".$id;
     pdo_execute($sql);
 }
+
+
+function laysp1($listidsp1) {
+    $sql = "select * from san_pham where id_dm = 1";
+    $listidsp1 = pdo_query($sql);
+    return $listidsp1;
+}
+function laysp2($listidsp2) {
+    $sql = "select * from san_pham where id_dm = 2";
+    $listidsp2 = pdo_query($sql);
+    return $listidsp2;
+}
+
 ?>
 
 
