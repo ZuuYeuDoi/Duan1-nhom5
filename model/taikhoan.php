@@ -80,4 +80,14 @@ function update_taikhoan( $user, $password, $email, $address, $phone, $role, $id
     ]);
 }
 
+function update_user($id, $hoten, $email, $matkhau, $sdt, $diachi) {
+    $sql = "UPDATE nguoi_dung SET hoten = ?, email = ?, matkhau = ?, sdt = ?, diachi = ? WHERE id_nguoidung = ?";
+    // Gói tất cả tham số thành một mảng
+    return pdo_execute($sql, [$hoten, $email, $matkhau, $sdt, $diachi, $id]);
+}
+
+function get_user_by_id($id) {
+    $sql = "SELECT * FROM nguoi_dung WHERE id_nguoidung = ?";
+    return pdo_query_one($sql, $id);
+}
 ?>

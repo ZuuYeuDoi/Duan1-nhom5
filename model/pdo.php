@@ -125,3 +125,20 @@ function pdo_query_value($sql){
     }
 }
  
+function pdo_dangky_taikhoan_user($email, $matkhau, $ten, $sdt, $address) {
+    $sql = "INSERT INTO nguoi_dung (email, matkhau, hoten, sdt, diachi, role) VALUES (?, ?, ?, ?, ?, 0)";
+    $conn = pdo_get_connection(); // Hàm kết nối PDO
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$email, $matkhau, $ten, $sdt, $address]);
+
+    // Trả về ID vừa chèn
+    return $conn->lastInsertId();
+}
+
+function pdo_get_user_info($userId) {
+    $sql = "SELECT * FROM nguoi_dung WHERE id_nguoidung = ?";
+    $conn = pdo_get_connection();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$userId]);
+    return $stmt->fetch(PDO::FETCH_ASSOC); // Trả về thông tin user dưới dạng mảng kết hợp
+}
