@@ -249,7 +249,7 @@
 
                             <div class="single-product mb-10">
                                 <div style="height: 400px" class="product-img img-full">
-                                    <a href="" title="Universe Is Ready">
+                                <a href="index.php?act=chitietsp&id_sp=<?= $value['id_sp']?>" title="Universe Is Ready">
                                         <input type="hidden" name="id" value="<?= $value['id_sp']?>">
                                         <span class="onsale">- 16%</span>
 
@@ -270,7 +270,7 @@
                                     <!-- </a> -->
                                 </div>
                                 <div class="product-content">
-                                    <h3><a href="/universe-is-ready-1" title="Universe Is Ready"><?php echo $value['tensp'] ?></a></h3>
+                                    <h3><a href="index.php?act=chitietsp&id_sp=<?= $value['id_sp']?>"title="Universe Is Ready"><?php echo $value['tensp'] ?></a></h3>
                                     <div class="product-price">
                                         <div class="price-box">
 

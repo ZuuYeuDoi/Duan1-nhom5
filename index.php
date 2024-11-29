@@ -201,7 +201,26 @@ if (isset($_GET['act'])) {
 
         include './view/dkdn/update_user.php';
         break;
-            
+        case 'chitietsp':
+            if (isset($_GET['id_sp'])) {
+                $id = $_GET['id_sp'];
+                // Giả sử loadone_sanpham đã được định nghĩa đúng
+                $chitietsp = loadone_sanpham($id);
+                
+                // Kiểm tra xem sản phẩm có tồn tại không
+                if (!$chitietsp) {
+                    // Nếu không tìm thấy sản phẩm, có thể chuyển hướng hoặc thông báo lỗi
+                    echo "Sản phẩm không tồn tại.";
+                    exit; // Ngừng thực hiện mã nếu không tìm thấy sản phẩm
+                }
+            } else {
+                echo "ID sản phẩm không được cung cấp.";
+                exit; // Ngừng thực hiện mã nếu không có ID
+            }
+        
+            // Bao gồm tệp hiển thị chi tiết sản phẩm
+            include "./view/ctsp/chitiet.php";
+            break;
         default:
             header('location:index.php?act=trangchu');
             break;
