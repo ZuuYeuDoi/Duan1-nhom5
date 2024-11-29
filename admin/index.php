@@ -242,6 +242,10 @@ if (isset($_GET['act'])) {
             }
             include "./taikhoan/update.php";
             break;
+            case 'logout':
+                session_unset();
+                header("Location:index.php?act=trangchu"); // Hoặc trang chủ index.php
+                break;
 
         default:
             include 'home.php';

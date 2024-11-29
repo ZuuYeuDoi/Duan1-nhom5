@@ -249,7 +249,7 @@
 
                             <div class="single-product mb-10">
                                 <div style="height: 400px" class="product-img img-full">
-                                    <a href="/universe-is-ready-1" title="Universe Is Ready">
+                                    <a href="" title="Universe Is Ready">
                                         <input type="hidden" name="id" value="<?= $value['id_sp']?>">
                                         <span class="onsale">- 16%</span>
 

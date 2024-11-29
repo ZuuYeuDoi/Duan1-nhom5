@@ -32,7 +32,7 @@ if (is_array($sp)) {
                             <div class="mb-3">
                                 <label for="product-img" class="form-label">Ảnh Sản Phẩm</label>
                                 <input type="file" name="imgsp" id="imgsp" class="form-control" accept="image/*" required onchange="previewImage()">
-                                <img id="imagePreview" src="#" alt="Image Preview" style="display: none; margin-top: 10px; max-width: 100%; height: 150px;">
+                                <img id="imagePreview" src="<?php echo isset($sp["hang"]) ? $sp["hang"] : ''; ?>" alt="Image Preview" style="display: none; margin-top: 10px; max-width: 100%; height: 150px;">
                             </div>
 
                             <div class="mb-3">
