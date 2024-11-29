@@ -287,8 +287,31 @@
                                     </form>
                                 </div>
                             </div>
-
-                            <div class="search fixacc">
+                          
+                            <?php
+            if (isset($_SESSION['user'])) {
+                extract($_SESSION['user']);
+                ?>
+                
+                <div class="search fixacc">
+                                <a class="cart-head" href="index.php?act=login" style="position:relative;">
+                                    <img src="./view/images/iconfinder-41-user-2123927.png" alt="Account"
+                                        title="Account" style="padding-top: 6px;margin-right: 8px;">
+                                </a>
+                                <!-- Dropdown Menu -->
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li style="background-color:black ; color:white ; margin-top:-5px ; boder-radius:10px" >Xin Chào <?= $hoten ?></li>
+                                        <li><a href="#">Profile</a></li>
+                                        <li><a href="index.php?act=logout">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+           
+            <?php
+            } else {
+                ?>
+            <div class="search fixacc">
                                 <a class="cart-head" href="index.php?act=login" style="position:relative;">
                                     <img src="./view/images/iconfinder-41-user-2123927.png" alt="Account"
                                         title="Account" style="padding-top: 6px;margin-right: 8px;">
@@ -302,6 +325,10 @@
                                 </div>
                             </div>
 
+                <?php
+            }
+            ?>
+                           
 
 
 
@@ -352,12 +379,6 @@
                                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
                                         <a href="/">Trang chủ</a>
                                         <ul class="sub-menu">
-
-
-
-
-
-
                                         </ul>
                                     </li>
 
@@ -368,12 +389,6 @@
                                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
                                         <a href="/about-us">Giới thiệu</a>
                                         <ul class="sub-menu">
-
-
-
-
-
-
                                         </ul>
                                     </li>
 
@@ -541,3 +556,10 @@
                     </div>
                 </div>
             </header>
+
+
+
+
+
+
+           
