@@ -1,330 +1,227 @@
 <style>
-    /* Form container styles */
+   /* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* Profile Picture & Card Styles */
+.card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.rounded-circle {
+    border: 4px solid #fff;
+    padding: 4px;
+}
+
+.text-dark {
+    color: #333 !important;
+}
+
+.btn {
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Margin Adjustments */
+.mt-4 {
+    margin-top: 20px !important;
+}
+
+.gap-3 {
+    gap: 15px;
+}
 
 
-    /* Box title styles */
-    .boxtitle {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 15px;
-        text-align: center;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #e0e0e0;
-    }
+/* Form Styles */
+.login-form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    /* Unordered list styles */
-    .settingtk ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
+.login-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
 
-    /* List item styles */
-    .settingtk li {
-        margin-bottom: 10px;
-    }
+.login-form h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
 
-    /* Link styles */
-    .settingtk a {
-        display: block;
-        padding: 10px;
-        background-color: #f8f9fa;
-        color: #495057;
-        text-decoration: none;
-        border-radius: 4px;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-    }
+.form-group {
+    margin-bottom: 1.25rem;
+}
 
-    .settingtk a:hover {
-        background-color: #e9ecef;
-        transform: translateY(-2px);
-    }
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 500;
+}
 
-    /* Admin link styles */
-    .settingtk li:nth-child(3) a {
-        background-color: #28a745;
-        color: #fff;
-    }
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .settingtk li:nth-child(3) a:hover {
-        background-color: #218838;
-    }
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
 
-    /* Logout link styles */
-    .settingtk li:last-child a {
-        background-color: #dc3545;
-        color: #fff;
-    }
+.form-group input[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-    .settingtk li:last-child a:hover {
-        background-color: #c82333;
-    }
+.form-group input[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
 
-    /* Responsive styles */
-    @media screen and (max-width: 400px) {
-        .settingtk {
-            max-width: 100%;
-            margin: 10px;
-        }
-    }
+.login-links {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1rem;
+    text-align: center;
+}
 
-    /* P2 */
-    /* Login Form Styling */
+.login-links li {
+    display: inline;
+    margin: 0 0.5rem;
+}
+
+.login-links a {
+    color: #007bff;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-links a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Input Focus Styles */
+input:focus {
+    outline: none;
+}
+
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+/* Button Styles for Reset / Register */
+button {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    background-color: #f8f9fa;
+    border: 2px solid #007bff;
+    color: #007bff;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #007bff;
+    color: #fff;
+    border: 2px solid #007bff;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 500px) {
     .login-form {
-        max-width: 400px;
-        margin: 2rem auto;
-        padding: 2rem;
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
     }
 
     .login-form h2 {
-        margin-bottom: 1.5rem;
-        color: #333;
-        text-align: center;
+        font-size: 1.5rem;
     }
 
     .form-group {
         margin-bottom: 1rem;
     }
+}
 
-    .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: #555;
-    }
-
-    .form-group input[type="text"],
-    .form-group input[type="password"] {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 1rem;
-    }
-
-    .form-group input[type="checkbox"] {
-        margin-right: 0.5rem;
-    }
-
-    .form-group input[type="submit"] {
-        width: 100%;
-        padding: 0.75rem;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .form-group input[type="submit"]:hover {
-        background-color: #0056b3;
-    }
-
-    .login-links {
-        list-style-type: none;
-        padding: 0;
-        margin-top: 1rem;
-        text-align: center;
-    }
-
-    .login-links li {
-        display: inline;
-        margin: 0 0.5rem;
-    }
-
-    .login-links a {
-        color: #007bff;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .login-links a:hover {
-        color: #0056b3;
-    }
-
-    .box-tong .settingtk {
-        /* width: 350px;
-    height: 250px; */
-        margin: 0 auto;
-        margin-top: 40px;
-        margin-bottom: 40px;
-
-        border: 1px solid darkgrey;
-        border-radius: 20px;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        /* Màu nền nhẹ */
-        margin: 0;
-        padding-bottom: 40px;
-
-    }
-
-    .settingtk {
-        background-color: #ffffff;
-        /* Màu nền trắng cho form */
-        border-radius: 8px;
-        /* Bo góc */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        /* Đổ bóng nhẹ */
-        padding: 5px;
-        max-width: 450px;
-        /* Chiều rộng tối đa */
-    }
-
-    .boxtitle {
-        font-size: 24px;
-        /* Kích thước chữ tiêu đề */
-        font-weight: bold;
-        /* Chữ đậm */
-        margin-bottom: 20px;
-        /* Khoảng cách dưới tiêu đề */
-        color: #333;
-        /* Màu chữ tối */
-    }
-
-    ul {
-        list-style-type: none;
-        /* Loại bỏ dấu đầu dòng */
-        padding: 0;
-        /* Bỏ padding */
-    }
-
-    li {
-        margin: 10px 0;
-        /* Khoảng cách giữa các mục */
-    }
-
-    a {
-        text-decoration: none;
-        /* Bỏ gạch chân */
-        color: #007bff;
-        /* Màu chữ cho liên kết */
-        transition: color 0.3s;
-        /* Hiệu ứng chuyển màu */
-    }
-
-    a:hover {
-        color: #0056b3;
-        /* Màu chữ khi hover */
-    }
-
-
-    /* General Styles */
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f4f7fc;
-        color: #333;
-    }
-
-    .container {
-        max-width: 1200px;
-    }
-
-    /* Profile Picture & Card Styles */
-    .card {
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-body {
-        padding: 2rem;
-    }
-
-    .rounded-circle {
-        border: 4px solid #fff;
-        padding: 4px;
-    }
-
-    .text-dark {
-        color: #333 !important;
-    }
-
-    .btn {
-        font-size: 14px;
-        font-weight: 500;
-        border-radius: 30px;
-        transition: all 0.3s ease;
-    }
-
-    .btn-primary {
-        background-color: #007bff;
-        border: none;
-    }
-
-    .btn-primary:hover {
-        background-color: #0056b3;
-    }
-
-    .btn-warning {
-        background-color: #ffc107;
-        border: none;
-    }
-
-    .btn-warning:hover {
-        background-color: #e0a800;
-    }
-
-    .btn-success {
-        background-color: #28a745;
-        border: none;
-    }
-
-    .btn-success:hover {
-        background-color: #218838;
-    }
-
-    .btn-danger {
-        background-color: #dc3545;
-        border: none;
-    }
-
-    .btn-danger:hover {
-        background-color: #c82333;
-    }
-
-    /* Info Section Styling */
-    .row {
-        margin-bottom: 1rem;
-    }
-
-    .row hr {
-        border: 0;
-        border-top: 1px solid #ddd;
-    }
-
-    .row p {
-        margin-bottom: 0;
-    }
-
-    .row .col-sm-3 {
-        font-weight: 600;
-        color: #6c757d;
-    }
-
-    .row .col-sm-9 {
-        color: #495057;
-    }
-
-    /* Margin Adjustments */
-    .mt-4 {
-        margin-top: 20px !important;
-    }
-
-    .gap-3 {
-        gap: 15px;
-    }
 </style>
-
-
-
 <!--  -->
 
 <?php

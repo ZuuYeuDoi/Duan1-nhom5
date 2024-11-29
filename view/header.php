@@ -348,7 +348,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="sub-head">
+                 <div class="sub-head">
                     <button class="snav-btn">
                         <i></i>
                         <i></i>
