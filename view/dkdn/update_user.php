@@ -1,3 +1,4 @@
+
 <?php
 // Kiểm tra người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user'])) {
@@ -36,15 +37,6 @@ if (isset($_POST['update_user'])) {
 }
 
 ?>
-
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sửa Thông Tin Khách Hàng</title>
-</head>
-<body>
     <div class="container">
         <h2>Sửa Thông Tin Khách Hàng</h2>
         <?php if (isset($success)) echo "<p style='color: green;'>$success</p>"; ?>
@@ -77,5 +69,4 @@ if (isset($_POST['update_user'])) {
             
         </form>
     </div>
-</body>
-</html>
+
