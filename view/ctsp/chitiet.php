@@ -3,217 +3,309 @@ extract($chitietsp)
 ?>
 <style>
     body {
-        background-color: #f0f0f0; /* Màu nền cho body */
-        font-family: Inter, sans-serif; /* Đặt font cho toàn bộ trang */
-        margin: 0; /* Bỏ khoảng cách mặc định của body */
-        padding: 20px; /* Khoảng cách bên trong body */
-    }
+    background-color: #f0f0f0;
+    font-family: Inter, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
 
-    .tong1 {
-        display: flex; /* Sử dụng flexbox để sắp xếp các thành phần */
-        max-width: 1200px; /* Đặt chiều rộng tối đa cho khung tổng */
-        margin: 0 auto; /* Căn giữa khung tổng */
-        padding: 20px; /* Khoảng cách bên trong khung tổng */
-        background-color: #fff; /* Màu nền cho khung tổng */
-        border-radius: 10px; /* Bo góc cho khung */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng cho khung */
-    }
+.tong1 {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-    .hang {
-        color: #5E1E07;
-        text-align: center;
-        font-family: Inter;
-        font-size: 50px;
-        font-weight: 600;
-        margin-right: 20px; /* Khoảng cách bên phải */
-        flex: 0 0 375px; /* Chiều rộng cố định cho phần tử này */
-    }
+.hang {
+    color: #5E1E07;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+    flex: 0 0 375px;
+}
 
-    .tensp {
-        color: #5E1E07;
-        text-align: center;
-        font-size: 50px;
-        font-weight: 600;
-    }
+.tensp {
+    color: #5E1E07;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+}
 
-    .gioithieu {
-        color: #000;
-        font-size: 25px;
-        font-weight: 500;
-        margin: 10px 0; /* Khoảng cách trên/dưới */
-    }
+.gioithieu {
+    color: #000;
+    font-size: 25px;
+    margin: 10px 0;
+}
 
-    .canhbao {
-        color: #F00;
-        text-align: center;
-        font-size: 20px;
-        font-weight: 700;
-        margin: 20px 0; /* Khoảng cách trên/dưới */
-    }
-   
-    .button-container {
-        display: flex; /* Sử dụng flexbox để sắp xếp các nút nằm ngang */
-        justify-content: center; /* Căn giữa các nút trong container */
-        margin-top: 20px; /* Khoảng cách trên cho container */
-    }
+.canhbao {
+    color: #F00;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 20px 0;
+}
 
-    .giohang {
-        padding: 12px 25px; /* Tăng khoảng cách bên trong */
-        background-color: #dc3545; /* Màu nền đỏ */
-        color: white; /* Màu chữ */
-        border-radius: 5px; /* Bo góc */
-        margin-right: 20px; /* Khoảng cách bên phải */
-        cursor: pointer; /* Hiệu ứng con trỏ khi di chuột qua */
-        transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền */
-        font-size: 18px; /* Tăng kích thước chữ */
-    }
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
-    .giohang:hover {
-        background-color: #c82333; /* Đổi màu nền khi hover */
-    }
+.giohang, .mualai {
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 18px;
+}
 
-    .mualai {
-        padding: 12px 25px; /* Tăng khoảng cách bên trong */
-        background-color: #343a40; /* Màu nền đen */
-        color: white; /* Màu chữ */
-        border-radius: 5px; /* Bo góc */
-        cursor: pointer; /* Hiệu ứng con trỏ khi di chuột qua */
-        transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền */
-        font-size: 18px; /* Tăng kích thước chữ */
-    }
+.giohang {
+    background-color: #dc3545;
+    color: white;
+    margin-right: 20px;
+}
 
-    .mualai:hover {
-        background-color: #23272b; /* Đổi màu nền khi hover */
-    }
-    .mota {
-        background-color: #f9f9f9; /* Màu nền nhẹ cho phần mô tả */
-        border: 1px solid #ddd; /* Đường viền nhẹ */
-        border-radius: 5px; /* Bo góc */
-        padding: 20px; /* Khoảng cách bên trong */
-        margin-top: 20px; /* Khoảng cách trên */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
-        width: 1200px;
-        margin: auto;
-    }
+.giohang:hover {
+    background-color: #c82333;
+}
 
-    .mota a {
-        font-size: 24px; /* Kích thước chữ cho tiêu đề */
-        color: #5E1E07; /* Màu chữ cho liên kết */
-        text-decoration: none; /* Bỏ gạch chân */
-        font-weight: bold; /* Chữ đậm */
-        display: block; /* Để chiếm toàn bộ chiều rộng */
-        margin-bottom: 10px; /* Khoảng cách dưới tiêu đề */
-    }
+.mualai {
+    background-color: #343a40;
+    color: white;
+}
 
-    .mota a:hover {
-        text-decoration: underline; /* Gạch chân khi hover */
-        color: #3b0e04; /* Màu chữ khi hover */
-    }
+.mualai:hover {
+    background-color: #23272b;
+}
 
-    .noidung {
-        font-size: 16px; /* Kích thước chữ cho nội dung */
-        color: #333; /* Màu chữ cho nội dung */
-        line-height: 1.5; /* Đặt khoảng cách dòng */
-        margin-top: 10px; /* Khoảng cách trên cho nội dung */
-    }
-   
-    
-    .product-container {
-        display: flex; /* Sử dụng flexbox cho container */
-        flex-wrap: wrap; /* Cho phép các sản phẩm xuống dòng nếu không đủ chỗ */
-        justify-content: center; /* Căn giữa các sản phẩm */
-        margin: 0 auto; /* Căn giữa container */
-        max-width: 1200px; /* Chiều rộng tối đa của container */
-    }
+.mota {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-    .sanpham2 {
-        display: flex; /* Sử dụng flexbox để sắp xếp ảnh và chữ nằm ngang */
-        flex-direction: column; /* Sắp xếp theo chiều dọc cho nội dung */
-        align-items: center; /* Căn giữa theo chiều ngang */
-        margin: 20px; /* Khoảng cách giữa các sản phẩm */
-        padding: 15px; /* Khoảng cách bên trong */
-        border: 1px solid #ddd; /* Đường viền nhẹ */
-        border-radius: 5px; /* Bo góc */
-        background-color: #f9f9f9; /* Màu nền */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
-        width: 250px; /* Chiều rộng cố định cho sản phẩm */
-        height: 350px; /* Đặt chiều cao cố định để giữ các sản phẩm bằng nhau */
-        transition: box-shadow 0.3s, transform 0.3s; /* Hiệu ứng chuyển tiếp cho đổ bóng và biến đổi */
-    }
+.mota a {
+    font-size: 24px;
+    color: #5E1E07;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
 
-    .sanpham2:hover {
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng mạnh hơn khi hover */
-        transform: translateY(-5px); /* Nâng sản phẩm lên một chút khi hover */
-    }
+.mota a:hover {
+    text-decoration: underline;
+    color: #3b0e04;
+}
 
-    .product-image {
-        width: 150px; /* Đặt chiều rộng cho ảnh */
-        height: auto; /* Để chiều cao tự động */
-        margin-bottom: 10px; /* Khoảng cách dưới cho ảnh */
-        border-radius: 5px; /* Bo góc cho ảnh */
-        transition: transform 0.3s; /* Hiệu ứng chuyển tiếp cho ảnh */
-    }
+.product-container {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép sản phẩm xuống hàng */
+    justify-content: space-between; /* Căn giữa các sản phẩm */
+    max-width: 1500px;
+    margin: auto;
+}
 
-    .sanpham2:hover .product-image {
-        transform: scale(1.1); /* Phóng to ảnh khi hover */
-    }
+.sanpham2 {
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo chiều dọc */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    margin: 20px; /* Khoảng cách giữa các sản phẩm */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: calc(25% - 40px); /* Chiều rộng sản phẩm (25% - margin) */
+    height: 350px; /* Chiều cao sản phẩm */
+    transition: box-shadow 0.3s, transform 0.3s;
+}
 
-    .mota1 {
-        display: flex; /* Sử dụng flexbox cho nội dung */
-        flex-direction: column; /* Sắp xếp theo chiều dọc */
-        align-items: center; /* Căn giữa theo chiều ngang */
-        font-size: 16px; /* Kích thước chữ */
-        color: #333; /* Màu chữ */
-        line-height: 1.5; /* Khoảng cách giữa các dòng */
-        flex-grow: 1; /* Cho phép chiếm không gian còn lại */
-    }
+.sanpham2:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
 
-    .product-name {
-        font-size: 18px; /* Kích thước chữ cho tên sản phẩm */
-        font-weight: bold; /* Chữ đậm cho tên sản phẩm */
-        color: #5E1E07; /* Màu chữ cho tên sản phẩm */
-        margin-bottom: 5px; /* Khoảng cách dưới cho tên sản phẩm */
-        text-align: center; /* Căn giữa chữ */
-    }
+.product-image {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
 
-    .product-details {
-        font-size: 14px; /* Kích thước chữ cho chi tiết sản phẩm */
-        color: #777; /* Màu chữ nhẹ hơn cho chi tiết */
-        margin-bottom: 10px; /* Khoảng cách dưới cho chi tiết sản phẩm */
-        text-align: center; /* Căn giữa chữ */
-    }
+.sanpham2:hover .product-image {
+    transform: scale(1.1);
+}
 
-    .product-price {
-        font-size: 18px; /* Kích thước chữ cho giá */
-        font-weight: bold; /* Chữ đậm cho giá */
-        color: #dc3545; /* Màu chữ nổi bật cho giá */
-        text-align: center; /* Căn giữa chữ */
-    }
-    .chucai {
-        font-size: 28px; /* Kích thước chữ lớn */
-        font-weight: bold; /* Chữ đậm */
-        color: white; /* Màu chữ trắng */
-        text-align: center; /* Căn giữa chữ */
-        margin: 20px 0; /* Khoảng cách trên và dưới */
-        padding: 15px; /* Khoảng cách bên trong */
-        background: linear-gradient(45deg, #5E1E07, #dc3545); /* Hiệu ứng gradient */
-        border-radius: 10px; /* Bo góc cho khung */
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng mạnh hơn */
-        text-transform: uppercase; /* Chữ in hoa */
-        letter-spacing: 2px; /* Khoảng cách giữa các chữ */
-        font-family: 'Verdana', sans-serif; /* Phông chữ hiện đại */
-        transition: transform 0.3s; /* Hiệu ứng chuyển động */
-        width: 1200px;
-        margin: auto;
-    }
+.chucai {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: linear-gradient(45deg, #5E1E07, #dc3545);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: transform 0.3s;
+    width: 1200px;
+    margin: auto;
+}
 
-    .chucai:hover {
-        transform: scale(1.05); /* Tăng kích thước khi hover */
-    }
+.chucai:hover {
+    transform: scale(1.05);
+}
+
+
+
+        .star-rating {
+            display: flex; /* Sử dụng Flexbox */
+            justify-content: center; /* Căn giữa ngôi sao theo chiều ngang */
+        }
+
+        .star-rating label {
+            font-size: 20px; /* Kích thước của sao */
+            color: #f39c12; /* Màu vàng */
+            cursor: default; /* Không cho phép nhấp chuột */
+            animation: sparkle 1.5s infinite alternate; /* Hiệu ứng lấp lánh */
+            transition: transform 0.3s; /* Hiệu ứng chuyển động */
+        }
+
+        @keyframes sparkle {
+            0% {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-5px); /* Nâng lên một chút */
+            }
+            100% {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
+        }
+
+        .star-rating label:hover {
+            transform: scale(1.2) rotate(10deg); /* Phóng to và xoay khi hover */
+            animation: none; /* Tạm dừng hiệu ứng lấp lánh khi hover */
+        }
+        .product-container {
+            .product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Căn giữa các sản phẩm */
+    max-width: 1200px;
+    margin: auto;
+}
+
+.sanpham2 {
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo chiều dọc */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    margin: 20px;
+    padding: 20px; /* Tăng padding để tạo không gian bên trong */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Chiều rộng sản phẩm */
+    height: 400px; /* Tăng chiều cao sản phẩm */
+}
+
+.product-image {
+    width: 150px; /* Chiều rộng của ảnh */
+    height: auto; /* Chiều cao tự động */
+    margin-bottom: 20px; /* Khoảng cách giữa ảnh và thông tin */
+}
+
+.product-details {
+    text-align: center; /* Căn giữa nội dung */
+}
+
+.star-rating {
+    margin: 0px 0; /* Khoảng cách giữa đánh giá và thông tin khác */
+}
+
+.star-rating label {
+    font-size: 20px; /* Kích thước của sao */
+    color: #f39c12; /* Màu vàng */
+}
+
+.product-name {
+    font-size: 18px; /* Kích thước tên sản phẩm */
+    font-weight: bold; /* Đậm */
+    color: #5E1E07; /* Màu chữ */
+}
+}
+.quantity-container {
+    display: flex; /* Sử dụng Flexbox */
+    align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+    justify-content: space-between; /* Căn giữa các phần tử theo chiều ngang */
+    margin-top: 20px; /* Khoảng cách phía trên */
+    padding: 10px; /* Khoảng cách bên trong */
+    background-color: #f9f9f9; /* Màu nền */
+    border-radius: 5px; /* Bo góc */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+}
+
+.quantity-container label {
+    margin-right: 10px; /* Khoảng cách giữa nhãn và input */
+    font-size: 16px; /* Kích thước chữ */
+    color: #5E1E07; /* Màu chữ */
+}
+
+.giasp {
+    font-size: 16px; /* Kích thước chữ */
+    color: #000; /* Màu chữ giá */
+}
+.button-container {
+    display: flex; /* Sử dụng Flexbox để căn chỉnh các nút */
+    justify-content: center; /* Căn giữa các nút */
+    margin-top: 20px; /* Khoảng cách trên */
+}
+
+.giohang, .mualai {
+    padding: 12px 25px; /* Padding cho nút */
+    border: 2px solid red; /* Viền đỏ */
+    border-radius: 5px; /* Bo góc */
+    background-color: white; /* Nền trắng */
+    color: red; /* Chữ đỏ */
+    cursor: pointer; /* Hiệu ứng con trỏ khi hover */
+    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển đổi */
+    font-size: 18px; /* Kích thước chữ */
+    margin: 0 10px; /* Khoảng cách giữa hai nút */
+}
+
+.giohang:hover, .mualai:hover {
+    background-color: red; /* Nền đỏ khi hover */
+    color: white; /* Chữ trắng khi hover */
+}
+
 </style>
 
 
-</style>
+<script>
+    document.getElementById('quantity').addEventListener('input', function() {
+        // Lấy giá cơ bản từ thuộc tính data-price
+        const basePrice = parseFloat(this.getAttribute('data-price'));
+        // Lấy số lượng từ input
+        const quantity = parseInt(this.value);
+        // Tính toán giá tổng
+        const totalPrice = basePrice * quantity;
+        // Cập nhật giá hiển thị
+        document.getElementById('total-price').textContent = totalPrice.toFixed(0);
+    });
+</script>
 <div class="tong1">
 <div class="hang">
 <h1><?= $hang ?></h1>
@@ -231,18 +323,26 @@ extract($chitietsp)
     </div>
 
 <div class="gioithieu">
-    <ul>
-        <li>Dung Tich : 700ml</li>
-        <li>Nồng độ : 40%</li>
-        <li>Nhãn hiệu : Ruou Vang</li>
-    </ul>
+    
+       <ul>
+        
+        <li>Dung Tich : <?php echo $dungluong?>ml</li>
+      <li>  Nồng độ :  <?php echo $nongdo?>%</li>
+       
+        </ul>
+  
 </div>
 <div class="canhbao">
     Canh bao bạn phải đủ 18 tuôi trờ lên mới mua được hàng
 </div>
+<div class="quantity-container">
+    <label for="quantity">Số lượng:</label>
+    <input type="number" id="quantity" name="quantity" value="1" min="1" max="100" style="width: 60px; text-align: center;" data-price="<?php echo $giatien; ?>">
+    <div class="giasp">Giá: <span id="total-price"><?php echo $giatien; ?></span> VNĐ</div>
+</div>
 <div class="button-container">
     <div class="giohang">Thêm vào giỏ hàng</div>
-    <div class="mualai">Mua Lại</div>
+    <div class="mualai">Mua Ngay</div>
 </div>
 <br><br> <br>
 
@@ -252,91 +352,38 @@ extract($chitietsp)
 </div>
 <div class="mota">
     <a href="#">Mô tả</a>
-   <? $mota ?>
-   
-
+    <?php echo $mota; ?>
 </div>
 <br>
 <div class="chucai">
     Sản Phẩm liên quan
 </div>
 <div class="product-container">
+    <?php foreach($listsanpham as $row): ?>
     <div class="sanpham2">
-        
-        <img src="./upload/<?= $anhsp ?>" alt="Sản phẩm" class="product-image">
-        <div class="mota1">
-            <div class="product-name"><?= $tensp ?></div>
-            <div class="product-details">750ml / 14.5%</div>
-            <div class="product-price">
-            <div class="product-price">800.000.000đ</div>
-             
+        <img src="upload/<?php echo $row['anhsp'] ?>" class="product-image" alt="Sản phẩm">
+        <div class="product-details">
+        <h5 class="product-name"><?php echo $row['tensp']?></h5>
+  
+            <div class="star-rating">
+                <label>★</label>
+                <label>★</label>
+                <label>★</label>
+                <label>★</label>
+                <label>★</label>
             </div>
+            <div>Giá: <?php echo $row['giatien']?> VNĐ</div>
+            <div>Giảm Giá: <?php echo $row['giamgia']?>%</div>
+            <div>Nồng Độ: <?php echo $row['nongdo']?>%</div>
+            <div>Dung Lượng: <?php echo $row['dungluong']?>ml</div>
         </div>
     </div>
-    
-    <div class="sanpham2">
-        <img src="./upload/<?= $anhsp ?>" alt="Sản phẩm" class="product-image">
-        <div class="mota1">
-            <div class="product-name"><?= $tensp ?></div>
-            <div class="product-details">750ml / 14.5%</div>
-            <div class="product-price">800.000.000đ</div>
-        </div>
-    </div>
-
-    <div class="sanpham2">
-        <img src="./upload/<?= $anhsp ?>" alt="Sản phẩm" class="product-image">
-        <div class="mota1">
-            <div class="product-name">Canti Gran Passero Appassimento</div>
-            <div class="product-details">750ml / 14.5%</div>
-            <div class="product-price">800.000.000đ</div>
-        </div>
-    </div>
-
-    <div class="sanpham2">
-        <img src="./upload/<?= $anhsp ?>" alt="Sản phẩm" class="product-image">
-        <div class="mota1">
-            <div class="product-name">Canti Gran Passero Appassimento</div>
-            <div class="product-details">750ml / 14.5%</div>
-            <div class="product-price">800.000.000đ</div>
-        </div>
-    </div>
-
-    <div class="sanpham2">
-        <img src="./upload/<?= $anhsp ?>" alt="Sản phẩm" class="product-image">
-        <div class="mota1">
-            <div class="product-name">Canti Gran Passero Appassimento</div>
-            <div class="product-details">750ml / 14.5%</div>
-            <div class="product-price">800.000.000đ</div>
-        </div>
-    </div>
-    <div class="sanpham2">
-        <img src="./upload/<?= $anhsp ?>" alt="Sản phẩm" class="product-image">
-        <div class="mota1">
-            <div class="product-name">Canti Gran Passero Appassimento</div>
-            <div class="product-details">750ml / 14.5%</div>
-            <div class="product-price">800.000.000đ</div>
-        </div>
-    </div>
-    <div class="sanpham2">
-        <img src="./upload/<?= $anhsp ?>" alt="Sản phẩm" class="product-image">
-        <div class="mota1">
-            <div class="product-name">Canti Gran Passero Appassimento</div>
-            <div class="product-details">750ml / 14.5%</div>
-            <div class="product-price">800.000.000đ</div>
-        </div>
-    </div>
-    <div class="sanpham2">
-        <img src="./upload/<?= $anhsp ?>" alt="Sản phẩm" class="product-image">
-        <div class="mota1">
-            <div class="product-name">Canti Gran Passero Appassimento</div>
-            <div class="product-details">750ml / 14.5%</div>
-            <div class="product-price">800.000.000đ</div>
-        </div>
-    </div>
+    <?php endforeach; ?>
+</div>
+  
 </div>
 </div>
 
 </div>
 </div>
 </div>
-
