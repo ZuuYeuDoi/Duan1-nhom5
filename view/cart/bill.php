@@ -1,6 +1,5 @@
 <body>
-
-    <main role="main">
+  <main role="main">
         <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
         <div class="container mt-4">
             <form class="needs-validation" name="billconfirm" method="post" action="index.php?act=bill">
@@ -65,7 +64,7 @@
                         echo '
                                         <li class="list-group-item d-flex justify-content-between">
                                             <span>Tổng thành tiền</span>
-                                            <strong>' . number_format($product['total_price'], 0, ',', '.') . '</strong>
+                                            <strong>' . number_format($tong, 0, ',', '.') . '</strong>
                                         </li>
                                     </ul>';
                         ?>
