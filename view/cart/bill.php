@@ -3,8 +3,8 @@
     <main role="main">
         <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
         <div class="container mt-4">
-            <form class="needs-validation" name="billconfirm" method="post" action="index.php?act=billconfirm">
-
+            <form class="needs-validation" name="billconfirm" method="post" action="index.php?act=bill">
+                
                 <?php
                 if (isset($_SESSION['user'])) {
                     $name = $_SESSION['user']['hoten']; // Hoặc tên cột từ bảng của bạn
@@ -29,12 +29,12 @@
                     <div class="col-md-4 order-md-2 mb-4">
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                             <span class="text-muted">Giỏ hàng</span>
-                            
+                           
                             <?php
                            $totalQuantity = 0;
                             foreach ($_SESSION['mycart'] as $product) {
                             $totalQuantity += $product['quantity'];
-                            
+                            echo '<input type="hidden" name="tongdonhang" value="'.$product['total_price'].'" id="">';
                             }
                             echo '
                             <span class="badge badge-secondary badge-pill">'.$totalQuantity.'</span>
@@ -121,16 +121,16 @@
 
                         <div class="d-block my-3">
                             <div class="custom-control custom-radio">
-                                <input id="httt-1" name="httt_ma" type="radio" class="custom-control-input" required value="1">
-                                <label class="custom-control-label" for="httt-1">Tiền mặt</label>
+                                <input id="httt-1" name="httt_ma" type="radio" class="custom-control-input" required value="0">
+                                <label class="custom-control-label" for="httt">Tiền mặt</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input id="httt-2" name="httt_ma" type="radio" class="custom-control-input" required value="2">
-                                <label class="custom-control-label" for="httt-2">Chuyển khoản</label>
+                                <label class="custom-control-label" for="httt">Chuyển khoản</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input id="httt-3" name="httt_ma" type="radio" class="custom-control-input" required value="3">
-                                <label class="custom-control-label" for="httt-3">Ship COD</label>
+                                <label class="custom-control-label" for="httt">Ship COD</label>
                             </div>
                         </div>
 

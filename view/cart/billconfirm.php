@@ -1,8 +1,8 @@
  <?php
 
-    // if(isset($listbill)&&(is_array($listbill))){
-    //     echo "tao co cai mang nay";
-    // }
+    if(isset($idbill)&&(is_array($idbill))){
+        echo "tao co cai mang nay";
+    }
 
 
 ?> 

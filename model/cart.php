@@ -38,10 +38,20 @@ function tongbill(){
         return $tong;
 }
 
-function insert_bill($name, $addr, $pttt, $phone, $ngaydathang, $tongbill){
-    $sql = "insert into don_hang(hoten,sdt,diachi,pttt,ngaydathang,tongtien) values('$name','$addr','$phone','$ngaydathang','$tongbill')";
-     return pdo_execute_return_lastIsertId($sql);
-
+function insert_bill($id_nguoidung, $madh, $tongdonhang, $name, $addr, $email, $phone, $id_trangthai) {
+    $sql = "INSERT INTO Don_hang (id_nguoidung, madh, tongtien, hoten, diachi, email, sdt, id_trangthai, ngaydathang) 
+            VALUES (:id_nguoidung, :madh, :tongdonhang, :hoten, :diachi, :email, :sdt, :id_trangthai, NOW())";
+    
+    return pdo_execute_return_lastInsertId($sql, [
+        ':id_nguoidung' => $id_nguoidung,
+        ':madh' => $madh,
+        ':tongdonhang' => $tongdonhang,
+        ':hoten' => $name,
+        ':diachi' => $addr,
+        ':email' => $email,
+        ':sdt' => $phone,
+        ':id_trangthai' => $id_trangthai
+    ]);
 }
 
 function insert_cart($id_nguoidung, $id_sp, $id_donhang, $soluong, $tongbill, $anhsp, $tensp, $giamgia){
