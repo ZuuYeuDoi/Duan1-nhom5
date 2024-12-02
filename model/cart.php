@@ -54,10 +54,10 @@ function insert_bill($id_nguoidung, $madh, $tongdonhang, $name, $addr, $email, $
     ]);
 }
 
-function insert_cart($id_nguoidung, $id_sp, $id_donhang, $soluong, $tongbill, $anhsp, $tensp, $giamgia){
-    $sql = "insert into chi_tiet_don_hang(id_nguoidung,id_sp,id_donhang,pttt,soluong,thanhtien, img, name, price) values('$id_nguoidung','$id_sp', '$id_donhang', '$soluong', '$tongbill', '$anhsp', '$tensp', '$giamgia')";
-     return pdo_execute($sql);
-
+function insert_bill_detail( $iduser ,$idsp,$name,$image,$price,$quantity,$total_price) {
+    $sql = "INSERT INTO Chi_tiet_don_hang (id_donhang, id_sp, name, img, price, soluong, thanhtien) 
+            VALUES (' $iduser ','$idsp','$name','$image','$price','$quantity','$total_price')";
+     pdo_execute($sql);
 }
 
 function loadone_bill($id) {
