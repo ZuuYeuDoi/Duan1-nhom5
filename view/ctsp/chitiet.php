@@ -2,12 +2,12 @@
 extract($chitietsp)
 ?>
 <style>
-    body {
+    /* body {
     background-color: #f0f0f0;
     font-family: Inter, sans-serif;
     margin: 0;
     padding: 20px;
-}
+} */
 
 .tong1 {
     display: flex;
