@@ -96,30 +96,49 @@ if (isset($_GET['act'])) {
         case 'search':
             break;
 
-        case 'addtocart':
-            if (isset($_POST['addtocart']) && ($_POST['addtocart'] > 0)) {
-                $id_sp = $_POST['id_sp'];
-                $tensp = $_POST['tensp'];
-                $giamgia = $_POST['giamgia'];
-                $anhsp = $_POST['anhsp'];
-                $soluong = 1;
-                $ttien = $soluong * $giamgia;
-                $spadd = [$id_sp, $tensp, $anhsp, $giamgia, $soluong, $ttien];
-                array_push($_SESSION['mycart'], $spadd);
-            }
+            case 'addtocart':
+                if (isset($_POST['addtocart']) && ($_POST['addtocart'] > 0)) {
+                    $id_sp = $_POST['id_sp'];
+                    $tensp = $_POST['tensp'];
+                    $giamgia = $_POST['giamgia'];
+                    $anhsp = $_POST['anhsp'];
+                    $soluong = 1;
+                    $ttien = $soluong * $giamgia;
+                    // sản phẩm tồn tại thì tăng sl
+                    if (isset($_SESSION['mycart'][$id_sp])) {
+                        $_SESSION['mycart'][$id_sp]['quantity']++;
+                        $_SESSION['mycart'][$id_sp]['total_price'] += $giamgia;
+                    } else {
+                        // Thêm sản phẩm vào giỏ hàng dưới dạng một mặt hàng mới
+                        $_SESSION['mycart'][$id_sp] = [
+                            'idsp' => $id_sp,
+                            'name' => $tensp,
+                            'image' => $anhsp,
+                            'price' => $giamgia,
+                            'quantity' => $soluong,
+                            'total_price' => $ttien
+                        ];
+                    }
+                }
+
+                
         case 'viewcart':
             include './view/cart/viewcart.php';
             break;
         
             case 'delcart':
-                if (isset($_GET['idcart'])) {
-                    // Xóa sản phẩm dựa trên chỉ số
-                    unset($_SESSION['mycart'][$_GET['idcart']]);
-                    // Đánh lại chỉ số mảng
-                    $_SESSION['mycart'] = array_values($_SESSION['mycart']);
+                if (isset($_GET['idsp'])) {
+                    if (isset($_SESSION['mycart'][$_GET['idsp']])) {
+                        // Xóa sản phẩm dựa trên idsp
+                        unset($_SESSION['mycart'][$_GET['idsp']]);
+                        echo "Sản phẩm đã được xóa khỏi giỏ hàng.";
+                    } else {
+                        echo "Sản phẩm không tồn tại trong giỏ hàng.";
+                    }
                 } else {
-                    // Nếu không có idcart, xóa toàn bộ giỏ hàng
+                    // Nếu không có idsp, xóa toàn bộ giỏ hàng
                     $_SESSION['mycart'] = [];
+                    echo "Giỏ hàng đã được xóa.";
                 }
                 // Chuyển hướng về trang giỏ hàng
                 if (!headers_sent()) {
@@ -198,10 +217,10 @@ if (isset($_GET['act'])) {
             break;
 
     case 'update_user':
-
         include './view/dkdn/update_user.php';
         break;
         
+
 case 'update_user':
     include './view/dkdn/update_user.php';
     break;
@@ -225,6 +244,7 @@ case 'update_user':
         // Bao gồm tệp hiển thị chi tiết sản phẩm
         include "./view/ctsp/chitiet.php";
         break;
+
         default:
             header('location:index.php?act=trangchu');
             break;
