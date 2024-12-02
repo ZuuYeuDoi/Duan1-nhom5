@@ -134,12 +134,10 @@
                         </div>
 
                         <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit" name="btn_dathang">Đặt
-                            hàng</button>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit" name="btn_dathang">Đặt hàng</button>
                     </div>
                 </div>
             </form>
-
         </div>
         <!-- End block content -->
     </main>

@@ -1,12 +1,3 @@
- <?php
-
-    if(isset($idbill)&&(is_array($idbill))){
-        echo "tao co cai mang nay";
-    }
-
-
-?> 
-
 <div class="py-5 text-center">
                     <i class="fa fa-credit-card fa-4x" aria-hidden="true"></i>
                     <h2>Thanh toán</h2>
