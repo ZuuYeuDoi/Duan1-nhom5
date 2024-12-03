@@ -89,7 +89,7 @@ function get_ttdh($n)
     switch ($n) {
         case '1':
             # code...
-            $tt = 'Đơn Hàng Mới';
+            $tt = 'Đang xử lí';
             break;
         case '2':
             # code...
