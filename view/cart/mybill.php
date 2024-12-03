@@ -1,61 +1,56 @@
 <div class="container mt-3 bg-light rounded pt-3 pb-1">
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item fw-bold"><a href="<?=URL?>" class="text-decoration-none text-dark">Trang chủ</a></li>
-            <li class="breadcrumb-item active text-success fw-bolder" aria-current="page">Lịch sử mua hàng</li>
+    <nav class="text-center" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb text-center">
+
+            <li class="breadcrumb-item active text-success fw-bolder" aria-current="page">Đơn Hàng</li>
         </ol>
     </nav>
 </div>
 <div class="container my-5 wow fadeIn">
     <div class="table-responsive">
-        <table class="table table-lg">
+        <table class="table table-hover">
             <thead>
                 <tr>
-                    <th class="text-start">STT</th>
-                    <th class="text-center">Tổng</th>
+                    <th class="text-start">Mã Đơn Hàng</th>
                     <th class="text-center">Thanh toán</th>
                     <th class="text-center">Giao hàng</th>
                     <th class="text-center">Ngày tạo</th>
+                    <th class="text-center">Tổng</th>
                     <th class="text-end">Trạng thái / Xem</th>
                 </tr>
             </thead>
             <tbody class="align-middle">
+
                 <?php
-                if(count($listBill)==0){ ?>
-                <tr>
+                
+                // Display the orders in a table or other suitable format
+                if (is_array($listBill) && count($listBill) > 0) {
+                    foreach ($listBill as $bill) {
+                        // Extract relevant information from the $bill array
+                        $madh = $bill['madh'];
+                        $ngaydathang = $bill['ngaydathang'];
+                        $tongtien = $bill['tongtien'];
+                        $ttdh = get_ttdh($bill['id_trangthai']);
+                        $pttt = get_pttt($bill['pttt']);
+
+                        // Display the order information in a table row or other desired format
+                    echo '<tr>
+                        <td class="text-start">' . $madh . '</td> 
+                        <td class="text-center">' . $pttt . '</td>
+                        <td class="text-center">' . $ttdh . '</td>
+                         <td class="text-center">' . $ngaydathang . '</td>
+                        <td class="text-center">' . $tongtien . '</td>
+                        <td class="text-end">' . $ttdh . '</td>
+                    </tr>';
+                    }
+                } else {
+                    echo '<tr><td colspan="5">Không có đơn hàng nào.</td></tr>';
+                }
+                ?>
+                <!-- <tr>
                     <td colspan="7" class="text-center py-3">Bạn chưa có hóa đơn nào.</td>
-                </tr>
-                <?php }
-                else{
-                for ($i=0; $i < count($listBill); $i++) { extract($listBill[$i]) ?>
-                <tr>
-                    <th class="text-start"><?=$i+1?></th>
-                    <td class="text-center"><?=number_format($total)?> đ</td>
-                    <td class="text-center">
-                        <?php
-                        if($statusPay == 1) echo'<span class="badge border border-1 text-danger border-danger">Chưa</span>';
-                        if($statusPay == 2) echo'<span class="badge border border-1 text-success border-success">Xong</span>';
-                        ?>
-                    </td>
-                    <td class="text-center">
-                        <?php
-                        if($statusDelivery == 1) echo'<span class="badge border border-1 text-danger border-danger">Chưa</span>';
-                        if($statusDelivery == 2) echo'<span class="badge border border-1 text-warning border-warning">Đang</span>';
-                        if($statusDelivery == 3) echo'<span class="badge border border-1 text-success border-success">Xong</span>';
-                        ?>
-                    </td>
-                    <td class="text-center"><?=formatTime($dateCreate,'DD/MM lúc hh:mm')?></td>
-                    <td class="text-end">
-                        <?php
-                        if($status == 1) echo'<span class="badge border border-1 text-warning border-warning">Chưa xác nhận</span>';
-                        if($status == 2) echo'<span class="badge border border-1 text-success border-success">Đã xác nhận</span>';
-                        if($status == 3) echo'<span class="badge border border-1 text-danger border-danger">Đã hủy</span>';
-                        if($status == 4) echo'<span class="badge border border-1 text-primary border-primary">Đã hoàn thành</span>';
-                        ?>
-                        <a href="<?=URL?>lich-su-mua-hang/<?=$token?>" class="btn btn-sm border-1 btn-outline-success mt-2 mt-lg-0"><i class="fas fa-eye"></i></a>
-                    </td>
-                </tr>
-                <?php }}?>
+                </tr> -->
+
             </tbody>
         </table>
     </div>
