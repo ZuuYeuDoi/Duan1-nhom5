@@ -85,6 +85,29 @@ function pdo_query($sql)
         unset($conn);
     }
 }
+function pdo_query1($sql)
+{
+    $sql_args = array_slice(func_get_args(), 1);
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        
+        // Kiểm tra nếu có bất kỳ tham số nào là mảng
+        foreach ($sql_args as &$arg) {
+            if (is_array($arg)) {
+                $arg = implode(',', $arg); // Chuyển đổi mảng thành chuỗi
+            }
+        }
+        
+        $stmt->execute($sql_args);
+        $row = $stmt->fetchAll();
+        return $row;
+    } catch (PDOException $e) {
+        throw $e;
+    } finally {
+        unset($conn);
+    }
+}
 /**
  * Thực thi câu lệnh sql truy vấn một bản ghi
  * @param string $sql cau lenh sql 

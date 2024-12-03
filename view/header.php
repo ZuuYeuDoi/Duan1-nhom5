@@ -303,6 +303,8 @@
                                     <ul>
                                         <li style="background-color:black ; color:white ; margin-top:-5px ; boder-radius:10px" >Xin Chào <?= $hoten ?></li>
                                         <li><a href="#">Profile</a></li>
+                                        <li><a href="index.php?act=mybill">Đơn Hàng</a></li>
+
                                         <li><a href="index.php?act=logout">Logout</a></li>
                                     </ul>
                                 </div>
@@ -319,7 +321,9 @@
                                 <!-- Dropdown Menu -->
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="#">Profile</a></li>
+                                        <li><a href="index.php?act=login">Profile</a></li>
+                                        <li><a href="index.php?act=mybill">Đơn Hàng</a></li>
+
                                         <li><a href="index.php?act=logout">Logout</a></li>
                                     </ul>
                                 </div>

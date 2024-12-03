@@ -11,7 +11,7 @@ include 'view/header.php';
 include './model/cart.php';
 
 //     echo '<pre>';
-// var_dump($_SESSION['mycart']);
+// var_dump($_SESSION['user']);
 //     echo '</pre>';
 
 // if (isset($_POST['btn_dathang'])) {
@@ -21,7 +21,7 @@ include './model/cart.php';
 // }
 
 // echo '<pre>';
-// print_r($_SESSION['myca']);  // In ra thông tin từ form
+// print_r($_SESSION['mycart']);  // In ra thông tin từ form
 // echo '</pre>';
 
 //giỏ hàng- SECTION lưu dữ liệu
@@ -186,6 +186,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'bill':
+
             if (empty($_SESSION['mycart'])) {
                 echo "
                 <script>
@@ -194,15 +195,11 @@ if (isset($_GET['act'])) {
                 </script>
                 ";
             }
-            // if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-            //     $user = (int)$_SESSION['user']; // Lấy ID người dùng từ session
-            // } else {
-            //     // Nếu không có ID người dùng trong session, gán $user = 0
-            //     $user = 0;
-            // }
             // Tạo đơn hàng
             if (isset($_POST['btn_dathang'])) {
-                $id_nguoidung = $_SESSION['user']['id_nguoidung'];
+                if (isset($_SESSION['user']))  $id_nguoidung = $_SESSION['user']['id_nguoidung'];
+                else $id_nguoidung = 0;
+
                 $tongdonhang = $_POST['tongdonhang'];
                 $name = $_POST['name'];
                 $addr = $_POST['addr'];
@@ -215,27 +212,26 @@ if (isset($_GET['act'])) {
 
                 // Thực hiện thêm đơn hàng vào database
                 $madh = "wk" . rand(0, 9999); // Mã đơn hàng ngẫu nhiên
-               $iduser =  insert_bill($id_nguoidung, $madh, $tongdonhang, $name, $addr, $email, $phone, $id_trangthai);
-               if (isset($_SESSION['mycart'])&&(count($_SESSION['mycart'])>0)) {
-               
-                foreach ($_SESSION['mycart'] as $key => $value) {
-                    $idsp = $value['idsp'];
-                    $name = $value['name'];
-                    $image = $value['image'];
-                    $price = $value['price'];
-                    $quantity = $value['quantity'];
-                    $total_price = $price * $quantity ;
-                    insert_bill_detail( $iduser ,$idsp,$name,$image,$price,$quantity,$total_price);
+                $iduser =  insert_bill($id_nguoidung, $madh, $tongdonhang, $name, $addr, $email, $phone, $id_trangthai);
+                if (isset($_SESSION['mycart']) && (count($_SESSION['mycart']) > 0)) {
+
+                    foreach ($_SESSION['mycart'] as $key => $value) {
+                        $idsp = $value['idsp'];
+                        $name = $value['name'];
+                        $image = $value['image'];
+                        $price = $value['price'];
+                        $quantity = $value['quantity'];
+                        $total_price = $price * $quantity;
+                        insert_bill_detail($iduser, $idsp, $name, $image, $price, $quantity, $total_price);
+                    }
                 }
-               }
-               header("location:index.php?act=billconfirm");
-               exit;
+                header("location:index.php?act=billconfirm");
+                exit;
             }
             include './view/cart/bill.php';
             break;
 
         case 'billconfirm':
-
 
             include './view/cart/billconfirm.php';
             break;
@@ -244,6 +240,7 @@ if (isset($_GET['act'])) {
         case 'update_user':
             include './view/dkdn/update_user.php';
             break;
+
         case 'chitietsp':
             if (isset($_GET['id_sp'])) {
                 $id = $_GET['id_sp'];
@@ -264,25 +261,30 @@ if (isset($_GET['act'])) {
             // Bao gồm tệp hiển thị chi tiết sản phẩm
             include "./view/ctsp/chitiet.php";
             break;
-        case 'chitietsp':
-            if (isset($_GET['id_sp'])) {
-                $id = $_GET['id_sp'];
-                // Giả sử loadone_sanpham đã được định nghĩa đúng
-                $chitietsp = loadone_sanpham($id);
-                $listsanpham = GetAllProduct();
-                // Kiểm tra xem sản phẩm có tồn tại không
-                if (!$chitietsp) {
-                    // Nếu không tìm thấy sản phẩm, có thể chuyển hướng hoặc thông báo lỗi
-                    echo "Sản phẩm không tồn tại.";
-                    exit; // Ngừng thực hiện mã nếu không tìm thấy sản phẩm
-                }
-            } else {
-                echo "ID sản phẩm không được cung cấp.";
-                exit; // Ngừng thực hiện mã nếu không có ID
+
+        case 'mybill':
+            // Nếu bạn đang gọi một hàm để tải hóa đơn
+            // Khởi tạo biến mặc định
+            $id_nguoidung = 0; // Hoặc một giá trị khác tùy ý
+
+            if (isset($_SESSION['user'])) {
+                $id_nguoidung = $_SESSION['user']['id_nguoidung'];
             }
 
-            // Bao gồm tệp hiển thị chi tiết sản phẩm
-            include "./view/ctsp/chitiet.php";
+            // Bây giờ bạn có thể kiểm tra giá trị của $id_nguoidung
+            if ($id_nguoidung > 0) {
+                $listBill= loadone_billuser($id_nguoidung);
+            } else {
+               
+                echo "
+                <script>
+                alert('Bạn cần đăng nhập để xem hóa đơn.');
+                window.location ='index.php?act=login';
+                </script>
+                ";
+                return; // Dừng thực hiện nếu cần
+            }
+            include './view/cart/mybill.php';
             break;
 
         default:
