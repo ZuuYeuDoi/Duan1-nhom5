@@ -126,7 +126,7 @@ function get_pttt($n)
     switch ($n) {
         case '0':
             # code...
-            $tt = 'Ship COD';
+            $tt = 'Thanh toán bằng tiền mặt';
             break;
         case '1':
             # code...
@@ -157,8 +157,7 @@ function loadone_bill_count($id)
 }
 
 function deldh($id){
-    $sql = "DELETE FROM don_hang 
-WHERE id_donhang = $id
+    $sql = "UPDATE `don_hang` SET `id_trangthai` = '6' WHERE `don_hang`.`id_donhang` = $id;
 ";
 pdo_execute($sql);
 }
