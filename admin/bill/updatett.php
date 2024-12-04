@@ -39,7 +39,7 @@ function getOrderStatusOptions($currentStatus) {
         3 => "Chờ lấy hàng",
         4 => "Đang giao hàng",
         5 => "Giao hàng thành công",
-        6 => "Đã huỷ",
+        // 6 => "Đã huỷ",
     ];
     foreach ($statusDescriptions as $key => $value) {
         echo "<option value='$key' " . ($currentStatus == $key ? 'selected' : '') . ">$value</option>";
@@ -72,7 +72,7 @@ function getOrderStatusOptions($currentStatus) {
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">  
     <title>Cập nhật trạng thái đơn hàng</title>
     <link href="path_to_css/bootstrap.min.css" rel="stylesheet">
 </head>

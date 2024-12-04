@@ -34,7 +34,7 @@
                                     echo '
                                     <tr>
                                         <td>'.$bill['madh'].'</td>
-                                        <td>'.$bill['id_nguoidung'].'</td>
+                                        <td>'.$bill['hoten'].'</td>
                                         <td>'.$bill['sdt'].'</td>
                                         <td>'.$bill['diachi'].'</td>
                                         <td>'.$bill['ngaydathang'].'</td>
