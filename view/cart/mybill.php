@@ -1,7 +1,6 @@
 <div class="container mt-3 bg-light rounded pt-3 pb-1">
     <nav class="text-center" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb text-center">
-
             <li class="breadcrumb-item active text-success fw-bolder" aria-current="page">Đơn Hàng</li>
         </ol>
     </nav>
@@ -15,42 +14,41 @@
                     <th class="text-center">Thanh toán</th>
                     <th class="text-center">Giao hàng</th>
                     <th class="text-center">Ngày tạo</th>
-                    <th class="text-center">Tổng</th>
-                    <th class="text-end">Trạng thái / Xem</th>
+                   
+                    <th class="text-center">Xem</th>
+                    <th class="text-center">Thao Tác</th>
                 </tr>
             </thead>
             <tbody class="align-middle">
-
                 <?php
-                
-                // Display the orders in a table or other suitable format
                 if (is_array($listBill) && count($listBill) > 0) {
                     foreach ($listBill as $bill) {
-                        // Extract relevant information from the $bill array
                         $madh = $bill['madh'];
                         $ngaydathang = $bill['ngaydathang'];
                         $tongtien = $bill['tongtien'];
                         $ttdh = get_ttdh($bill['id_trangthai']);
                         $pttt = get_pttt($bill['pttt']);
-
-                        // Display the order information in a table row or other desired format
-                    echo '<tr>
-                        <td class="text-start">' . $madh . '</td> 
-                        <td class="text-center">' . $pttt . '</td>
-                        <td class="text-center">' . $ttdh . '</td>
-                         <td class="text-center">' . $ngaydathang . '</td>
-                        <td class="text-center">' . $tongtien . '</td>
-                        <td class="text-end">' . $ttdh . '</td>
-                    </tr>';
+                        $id = $bill['id_donhang'];
+                    ?>
+                    <tr>
+                        <td class="text-start"><?php echo $madh; ?></td>
+                        <td class="text-center"><?php echo $pttt; ?></td>
+                        <td class="text-center"><?php echo $ttdh; ?></td>
+                        <td class="text-center"><?php echo $ngaydathang; ?></td>
+                        <td class="text-center">
+                            <!-- Nút để mở chi tiết đơn hàng -->
+                           <a class="btn btn-info" href="index.php?act=chitietdonhang&id=<?php echo $id; ?>">Chi Tiết Đơn</a>
+                        </td>
+                        <td class="text-center">
+                            <a href="index.php?act=deldh&id=<?php echo $id; ?>" class="btn btn-danger">Huỷ Đơn</a>
+                        </td>
+                    </tr>
+                    <?php
                     }
                 } else {
-                    echo '<tr><td colspan="5">Không có đơn hàng nào.</td></tr>';
+                    echo '<tr><td colspan="7" class="text-center py-3">Không có đơn hàng nào.</td></tr>';
                 }
                 ?>
-                <!-- <tr>
-                    <td colspan="7" class="text-center py-3">Bạn chưa có hóa đơn nào.</td>
-                </tr> -->
-
             </tbody>
         </table>
     </div>

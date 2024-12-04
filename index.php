@@ -11,7 +11,7 @@ include 'view/header.php';
 include './model/cart.php';
 
 //     echo '<pre>';
-// var_dump($_SESSION['user']);
+// print_r($chiTiet);
 //     echo '</pre>';
 
 // if (isset($_POST['btn_dathang'])) {
@@ -21,7 +21,7 @@ include './model/cart.php';
 // }
 
 // echo '<pre>';
-// print_r($_SESSION['mycart']);  // In ra thông tin từ form
+// print_r($_SESSION['mycart']);  
 // echo '</pre>';
 
 //giỏ hàng- SECTION lưu dữ liệu
@@ -214,7 +214,6 @@ if (isset($_GET['act'])) {
                 $madh = "wk" . rand(0, 9999); // Mã đơn hàng ngẫu nhiên
                 $iduser =  insert_bill($id_nguoidung, $madh, $tongdonhang, $name, $addr, $email, $phone, $id_trangthai);
                 if (isset($_SESSION['mycart']) && (count($_SESSION['mycart']) > 0)) {
-
                     foreach ($_SESSION['mycart'] as $key => $value) {
                         $idsp = $value['idsp'];
                         $name = $value['name'];
@@ -268,22 +267,36 @@ if (isset($_GET['act'])) {
 
             // Bây giờ bạn có thể kiểm tra giá trị của $id_nguoidung
             if ($id_nguoidung > 0) {
-                $listBill= loadone_billuser($id_nguoidung);
+                $listBill = loadone_billuser($id_nguoidung);
             } else {
-               
                 echo "
                 <script>
                 alert('Bạn cần đăng nhập để xem hóa đơn.');
                 window.location ='index.php?act=login';
                 </script>
                 ";
-                return; // Dừng thực hiện nếu cần
+                return;
             }
             include './view/cart/mybill.php';
             break;
 
         default:
             header('location:index.php?act=trangchu');
+            break;
+
+        case 'deldh':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                // $id = $_GET['id'];
+                $deldh = deldh($_GET['id']);
+            }
+            header('location:index.php?act=mybill');
+            break;
+        case 'chitietdonhang':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                $ctdh = chitietdon($id);
+            }
+            include './view/cart/ctdh.php';
             break;
     }
 } else {

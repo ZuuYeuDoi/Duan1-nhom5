@@ -7,6 +7,9 @@ ob_start();
 include '../model/pdo.php';
 include '../model/danhmuc.php';
 include '../model/product.php';
+include "../model/cart.php"; 
+
+// include '../model/bill.php';
 include_once '../model/taikhoan.php';
 include 'header.php';
 session_start();
@@ -253,6 +256,19 @@ if (isset($_GET['act'])) {
                 session_unset();
                 header("Location:index.php?act=trangchu"); // Hoặc trang chủ index.php
                 break;
+        case "listdh":
+            $listbill = loadall_bill(0);
+            include "./bill/listbill.php";
+            break;
+        case "updateBill":
+            if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                $id = $_GET['id']; // Lấy id từ URL
+                $loadBill = loadone_bill($id); // Gọi hàm lấy thông tin đơn hàng
+                include "./bill/updatebill.php";
+            } else {
+                echo "ID đơn hàng không hợp lệ!";
+            }
+            break;
 
         default:
             include 'home.php';

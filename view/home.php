@@ -1,7 +1,5 @@
 <style>
-    * {
-        box-sizing: border-box
-    }
+
 
     /* Slideshow container */
     .slideshow-container {

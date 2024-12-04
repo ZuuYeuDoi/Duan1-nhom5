@@ -126,7 +126,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="index.php?act=listdh">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Quản lý đơn hàng</span></a>
             </li>
