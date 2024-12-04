@@ -216,7 +216,7 @@ if (isset($_GET['act'])) {
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
                 $pttt = $_POST['httt_ma'];
-
+                
                 // Trạng thái đơn hàng mặc định là "Chờ xác nhận" (id_trangthai = 1)
                 $id_trangthai = 1; // Hoặc lấy giá trị từ người dùng nếu có
 
