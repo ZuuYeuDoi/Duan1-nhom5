@@ -164,3 +164,11 @@ function chitietdon($id) {
     return pdo_query($sql);  
 }
 
+function loadall_bill($id_nguoidung) {
+    $sql = "SELECT * FROM don_hang WHERE 1";
+    if ($id_nguoidung > 0) {
+        $sql .= " AND id_nguoidung = $id_nguoidung";
+    }
+    $sql .= " ORDER BY id_donhang DESC";
+    return pdo_query($sql);
+}
