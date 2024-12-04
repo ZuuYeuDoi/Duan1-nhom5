@@ -6,7 +6,7 @@ function insert_danhmuc($tenloai,$ngaytao,$ngaysua)
     pdo_execute($sql);
 }
 function list_danhmuc() {
-    $sql= "select * from Danh_muc";
+    $sql= "SELECT * FROM danh_muc ORDER BY id_dm DESC";
     $listdanhmuc= pdo_query( $sql);
     return $listdanhmuc;
 }

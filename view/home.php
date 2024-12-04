@@ -1,8 +1,5 @@
 <style>
-    * {
-        box-sizing: border-box;
-        background-color: ;
-    }
+
 
     /* Slideshow container */
     .slideshow-container {
@@ -184,7 +181,7 @@
             <!--Section Title Start-->
 
             <div class="col-xs-12 col-sm-6">
-                <a href="shop-WineKing" title="/wine/">
+                <a href="index.php?act=ruoumanh" title="/wine/">
                     <img src="view\images\img1.png" alt="WineKing">
                 </a>
                 <div class="cap-xxx">
@@ -197,7 +194,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <a href="shop-rebel-nerd" title="/REBEL NERD/">
+                <a href="index.php?act=ruouvang" title="/REBEL NERD/">
                     <img src="view\images\img2.png" alt="Rebel Nerd">
                 </a>
                 <div class="cap-xxx">
@@ -221,7 +218,7 @@
             <div class="col-12">
                 <div class="section-title text-center mb-50">
                     <h2>
-                        <a href="/shop-wineKing" title="wineKing® new arrival">
+                        <a href="#" title="wineKing® new arrival">
                             WineKing® new arrival
                         </a>
                     </h2>

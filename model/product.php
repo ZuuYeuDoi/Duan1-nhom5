@@ -1,22 +1,22 @@
 <?php
 function GetAllProduct()
 {  
-    $sql="select * from San_pham";
+    $sql="select * from San_pham order by id_sp desc ";
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
-function add_sanpham($id_dm,$hang,$tensp,$giatien,$soluong,$giamgia,$mota,$anhsp,$ngaytao) {
-    $sql = "insert into san_pham(id_dm,hang,tensp,giatien,soluong,giamgia,mota,anhsp,ngaytao) values('$id_dm','$hang','$tensp','$giatien','$soluong','$giamgia','$mota','$anhsp','$ngaytao')";
+function add_sanpham($id_dm,$hang,$tensp,$giatien,$soluong,$giamgia,$mota,$anhsp,$ngaytao,$nongdo,$dungluong) {
+    $sql = "insert into San_pham(id_dm,hang,tensp,giatien,soluong,giamgia,mota,anhsp,ngaytao,nongdo,dungluong) values('$id_dm','$hang','$tensp','$giatien','$soluong','$giamgia','$mota','$anhsp','$ngaytao','$nongdo','$dungluong')";
     pdo_execute($sql);
 }
 
 function loadone_sanpham($id) {
     $sql = "SELECT * FROM San_pham WHERE id_sp = $id";
-    $sp = pdo_query_one($sql);
-    return $sp;
+    $ctsanpham = pdo_query_one($sql);
+    return $ctsanpham;
 }
 
-function update_sanpham($id, $id_dm, $hang, $tensp, $giatien, $soluong, $giamgia, $mota, $anhsp, $ngaytao) {
+function update_sanpham($id, $id_dm, $hang, $tensp, $giatien, $soluong, $giamgia, $mota, $anhsp, $ngaytao,$nongdo,$dungluong) {
     // Chuẩn bị câu lệnh SQL
     if ($anhsp != "") {
         // Nếu có ảnh mới
@@ -29,6 +29,8 @@ function update_sanpham($id, $id_dm, $hang, $tensp, $giatien, $soluong, $giamgia
                     giamgia = :giamgia,
                     mota = :mota,
                     anhsp = :anhsp,
+                    nongdo = :nongdo,
+                    dungluong = :dungluong,
                     ngaytao = :ngaytao
                 WHERE id_sp = :id";
     } else {
@@ -41,12 +43,14 @@ function update_sanpham($id, $id_dm, $hang, $tensp, $giatien, $soluong, $giamgia
                     soluong = :soluong,
                     giamgia = :giamgia,
                     mota = :mota,
+                    nongdo = :nongdo,
+                    dungluong = :dungluong,
                     ngaytao = :ngaytao
                 WHERE id_sp = :id";
     }
 
     // Sử dụng câu lệnh chuẩn bị để ngăn chặn SQL injection
-    $stmt = $pdo->prepare($sql);
+    $stmt = $pdo ->prepare($sql);
     
     // Tạo mảng tham số
     $params = [
@@ -58,7 +62,9 @@ function update_sanpham($id, $id_dm, $hang, $tensp, $giatien, $soluong, $giamgia
         ':giamgia' => $giamgia,
         ':mota' => $mota,
         ':ngaytao' => $ngaytao,
-        ':id' => $id
+        ':id' => $id,
+        ':nongdo' => $nongdo,
+        ':dungluong' => $dungluong
     ];
 
     // Thêm anhsp nếu có
@@ -87,6 +93,11 @@ function laysp2($listidsp2) {
     $listidsp2 = pdo_query($sql);
     return $listidsp2;
 }
+// function top10()  {
+//     $sql = "SELECT * FROM products ORDER BY created_at DESC LIMIT 10";
+//     $listtop10 = pdo_query($sql);
+//     return 
+// }
 
 ?>
 

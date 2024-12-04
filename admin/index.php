@@ -95,6 +95,8 @@ if (isset($_GET['act'])) {
                     $soluong = $_POST['soluongsp'];
                     $giamgia = $_POST['price1sp'];
                     $mota = $_POST['motasp'];
+                    $nongdo = $_POST['nongdo'];
+                    $dungluong = $_POST['dungluong'];
                     $ngaycapnhat = $_POST['ngaycapnhat'];
 
                     // Xử lý ảnh
@@ -124,6 +126,8 @@ if (isset($_GET['act'])) {
                                     soluong ='" . $soluong . "',
                                     giamgia ='" . $giamgia . "',
                                     mota ='" . $mota . "',
+                                    nongdo ='" . $nongdo . "',
+                                    dungluong ='" . $dungluong . "',
                                     anhsp ='" . $anhsp . "',
                                     ngaycapnhat ='" . $ngaycapnhat . "'
                                 WHERE id_sp =" . $id;
@@ -171,6 +175,9 @@ if (isset($_GET['act'])) {
                 $giatien = $_POST['pricesp'];
                 $soluong = $_POST['soluongsp'];
                 $giamgia = $_POST['price1sp'];
+                $nongdo = $_POST['nongdo'];
+                $dungluong = $_POST['dungluong'];
+
 
                 $anhsp = $_FILES['imgsp']['name'];
                 $stmt = $_FILES['imgsp']['tmp_name'];
@@ -179,7 +186,7 @@ if (isset($_GET['act'])) {
                 $mota = $_POST['motasp'];
                 $ngaytao = $_POST['ngaytaosp'];
 
-                add_sanpham($id_dm, $hang, $tensp, $giatien, $soluong, $giamgia, $mota, $anhsp, $ngaytao);
+                add_sanpham($id_dm, $hang, $tensp, $giatien, $soluong, $giamgia, $mota, $anhsp, $ngaytao,$nongdo,$dungluong);
                 $_SESSION['success'] = "";
                 header('location:index.php?act=listsp');
                 exit();

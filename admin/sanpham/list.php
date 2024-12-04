@@ -86,10 +86,19 @@
                                         <td><?php echo $key['tensp'] ?></td>
                                         <td><?php echo number_format($key['giatien'], 0, ',', '.'); ?> VNĐ</td>
                                         <td><?php echo number_format($key['soluong'], 0, ',', '.'); ?></td>
-                                        <td><?php echo $key['mota'] ?></td>
+                                        <td>
+                <?php
+                // Giới hạn mô tả tối đa 30 ký tự
+                $mota = $key['mota'];
+                if (strlen($mota) > 30) {
+                    $mota = substr($mota, 0, 30) . '...'; // Cắt và thêm dấu ba chấm
+                }
+                echo htmlspecialchars($mota); // Hiển thị mô tả
+                ?>
+            </td>
                                         <td><?php echo $key['ngaytao'] ?></td>
                                         <td><?php echo $key['ngaycapnhat'] ?></td>
-
+                                        
                                         <?php
 
                                             
