@@ -61,16 +61,29 @@
                                 <input type="text" name="motasp" id="motasp" class="form-control"
                                     required>
                             </div>
+
+                            <!-- <div class="mb-3">
+                                <label for="product-price" class="form-label"></label>
+                                <input type="hidden" name="ngaysuasp" id="ngaysuasp" class="form-control"
+                                    disabled>
+                            </div> -->
+                            <div class="mb-3">
+                                <label for="product-price" class="form-label">Nồng Độ</label>
+                                <input type="text" name="nongdo" id="nongdo" class="form-control"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="product-price" class="form-label">Dung Lượng</label>
+                                <input type="text" name="dungluong" id="dungluong" class="form-control"
+                                    required>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="product-price" class="form-label">Ngày Tạo</label>
                                 <input type="date" name="ngaytaosp" id="ngaytaosp" class="form-control"
                                     required>
                             </div>
-                            <div class="mb-3">
-                                <label for="product-price" class="form-label"></label>
-                                <input type="hidden" name="ngaysuasp" id="ngaysuasp" class="form-control"
-                                    disabled>
-                            </div>
+                            
 
                             <div class="mb-3">
                                 <label for="product-category" class="form-label">Danh Mục Sản

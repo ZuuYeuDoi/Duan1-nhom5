@@ -243,28 +243,23 @@ if (isset($_GET['act'])) {
 
         case 'chitietsp':
             if (isset($_GET['id_sp'])) {
-                $id = $_GET['id_sp'];
-                // Giả sử loadone_sanpham đã được định nghĩa đúng
-                $chitietsp = loadone_sanpham($id);
+                $id = $_GET['id_sp']; }
 
-                // Kiểm tra xem sản phẩm có tồn tại không
-                if (!$chitietsp) {
-                    // Nếu không tìm thấy sản phẩm, có thể chuyển hướng hoặc thông báo lỗi
-                    echo "Sản phẩm không tồn tại.";
-                    exit; // Ngừng thực hiện mã nếu không tìm thấy sản phẩm
-                }
-            } else {
-                echo "ID sản phẩm không được cung cấp.";
-                exit; // Ngừng thực hiện mã nếu không có ID
-            }
+                $ctsanpham = loadone_sanpham($id);
+                
+                
 
-            // Bao gồm tệp hiển thị chi tiết sản phẩm
-            include "./view/ctsp/chitiet.php";
+
+
+
+            include "./view/page/chitietsanpham.php";
             break;
 
         case 'mybill':
             // Nếu bạn đang gọi một hàm để tải hóa đơn
             // Khởi tạo biến mặc định
+
+
             $id_nguoidung = 0; // Hoặc một giá trị khác tùy ý
 
             if (isset($_SESSION['user'])) {
