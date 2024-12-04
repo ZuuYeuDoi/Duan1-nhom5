@@ -290,10 +290,6 @@ if (isset($_GET['act'])) {
             include './view/cart/mybill.php';
             break;
 
-        default:
-            header('location:index.php?act=trangchu');
-            break;
-
         case 'deldh':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 // $id = $_GET['id'];
@@ -308,6 +304,11 @@ if (isset($_GET['act'])) {
             }
             include './view/cart/ctdh.php';
             break;
+
+
+        default:
+        header('location:index.php?act=trangchu');
+        break;
     }
 } else {
     header('location:index.php?act=trangchu');
