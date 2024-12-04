@@ -7,6 +7,7 @@ ob_start();
 include '../model/pdo.php';
 include '../model/danhmuc.php';
 include '../model/product.php';
+
 include "../model/cart.php"; 
 
 // include '../model/bill.php';
@@ -280,6 +281,7 @@ if (isset($_GET['act'])) {
             
                 include "./bill/updatett.php";
                 break;
+
 
         default:
             include 'home.php';
