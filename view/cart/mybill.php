@@ -16,7 +16,9 @@
                     <th class="text-center">Giao hàng</th>
                     <th class="text-center">Ngày tạo</th>
                     <th class="text-center">Tổng</th>
-                    <th class="text-end">Trạng thái / Xem</th>
+                    <th class="text-center">Xem</th>
+                    <th class="text-center">Thao Tác</th>
+
                 </tr>
             </thead>
             <tbody class="align-middle">
@@ -39,8 +41,15 @@
                         <td class="text-center">' . $pttt . '</td>
                         <td class="text-center">' . $ttdh . '</td>
                          <td class="text-center">' . $ngaydathang . '</td>
-                        <td class="text-center">' . $tongtien . '</td>
-                        <td class="text-end">' . $ttdh . '</td>
+                        <td class="text-center">' . number_format($tongtien, 0, ',', '.') . '</td>
+                        <td class="text-center">
+                       <a href="">Chi Tiết Đơn</a>
+                        </td>
+                        <td class="text-center">
+                       <a href="">Huỷ Đơn</a>
+                        
+                        </td>
+
                     </tr>';
                     }
                 } else {
