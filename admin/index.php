@@ -281,8 +281,10 @@ if (isset($_GET['act'])) {
             
                 include "./bill/updatett.php";
                 break;
-
-
+        case 'thongke':
+            include './home.php';
+            break;
+            
         default:
             include 'home.php';
             break;
