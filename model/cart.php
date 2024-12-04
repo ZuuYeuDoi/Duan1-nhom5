@@ -157,8 +157,7 @@ function loadone_bill_count($id)
 }
 
 function deldh($id){
-    $sql = "UPDATE `don_hang` SET `id_trangthai` = '6' WHERE `don_hang`.`id_donhang` = $id;
-";
+    $sql = "UPDATE `don_hang` SET `id_trangthai` = '6' WHERE `don_hang`.`id_donhang` = $id;";
 pdo_execute($sql);
 }
 

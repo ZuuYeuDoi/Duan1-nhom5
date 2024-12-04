@@ -9,7 +9,7 @@
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                     <!-- code ở đây -->
                     <div class="container mt-5">
-                        <h2 class="mb-4">Thêm Mới Tài Khoản</h2>
+                        <h2 class="mb-4">Sửa Tài Khoản</h2>
                         <?php
                             if (isset($thongbao) && ($thongbao != "")) echo $thongbao;
                             ?>
@@ -59,7 +59,7 @@
                                 <label for="product-price" class="form-label">Ngày đăng ký</label>
                                 <input type="date" name="ngaydk" id="" class="form-control" value="<?php  echo $tk['ngaydangky']?>" disabled>
                             </div>
-                            <input type="submit" name="uptkmoi" id="" class="btn btn-primary" value="Thêm danh mục">
+                            <input type="submit" name="uptkmoi" id="" class="btn btn-primary" value="Sửa tài khoản">
                            
                         </form>
                     </div>
