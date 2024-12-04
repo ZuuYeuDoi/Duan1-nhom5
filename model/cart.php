@@ -89,7 +89,7 @@ function get_ttdh($n)
     switch ($n) {
         case '1':
             # code...
-            $tt = 'Đang xử lí';
+            $tt = 'Chờ xác nhận';
             break;
         case '2':
             # code...
@@ -98,28 +98,23 @@ function get_ttdh($n)
             break;
         case '3':
             # code...
-            $tt = 'Chờ lấy hàng';
+            $tt = 'Chờ Lấy Hàng';
 
             break;
         case '4':
             # code...
-            $tt = 'Đang giao hàng';
-
-            break;
-            case '5':
+            $tt = 'Đang Giao Hàng';
+        case '5':
                 # code...
                 $tt = 'Giao hàng thành công';
-    
-                break;
-                case '6':
-                    # code...
-                    $tt = 'Đã huỷ';
-        
-                    break;
-
+            break;
+            case '6':
+                # code...
+                $tt = 'Đã Huỷ';
+            break;
         default:
             # code...
-            $tt = 'Đơn Hàng Mới';
+            $tt = 'Huỷ';
 
             break;
     }
@@ -179,5 +174,14 @@ function loadall_bill($id_nguoidung) {
         $sql .= " AND id_nguoidung = $id_nguoidung";
     }
     $sql .= " ORDER BY id_donhang DESC";
+    return pdo_query($sql);
+}
+function loadall_ttdh($id) {
+    $sql = "SELECT * FROM trang_thai_don_hang WHERE id = " . $id;
+    return pdo_query($sql);
+}
+
+function load_trang_thai() {
+    $sql = "SELECT * FROM trang_thai_don_hang"; // Điều chỉnh nếu bạn muốn tất cả trạng thái
     return pdo_query($sql);
 }
