@@ -1,6 +1,7 @@
 <style>
     * {
-        box-sizing: border-box
+        box-sizing: border-box;
+        background-color: ;
     }
 
     /* Slideshow container */
