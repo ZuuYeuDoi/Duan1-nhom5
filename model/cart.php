@@ -75,14 +75,14 @@ function loadone_billuser($id_nguoidung) {
     $listBill = pdo_query1($sql);
     return $listBill;
 }
-function loadone_bill1($id)
-{
-    $sql = "SELECT * FROM don_hang WHERE 1";
-    if ($id > 0) $sql .= "AND id_donhang=" . $id;
-    $sql .= "order by id desc ";
-    $listBill = pdo_query($sql);
-    return $listBill;
-}
+// function loadone_bill1($id)
+// {
+//     $sql = "SELECT * FROM don_hang WHERE 1";
+//     if ($id > 0) $sql .= "AND id_donhang=" . $id;
+//     $sql .= "order by id desc ";
+//     $listBill = pdo_query($sql);
+//     return $listBill;
+// }
 
 function get_ttdh($n)
 {
@@ -150,3 +150,17 @@ function loadone_bill_count($id)
     return sizeof($bill);
 
 }
+
+function deldh($id){
+    $sql = "DELETE FROM don_hang 
+WHERE id_donhang = $id
+";
+pdo_execute($sql);
+}
+
+
+function chitietdon($id) {
+    $sql = "SELECT * FROM chi_tiet_don_hang WHERE id_donhang = $id ";
+    return pdo_query($sql);  
+}
+

@@ -121,7 +121,7 @@
                         <div class="d-block my-3">
                             <div class="custom-control custom-radio">
                                 <input id="httt-1" name="httt_ma" type="radio" class="custom-control-input" required value="0">
-                                <label class="custom-control-label" for="httt">Tiền mặt</label>
+                                <label class="custom-control-label" for="httt">Quét Mã QR</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input id="httt-2" name="httt_ma" type="radio" class="custom-control-input" required value="2">
