@@ -22,6 +22,8 @@
                                     <th>Ngày mua</th>
                                     <th>Trạng thái của đơn hàng</th>
                                     <th>Thao tác</th>
+                                    <th>Cập nhật trạng thái</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,6 +43,10 @@
                                             <a class="btn btn-primary" href="?act=updateBill&id='.$bill['id_donhang'].'"
                                                 role="button">Xem chi tiết</a>
                                         </td>
+                                         <td>
+                                            <a class="btn btn-primary" href="?act=ttdh&id='.$bill['id_donhang'].'"
+                                                role="button">Cập nhật trạng thái</a>
+                                        </td>
                                     </tr>
                                     ';  
                                     ?>
@@ -54,4 +60,5 @@
             </div>
 
 
+        </div>
         </div>

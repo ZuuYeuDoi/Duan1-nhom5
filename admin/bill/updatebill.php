@@ -23,24 +23,23 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $total = 0;
-                                foreach ($loadBill as $index => $item):
-                                    $itemTotal = $item['price'] * $item['quantity'];
-                                    $total += $itemTotal;
-                                    ?>
-                                    <tr>
-                                        <td><img src="../assets/img/<?= $item['img_product'] ?>" alt="" width="100px"></td>
-                                        <td><?= $item['name_product'] ?></td>
-                                        <td><?= number_format($item['price']) ?>đ</td>
-                                        <td><?= $item['quantity'] ?></td>
-                                        <td><?= number_format($item['price'] * $item['quantity']) ?>đ</td>
-                                    </tr>
-                                <?php endforeach; ?>
+                                foreach($ctdh as $key){
+                                    
+                                
+                            ?>
+                            <tr>
+                                    <th><img src="../upload/<?php echo $key['img']?>" alt="" width="100px"></th>
+                                    <th><?php echo $key['name'] ?></th>
+                                    <th><?php echo $key['price']?></th>
+                                    <th><?php echo $key['soluong']?></th>
+                                    <th><?php echo $key['thanhtien']?></th>
+
+                                </tr>
+                           <?php }?>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th colspan="5" class="text-left">Tổng tiền:</th>
-                                    <th><?= number_format($total) ?>đ</th>
+                                   
                                 </tr>
                             </tfoot>
                         </table>
@@ -48,25 +47,7 @@
                 </div>
             </div>
 
-            <!-- Status Update -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Cập nhật trạng thái đơn hàng</h6>
-                </div>
-                <div class="card-body">
-                    <form action="" method="post">
-                        <div class="form-group">
-                            <label for="status" class="form-label">Trạng thái</label>
-                            <select class="form-control" id="status" name="status">
-                                <?php foreach ($statusDescriptions as $key => $value): ?>
-                                    <option value="<?= $key ?>" <?= $key == $status ? 'selected' : '' ?>>
-                                        <?= $value ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <button type="submit" name="btn_update" class="btn btn-primary mt-3">Cập nhật</button>
-                    </form>
+            
                 </div>
             </div>
         </div>

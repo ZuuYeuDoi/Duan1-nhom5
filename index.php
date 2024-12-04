@@ -113,29 +113,39 @@ if (isset($_GET['act'])) {
             if (isset($_POST['addtocart']) && ($_POST['addtocart'] > 0)) {
                 $id_sp = $_POST['id_sp'];
                 $tensp = $_POST['tensp'];
-                $giamgia = $_POST['giamgia'];
+                $giamgia = isset($_POST['giamgia']) ? (float)$_POST['giamgia'] : 0; // Đảm bảo giá giảm là số
                 $anhsp = $_POST['anhsp'];
-                $soluong = 1;
-                $ttien = $soluong * $giamgia;
-                // sản phẩm tồn tại thì tăng sl
-                if (isset($_SESSION['mycart'][$id_sp])) {
-                    $_SESSION['mycart'][$id_sp]['quantity']++;
-                    $_SESSION['mycart'][$id_sp]['total_price'] += $giamgia;
+            
+                // Đảm bảo số lượng là kiểu số nguyên
+                $soluong = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
+            
+                // Kiểm tra lại các giá trị trước khi nhân
+                if (is_numeric($soluong) && is_numeric($giamgia)) {
+                    $ttien = $soluong * $giamgia;
+            
+                    // Sản phẩm tồn tại thì tăng số lượng
+                    if (isset($_SESSION['mycart'][$id_sp])) {
+                        $_SESSION['mycart'][$id_sp]['quantity'] += $soluong;
+                        $_SESSION['mycart'][$id_sp]['total_price'] += $ttien;
+                    } else {
+                        // Thêm sản phẩm vào giỏ hàng dưới dạng một mặt hàng mới
+                        $_SESSION['mycart'][$id_sp] = [
+                            'idsp' => $id_sp,
+                            'name' => $tensp,
+                            'image' => $anhsp,
+                            'price' => $giamgia,
+                            'quantity' => $soluong,
+                            'total_price' => $ttien
+                        ];
+                    }
+                    header("location:index.php?act=viewcart");
                 } else {
-                    // Thêm sản phẩm vào giỏ hàng dưới dạng một mặt hàng mới
-                    $_SESSION['mycart'][$id_sp] = [
-                        'idsp' => $id_sp,
-                        'name' => $tensp,
-                        'image' => $anhsp,
-                        'price' => $giamgia,
-                        'quantity' => $soluong,
-                        'total_price' => $ttien
-                    ];
+                    // Xử lý lỗi nếu giá trị không hợp lệ
+                    echo "Số lượng hoặc giá sản phẩm không hợp lệ.";
                 }
-                header("location:index.php?act=viewcart");
             }
 
-
+            break;
         case 'viewcart':
             include './view/cart/viewcart.php';
             break;
@@ -224,6 +234,7 @@ if (isset($_GET['act'])) {
                         insert_bill_detail($iduser, $idsp, $name, $image, $price, $quantity, $total_price);
                     }
                 }
+                unset($_SESSION['mycart']);
                 header("location:index.php?act=billconfirm");
                 exit;
             }
@@ -280,10 +291,6 @@ if (isset($_GET['act'])) {
             include './view/cart/mybill.php';
             break;
 
-        default:
-            header('location:index.php?act=trangchu');
-            break;
-
         case 'deldh':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 // $id = $_GET['id'];
@@ -298,6 +305,11 @@ if (isset($_GET['act'])) {
             }
             include './view/cart/ctdh.php';
             break;
+
+
+        default:
+        header('location:index.php?act=trangchu');
+        break;
     }
 } else {
     header('location:index.php?act=trangchu');

@@ -89,27 +89,32 @@ function get_ttdh($n)
     switch ($n) {
         case '1':
             # code...
-            $tt = 'Đang xử lí';
+            $tt = 'Chờ xác nhận';
             break;
         case '2':
             # code...
-            $tt = 'Đơn Hàng Mới';
+            $tt = 'Đã Xác Nhận';
 
             break;
         case '3':
             # code...
-            $tt = 'Đơn Hàng Mới';
+            $tt = 'Chờ Lấy Hàng';
 
             break;
         case '4':
             # code...
-            $tt = 'Đơn Hàng Mới';
-
+            $tt = 'Đang Giao Hàng';
+        case '5':
+                # code...
+                $tt = 'Giao hàng thành công';
             break;
-
+            case '6':
+                # code...
+                $tt = 'Đã Huỷ';
+            break;
         default:
             # code...
-            $tt = 'Đơn Hàng Mới';
+            $tt = 'Huỷ';
 
             break;
     }
@@ -121,7 +126,7 @@ function get_pttt($n)
     switch ($n) {
         case '0':
             # code...
-            $tt = 'Ship COD';
+            $tt = 'Thanh toán bằng tiền mặt';
             break;
         case '1':
             # code...
@@ -152,8 +157,7 @@ function loadone_bill_count($id)
 }
 
 function deldh($id){
-    $sql = "DELETE FROM don_hang 
-WHERE id_donhang = $id
+    $sql = "UPDATE `don_hang` SET `id_trangthai` = '6' WHERE `don_hang`.`id_donhang` = $id;
 ";
 pdo_execute($sql);
 }
@@ -170,5 +174,14 @@ function loadall_bill($id_nguoidung) {
         $sql .= " AND id_nguoidung = $id_nguoidung";
     }
     $sql .= " ORDER BY id_donhang DESC";
+    return pdo_query($sql);
+}
+function loadall_ttdh($id) {
+    $sql = "SELECT * FROM trang_thai_don_hang WHERE id = " . $id;
+    return pdo_query($sql);
+}
+
+function load_trang_thai() {
+    $sql = "SELECT * FROM trang_thai_don_hang"; // Điều chỉnh nếu bạn muốn tất cả trạng thái
     return pdo_query($sql);
 }
