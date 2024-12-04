@@ -254,14 +254,25 @@ if (isset($_GET['act'])) {
             include "./bill/listbill.php";
             break;
         case "updateBill":
-            if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-                $id = $_GET['id']; // Lấy id từ URL
-                $loadBill = loadone_bill($id); // Gọi hàm lấy thông tin đơn hàng
-                include "./bill/updatebill.php";
-            } else {
-                echo "ID đơn hàng không hợp lệ!";
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                $ctdh = chitietdon($id);
+               
             }
+            include "./bill/updatebill.php";
             break;
+            
+            case "ttdh":
+                // if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                //     $id = $_GET['id'];
+                //     $ttdh = loadall_ttdh($id);
+                // }
+            
+                // // Tải tất cả trạng thái cho dropdown
+                // $statuses = load_trang_thai();
+            
+                include "./bill/updatett.php";
+                break;
 
         default:
             include 'home.php';
