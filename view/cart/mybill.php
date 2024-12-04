@@ -39,9 +39,16 @@
                             <!-- Nút để mở chi tiết đơn hàng -->
                            <a class="btn btn-info" href="index.php?act=chitietdonhang&id=<?php echo $id; ?>">Chi Tiết Đơn</a>
                         </td>
-                        <td class="text-center">
+                        <?php 
+                            if($ttdh!=6){
+                                ?>
+                                <td class="text-center">
                             <a href="index.php?act=deldh&id=<?php echo $id; ?>" class="btn btn-danger">Huỷ Đơn</a>
                         </td>
+                                <?php
+
+                            }
+                        ?>
                     </tr>
                     <?php
                     }

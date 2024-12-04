@@ -93,19 +93,29 @@ function get_ttdh($n)
             break;
         case '2':
             # code...
-            $tt = 'Đơn Hàng Mới';
+            $tt = 'Đã Xác Nhận';
 
             break;
         case '3':
             # code...
-            $tt = 'Đơn Hàng Mới';
+            $tt = 'Chờ lấy hàng';
 
             break;
         case '4':
             # code...
-            $tt = 'Đơn Hàng Mới';
+            $tt = 'Đang giao hàng';
 
             break;
+            case '5':
+                # code...
+                $tt = 'Giao hàng thành công';
+    
+                break;
+                case '6':
+                    # code...
+                    $tt = 'Đã huỷ';
+        
+                    break;
 
         default:
             # code...
@@ -121,7 +131,7 @@ function get_pttt($n)
     switch ($n) {
         case '0':
             # code...
-            $tt = 'Ship COD';
+            $tt = 'Thanh toán bằng tiền mặt';
             break;
         case '1':
             # code...
@@ -152,8 +162,7 @@ function loadone_bill_count($id)
 }
 
 function deldh($id){
-    $sql = "DELETE FROM don_hang 
-WHERE id_donhang = $id
+    $sql = "UPDATE `don_hang` SET `id_trangthai` = '6' WHERE `don_hang`.`id_donhang` = $id;
 ";
 pdo_execute($sql);
 }

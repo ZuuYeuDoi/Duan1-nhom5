@@ -234,6 +234,7 @@ if (isset($_GET['act'])) {
                         insert_bill_detail($iduser, $idsp, $name, $image, $price, $quantity, $total_price);
                     }
                 }
+                unset($_SESSION['mycart']);
                 header("location:index.php?act=billconfirm");
                 exit;
             }
