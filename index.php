@@ -208,7 +208,7 @@ if (isset($_GET['act'])) {
             // Tạo đơn hàng
             if (isset($_POST['btn_dathang'])) {
                 if (isset($_SESSION['user']))  $id_nguoidung = $_SESSION['user']['id_nguoidung'];
-                else $id_nguoidung = 0;
+                else $id_nguoidung = NULL;
 
                 $tongdonhang = $_POST['tongdonhang'];
                 $name = $_POST['name'];
@@ -297,7 +297,9 @@ if (isset($_GET['act'])) {
                 $deldh = deldh($_GET['id']);
             }
             header('location:index.php?act=mybill');
+            include './view/cart/mybill.php';
             break;
+
         case 'chitietdonhang':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $id = $_GET['id'];
