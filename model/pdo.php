@@ -155,7 +155,7 @@ function pdo_query_value($sql)
 
 function pdo_dangky_taikhoan_user($email, $matkhau, $ten, $sdt, $address)
 {
-    $sql = "INSERT INTO nguoi_dung (email, matkhau, hoten, sdt, diachi, role) VALUES (?, ?, ?, ?, ?, 0)";
+    $sql = "INSERT INTO nguoi_dung (email, matkhau, hoten, sdt, diachi,ngaydangky, role) VALUES (?, ?, ?, ?,?, now(), 0)";
     $conn = pdo_get_connection(); // Hàm kết nối PDO
     $stmt = $conn->prepare($sql);
     $stmt->execute([$email, $matkhau, $ten, $sdt, $address]);
