@@ -293,7 +293,7 @@
             </div>
         </div>
         <div class="view-all-product text-center">
-            <a href="index.php?act=sanpham" class="btnx">
+            <a href="index.php?act=shop" class="btnx">
                 <span class="btn-content">Xem tất cả</span>
                 <span class="icon"><i class="fa fa-arrow-right"></i></span>
             </a>
