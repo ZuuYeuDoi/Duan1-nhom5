@@ -72,6 +72,7 @@
 
 </form>
 <div class="indor-plant-product">
+<div class="container mt-5">
 
 <div class="border border-danger rounded shadow-lg p-4 mb-4 bg-danger" style="border-width: 3px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
     <h1 class="text-center text-white">Sản Phẩm Mới Nhất</h1>
@@ -125,7 +126,7 @@
 
                                             <span class="regular-price"><?php echo number_format($value['giamgia'], 0, ',', '.'); ?> VNĐ </span>
 
-                                            <span class="price ml5" style = "color: red"><?php echo number_format($value['giamgia'], 0, ',', '.'); ?></span>
+                                            <span class="price ml5" style = "color: red"><?php echo number_format($value['giatien'], 0, ',', '.'); ?></span>
 
                                         </div>
 
@@ -139,11 +140,35 @@
                     <?php } ?>
 
 
+             
+
                 </div>
             </div>
         </div>
-
+                    </div>
 
 
 <!-- hien thi binh luan -->
- 
+<div class="container mt-5">
+<div class="border border-danger rounded shadow-lg p-4 mb-4 bg-danger" style="border-width: 3px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
+    <h2 class="text-center text-white">Bình luận</h1>
+</div>
+<div class="boxcontent2 menudoc">
+                <?php
+                    echo "id san pham la :" .$value['id_sp'];
+                
+                ?>
+
+            </div>             
+
+
+
+        <form>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Nội dung bình luận</label>
+                <textarea class="form-control" id="comment" rows="3" placeholder="Nhập bình luận của bạn" required></textarea>
+            </div>
+            <!-- Nút gửi -->
+            <button type="submit" class="btn btn-primary">Gửi bình luận</button>
+        </form>
+    </div>
