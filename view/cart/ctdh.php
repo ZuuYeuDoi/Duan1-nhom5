@@ -1,35 +1,46 @@
-<div class="container">
+<div class="container mt-5">
 
-<h1 style="text-align: center;
-    margin-bottom: 27px;
-    font-weight: 600;
-    margin-top: 20px;">Chi Tiết Đơn Hàng Của Tôi</h1>
-    <table class="table table-hover">
-        <thead>
-            <tr style="font-size: 16px;
-    font-variant: all-small-caps;">
+    <!-- Tiêu đề -->
+    <h1 class="text-center mb-4 font-weight-bold text-uppercase">Chi Tiết Đơn Hàng Của Tôi</h1>
+
+    <!-- Bảng đơn hàng -->
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+            <tr style="font-size: 16px;">
                 <th>Số Lượng</th>
                 <th>Giá</th>
                 <th>Hình Ảnh</th>
-                <th>Tên SP</th>
-                <th>Thành tiền</th>
-
+                <th>Tên Sản Phẩm</th>
+                <th>Thành Tiền</th>
             </tr>
         </thead>
-        <?php
-        foreach ($ctdh as $ct) {
-        ?>
-            <tr style="font-size: 15px;">
-                <td><?php echo $ct['soluong'] ?></td>
-                <td><?php echo $ct['price'] ?></td>
-                <td><img src="upload/<?php echo $ct['img'] ?>" alt="" width="100px"></td>
-                <td><?php echo $ct['name'] ?></td>
-                <td><?php echo $ct['thanhtien'] ?></td>
+        <tbody>
+            <?php
+            $totalAmount = 0; // Khởi tạo biến tổng tiền
 
-            </tr>
-        <?php
-        }
-        ?>
-        <a class="btn btn-primary" href="index.php?act=mybill">Quay Lai</a>
+            foreach ($ctdh as $ct) {
+                $totalAmount += $ct['thanhtien']; // Cộng dồn tổng tiền
+            ?>
+                <tr style="font-size: 15px;">
+                    <td><?php echo $ct['soluong'] ?></td>
+                    <td><?php echo number_format($ct['price'], 0, ',', '.') ?> VND</td>
+                    <td><img src="upload/<?php echo $ct['img'] ?>" alt="<?php echo $ct['name'] ?>" class="img-fluid" style="max-width: 100px;"></td>
+                    <td><?php echo $ct['name'] ?></td>
+                    <td><?php echo number_format($ct['thanhtien'], 0, ',', '.') ?> VND</td>
+                </tr>
+            <?php
+            }
+            ?>
+        </tbody>
     </table>
+
+    <!-- Phần tổng tiền -->
+    <div class="d-flex justify-content-end font-weight-bold">
+        <h4>Tổng Tiền: <?php echo number_format($totalAmount, 0, ',', '.') ?> VND</h4>
+    </div>
+
+    <!-- Nút quay lại -->
+    <div class="text-center mt-4">
+        <a class="btn btn-primary btn-lg" href="index.php?act=mybill">Quay Lại</a>
+    </div>
 </div>
