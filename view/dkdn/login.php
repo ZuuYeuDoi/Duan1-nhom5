@@ -260,8 +260,9 @@ if (isset($_SESSION['user'])) {
                                             </button>
                                         </form>
                                     <?php } ?>
-                                    <input type="submit" name="" id="" class="btn btn-danger btn-sm" style="height: 32px;
-                                        width: 130px; margin-left: 10px;" value="Đăng xuất">
+                                    
+                                        <a href="index.php?act=logout"><input type="submit" name="" id="" class="btn btn-danger btn-sm" style="height: 32px;
+                                        width: 130px; margin-left: 10px;" value="Đăng xuất"></a>
 
                                 </div>
 
