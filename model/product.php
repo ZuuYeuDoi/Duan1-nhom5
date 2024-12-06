@@ -98,6 +98,16 @@ function laysp2($listidsp2) {
 //     $listtop10 = pdo_query($sql);
 //     return 
 // }
+function lay10sp()  {
+    $sql = "select * from san_pham order by ngaytao desc limit 9 ";
+    $list9sp = pdo_query($sql);
+    return $list9sp;
+}
+function shop()  {
+    $sql = "select * from san_pham order by id_sp desc ";
+    $listshop = pdo_query($sql);
+    return $listshop;
+}
 
 ?>
 

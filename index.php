@@ -257,7 +257,7 @@ if (isset($_GET['act'])) {
 
                 $ctsanpham = loadone_sanpham($id);
                 
-                
+                $list9sp = lay10sp();
 
 
 
@@ -306,6 +306,10 @@ if (isset($_GET['act'])) {
                 $ctdh = chitietdon($id);
             }
             include './view/cart/ctdh.php';
+            break;
+        case 'shop':
+            $listshop = shop();
+            include './view/page/shop.php';
             break;
 
 

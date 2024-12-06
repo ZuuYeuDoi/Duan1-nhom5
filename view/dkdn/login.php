@@ -227,7 +227,7 @@ button:hover {
 <?php
 if (isset($_SESSION['user'])) {
     extract($_SESSION['user']);
-    $ngaydangky = new DateTime($ngaydangky);
+    $ngaytao = new DateTime($ngaydangky);
 ?>
     <section style="background-color: #eee;">
         <div class="container py-5">
@@ -260,8 +260,9 @@ if (isset($_SESSION['user'])) {
                                             </button>
                                         </form>
                                     <?php } ?>
-                                    <input type="submit" name="" id="" class="btn btn-danger btn-sm" style="height: 32px;
-                                        width: 130px; margin-left: 10px;" value="Đăng xuất">
+                                    
+                                        <a href="index.php?act=logout"><input type="submit" name="" id="" class="btn btn-danger btn-sm" style="height: 32px;
+                                        width: 130px; margin-left: 10px;" value="Đăng xuất"></a>
 
                                 </div>
 
@@ -321,7 +322,7 @@ if (isset($_SESSION['user'])) {
                                     <p class="mb-0" style="margin-top: 11px;">Active</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0" style="margin-top: 11px;"><?= date_format($ngaydangky, "d-m-Y ") ?></p>
+                                    <p class="text-muted mb-0" style="margin-top: 11px;"><?= date_format($ngaytao, "d-m-Y ") ?></p>
                                 </div>
                             </div>
                             <hr>

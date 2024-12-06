@@ -124,6 +124,19 @@
                                         </ul>
                                     </li>
 
+                                    <li
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+                                        <a href="index.php?act=shop" title="Trang chủ">Shop</a>
+                                        <ul class="sub-menu">
+
+
+
+
+
+
+                                        </ul>
+                                    </li>
+
 
 
 
