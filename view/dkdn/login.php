@@ -1,12 +1,4 @@
 <style>
-   /* General Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fc;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
 
 .container {
     max-width: 1200px;
@@ -301,9 +293,9 @@ if (isset($_SESSION['user'])) {
                                     <input type="password" id="passwordField" class="form-control" value="<?= $matkhau ?>" readonly style="margin-top: 11px; width: 100%;">
 
                                     <!-- Nút ẩn/hiện mật khẩu -->
-                                    <button type="button" class="btn btn-link" id="togglePassword" style="margin-top: 10px; padding: 0; color: #007bff; font-size:10px">
-                                        Hiển thị mật khẩu
-                                    </button>
+                                    
+                                    <button class="btn btn-info btn-sm" style="margin-top: 13px; padding: 0; color: black;" id="togglePassword">Hiển thị mật khẩu</button>
+
                                 </div>
                             </div>
 
