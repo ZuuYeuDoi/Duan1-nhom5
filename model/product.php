@@ -99,7 +99,7 @@ function laysp2($listidsp2) {
 //     return 
 // }
 function lay10sp()  {
-    $sql = "select * from san_pham order by ngaytao desc limit 9 ";
+    $sql = "select * from san_pham order by ngaytao desc limit 3 ";
     $list9sp = pdo_query($sql);
     return $list9sp;
 }
