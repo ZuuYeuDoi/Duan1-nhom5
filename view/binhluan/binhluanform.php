@@ -3,9 +3,9 @@ session_start();
     include "../../model/pdo.php";
     include "../../model/comment.php";
 
-    $id_nguoidung= $_SESSION['user']['hoten'];
-    $id_sp = $_REQUEST['id_sp'];
-
+    
+    $id_sp = $_GET['id_sp'];
+    $tensp = isset($_GET['tensp']) ? urldecode($_GET['tensp']) : '';
     $dsbl=  list_binhluan($id_sp);
 ?>
 
@@ -40,11 +40,12 @@ session_start();
         <h4 class="text-secondary">Danh sách bình luận</h4>
         <ul class="list-group">
                 <?php
+
                     foreach($dsbl as $bl){
                         extract($bl);
                         echo '
                             <li class="list-group-item">
-                        <strong>'.$id_nguoidung.' đã bình luận:</strong> '.$noidung.'
+                        <strong style="Color: red">'.$hoten.' đã bình luận:</strong> '.$noidung.'
                       </li>
                         ';
 
@@ -61,21 +62,25 @@ session_start();
                 <label for="comment" class="form-label">Nội dung bình luận</label>
                 <textarea class="form-control" name="noidung" id="noidung" rows="3" placeholder="Nhập bình luận của bạn" required></textarea>
                 <input type="hidden" value="<?= $id_sp?>" name="id_sp">
-                <input type="hidden" value="<?= $id_nguoidung?>" name="id_ng$id_nguoidung">
+                <input type="hidden" name="tensp" value="<?= $tensp ?>">
+
             </div>
             <!-- Nút gửi -->
             <button type="submit" name="guibinhluan" class="btn btn-primary">Gửi bình luận</button>
         </form>
 
         <?php
-            if(isset($_POST['guibinhluan'])&& isset($_POST['guibinhluan'])){
-                $noidung=$_POST['noidung'];
-                $id_sp= $_POST['id_sp'];
-                $id_nguoidung= $_SESSION['user']['hoten'];
-                $ngaybl = date('h:i:sa d/m/Y');
-            insert_binhluan($id_nguoidung,$id_sp,$noidung,$ngaybl);
-
-            }
+           if (isset($_POST['guibinhluan'])) {
+            $noidung = $_POST['noidung'];
+            $id_sp = $_POST['id_sp'];
+            $tensp = $_POST['tensp']; 
+            $hoten = $_SESSION['user']['hoten'];
+            $id_nguoidung = $_SESSION['user']['id_nguoidung'];
+            $ngaybl = date('h:i:sa d/m/Y');
+        
+            // Lưu vào cơ sở dữ liệu
+            insert_binhluan($id_nguoidung, $hoten, $id_sp, $tensp, $noidung, $ngaybl);
+        }
         
         ?>
 

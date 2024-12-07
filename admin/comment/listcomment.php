@@ -22,8 +22,8 @@
                                 <?php foreach ($comments as $comment): ?>
                                 <tr>
                                     <td><?= $comment['id_bl'] ?></td>
-                                    <td><?= $comment['id_sp'] ?></td>
-                                    <td><?= $comment['id_nguoidung'] ?></td>
+                                    <td><?= $comment['tensp'] ?></td>
+                                    <td><?= $comment['hoten'] ?></td>
                                     <td><?= $comment['noidung'] ?></td>
                                     <td><?= $comment['ngaybl'] ?></td>
                                     <td>

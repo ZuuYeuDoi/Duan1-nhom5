@@ -1,7 +1,7 @@
 <?php
-function insert_binhluan($id_nguoidung,$id_sp,$noidung,$ngaybl)
+function insert_binhluan($id_nguoidung,$hoten,$id_sp,$tensp,$noidung,$ngaybl)
 {
-    $sql = "insert into binh_luan(id_nguoidung,id_sp,noidung, ngaybl) values('$id_nguoidung','$id_sp','$noidung','$ngaybl')";
+    $sql = "insert into binh_luan(id_nguoidung,hoten,id_sp,tensp,noidung, ngaybl) values('$id_nguoidung','$hoten','$id_sp','$tensp','$noidung','$ngaybl')";
     pdo_execute($sql);
 }
 
