@@ -152,4 +152,5 @@
 
 
 <!-- hien thi binh luan -->
-<iframe src="view/binhluan/binhluanform.php?id_sp=<?= $ctsanpham['id_sp'] ?>" frameborder="0" width="1440px" height = "500px" style="margin-right:30px"></iframe>
+
+<iframe src="view/binhluan/binhluanform.php?id_sp=<?= $ctsanpham['id_sp'] ?>&tensp=<?= urlencode($ctsanpham['tensp']) ?>" frameborder="0" width="1440px" height="500px" style="margin-right:30px"></iframe>

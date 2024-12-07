@@ -278,7 +278,6 @@ if (isset($_GET['act'])) {
             
                 // // Tải tất cả trạng thái cho dropdown
                 // $statuses = load_trang_thai();
-            
                 include "./bill/updatett.php";
                 break;
         case 'thongke':
