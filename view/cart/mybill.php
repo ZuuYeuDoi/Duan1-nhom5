@@ -37,22 +37,50 @@
                                 $pttt = get_pttt($bill['pttt']);
                                 $id = $bill['id_donhang'];
                         ?>
-                        <tr>
-                            <td class="text-start"><?php echo $madh; ?></td>
-                            <td class="text-center"><?php echo $pttt; ?></td>
-                            <td class="text-center"><?php echo $ttdh; ?></td>
-                            <td class="text-center"><?php echo $ngaydathang; ?></td>
-                            <td class="text-center">
-                                <a class="btn btn-info btn-sm" href="index.php?act=chitietdonhang&id=<?php echo $id; ?>">Chi Tiết Đơn</a>
-                            </td>
-                            <?php 
-                                if($ttdh !== 'Đã huỷ') {
-                            ?>
-                            <td class="text-center">
-                                <a href="index.php?act=deldh&id=<?php echo $id; ?>" class="btn btn-danger btn-sm">Huỷ Đơn</a>
-                            </td>
-                            <?php } ?>
-                        </tr>
+                                <tr>
+                                    <td class="text-start"><?php echo $madh; ?></td>
+                                    <td class="text-center"><?php echo $pttt; ?></td>
+                                    <td class="text-center"><?php echo $ttdh; ?></td>
+                                    <td class="text-center"><?php echo $ngaydathang; ?></td>
+                                    <td class="text-center">
+                                        <a class="btn btn-info btn-sm" href="index.php?act=chitietdonhang&id=<?php echo $id; ?>">Chi Tiết Đơn</a>
+                                    </td>
+                                    <td class="text-center">
+    <?php 
+        // Kiểm tra trạng thái đơn hàng
+        if (strtolower(trim($ttdh)) === '<div class="text-danger" >Đã huỷ</div>') {
+    ?>
+        <button class="btn btn-secondary btn-sm" disabled>Đã huỷ</button>
+    <?php 
+        } elseif (strtolower(trim($ttdh)) === '<div class="text-success">giao hàng thành công</div>') {
+    ?>
+        <button class="btn btn-secondary btn-sm" disabled>Giao hàng thành công</button>
+        <?php 
+        } elseif (strtolower(trim($ttdh)) === '<div class="text-primary">Đang giao hàng</div>') {
+    ?>
+        <button class="btn btn-secondary btn-sm" disabled>Đang Giao Hàng</button>
+        <?php 
+        } elseif (strtolower(trim($ttdh)) === '<div class="text-primary">chờ lấy hàng</div>') {
+    ?>
+        <button class="btn btn-secondary btn-sm" disabled>Chờ lấy hàng</button>
+        <?php 
+        } elseif (strtolower(trim($ttdh)) === '<div class="text-primary">Đã xác nhận</div>') {
+    ?>
+        <button class="btn btn-secondary btn-sm" disabled>Đã xác nhận</button>
+    <?php 
+    
+        } else { 
+    ?>
+        <a href="index.php?act=deldh&id=<?php echo $id; ?>" class="btn btn-danger btn-sm">Huỷ Đơn</a>
+    <?php 
+        }
+    ?>
+</td>
+
+
+
+
+                                </tr>
                         <?php
                             }
                         } else {
