@@ -15,27 +15,20 @@
                                     <th>Người dùng</th>
                                     <th>Nội dung</th>
                                     <th>Ngày đăng</th>
-                                    <th>Trạng thái</th>
-                                    <th>Thao tác</th>
+                                    <th>Thao Tác</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($comments as $comment): ?>
                                 <tr>
-                                    <td><?= $comment['id_comment'] ?></td>
-                                    <td><?= $comment['product_name'] ?></td>
-                                    <td><?= $comment['user_email'] ?></td>
-                                    <td><?= $comment['content'] ?></td>
-                                    <td><?= $comment['day_post'] ?></td>
-                                    <td>
-                                        <a href="?act=toggleCensorship&id=<?= $comment['id_comment'] ?>&status=<?= $comment['censorship'] ?>"
-                                            class="btn btn-sm <?= $comment['censorship'] == 0 ? 'btn-success' : 'btn-warning' ?>">
-                                            <?= $comment['censorship'] == 0 ? 'Hiện' : 'Ẩn' ?>
-                                        </a>
-                                    </td>
+                                    <td><?= $comment['id_bl'] ?></td>
+                                    <td><?= $comment['id_sp'] ?></td>
+                                    <td><?= $comment['id_nguoidung'] ?></td>
+                                    <td><?= $comment['noidung'] ?></td>
+                                    <td><?= $comment['ngaybl'] ?></td>
                                     <td>
                                         <a onclick="return confirm('Bạn có chắc muốn xóa bình luận này?')"
-                                            href="?act=deleteComment&id=<?= $comment['id_comment'] ?>"
+                                            href="?act=deleteComment&id_bl=<?= $comment['id_bl'] ?>"
                                             class="btn btn-danger btn-sm">Xóa</a>
                                     </td>
                                 </tr>
