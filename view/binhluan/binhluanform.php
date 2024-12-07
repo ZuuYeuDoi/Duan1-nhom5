@@ -57,17 +57,34 @@ session_start();
 
 
 
-        <form action = "<?php $_SERVER['PHP_SELF']; ?>" method= "post">
+        <!-- <form action = "<?php $_SERVER['PHP_SELF']; ?>" method= "post">
             <div class="mb-3">
                 <label for="comment" class="form-label">Nội dung bình luận</label>
                 <textarea class="form-control" name="noidung" id="noidung" rows="3" placeholder="Nhập bình luận của bạn" required></textarea>
                 <input type="hidden" value="<?= $id_sp?>" name="id_sp">
                 <input type="hidden" name="tensp" value="<?= $tensp ?>">
 
-            </div>
+            </div>-->
             <!-- Nút gửi -->
-            <button type="submit" name="guibinhluan" class="btn btn-primary">Gửi bình luận</button>
-        </form>
+           <!-- <button type="submit" name="guibinhluan" class="btn btn-primary">Gửi bình luận</button>
+        </form> -->
+
+
+        <?php if (!isset($_SESSION['user'])): ?>
+    <div class="alert alert-warning mt-3" role="alert">
+        Vui lòng đăng nhập để bình luận.
+    </div>
+<?php else: ?>
+    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+        <div class="mb-3">
+            <label for="comment" class="form-label">Nội dung bình luận</label>
+            <textarea class="form-control" name="noidung" id="noidung" rows="3" placeholder="Nhập bình luận của bạn" required></textarea>
+            <input type="hidden" value="<?= $id_sp ?>" name="id_sp">
+            <input type="hidden" name="tensp" value="<?= $tensp ?>">
+        </div>
+        <button type="submit" name="guibinhluan" class="btn btn-primary">Gửi bình luận</button>
+    </form>
+<?php endif; ?>
 
         <?php
            if (isset($_POST['guibinhluan'])) {
