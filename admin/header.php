@@ -119,7 +119,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="index.php?act=listcomment">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Bình luận</span></a>
             </li>

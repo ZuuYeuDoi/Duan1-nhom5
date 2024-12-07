@@ -6,7 +6,7 @@ session_start();
     $id_nguoidung= $_SESSION['user']['hoten'];
     $id_sp = $_REQUEST['id_sp'];
 
-    $dsbl=  list_binhluan();
+    $dsbl=  list_binhluan($id_sp);
 ?>
 
 
