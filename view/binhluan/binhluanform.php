@@ -80,6 +80,7 @@ session_start();
         
             // Lưu vào cơ sở dữ liệu
             insert_binhluan($id_nguoidung, $hoten, $id_sp, $tensp, $noidung, $ngaybl);
+            header("Location: " . $_SERVER['HTTP_REFERER']);    
         }
         
         ?>
