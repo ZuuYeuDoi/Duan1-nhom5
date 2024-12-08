@@ -99,12 +99,12 @@ function get_ttdh($n)
             break;
         case '3':
             # code...
-            $tt = '<div class="text-primary">Chờ Lấy Hàng</div>'; 
+            $tt = '<div class="text-primary">Chờ Lấy Hàng</div>';
 
             break;
         case '4':
             # code...
-            $tt = '<div class="text-primary">Đang Giao Hàng</div>'; 
+            $tt = '<div class="text-primary">Đang Giao Hàng</div>';
             break;
         case '5':
             # code...
@@ -112,7 +112,11 @@ function get_ttdh($n)
             break;
         case '6':
             # code...
-            $tt = '<div class="text-danger" >Đã huỷ</div>'; 
+            $tt = '<div class="text-danger" >Đã huỷ</div>';
+            break;
+        case '7':
+            # code...
+            $tt = '<div class="text-warning">Trả hàng</div>';
             break;
         default:
             # code...

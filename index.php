@@ -312,6 +312,16 @@ if (isset($_GET['act'])) {
             include './view/page/shop.php';
             break;
 
+            case 'return':
+                if (isset($_GET['act']) && $_GET['act'] === 'return' && isset($_GET['id'])) {
+                    $orderId = $_GET['id'];
+                    $message = pdo_return_order($orderId);
+                    echo $message; // Hiển thị thông báo cho người dùng
+                    header('location:index.php?act=mybill');
+                }
+                include './view/cart/mybill.php';
+                break;
+            
 
         default:
         header('location:index.php?act=trangchu');
