@@ -39,10 +39,10 @@ function tongbill()
     return $tong;
 }
 
-function insert_bill($id_nguoidung, $madh, $tongdonhang, $name, $addr, $email, $phone, $id_trangthai)
+function insert_bill($id_nguoidung, $madh, $tongdonhang, $name, $addr, $email, $phone, $id_trangthai, $pttt)
 {
-    $sql = "INSERT INTO Don_hang (id_nguoidung, madh, tongtien, hoten, diachi, email, sdt, id_trangthai, ngaydathang) 
-            VALUES (:id_nguoidung, :madh, :tongdonhang, :hoten, :diachi, :email, :sdt, :id_trangthai, NOW())";
+    $sql = "INSERT INTO Don_hang (id_nguoidung, madh, tongtien, hoten, diachi, email, sdt, id_trangthai, ngaydathang,pttt) 
+            VALUES (:id_nguoidung, :madh, :tongdonhang, :hoten, :diachi, :email, :sdt, :id_trangthai, NOW(),:pttt)";
 
     return pdo_execute_return_lastInsertId($sql, [
         ':id_nguoidung' => $id_nguoidung,
@@ -52,7 +52,9 @@ function insert_bill($id_nguoidung, $madh, $tongdonhang, $name, $addr, $email, $
         ':diachi' => $addr,
         ':email' => $email,
         ':sdt' => $phone,
-        ':id_trangthai' => $id_trangthai
+        ':id_trangthai' => $id_trangthai,
+        ':pttt' => $pttt
+
     ]);
 }
 
@@ -132,23 +134,15 @@ function get_pttt($n)
     switch ($n) {
         case '0':
             # code...
-            $tt = 'Thanh toán bằng tiền mặt';
+            $tt = 'Ship COD';
             break;
         case '1':
             # code...
-            $tt = 'Quét Mã QR';
-
+            $tt = 'Thanh toán online';
             break;
-        case '2':
-            # code...
-            $tt = 'Thanh Toán Online';
-
-            break;
-
         default:
             # code...
-            $tt = 'Đơn Hàng Mới';
-
+            $tt = '';
             break;
     }
     return $tt;
@@ -194,3 +188,34 @@ function load_trang_thai()
     $sql = "SELECT * FROM trang_thai_don_hang"; // Điều chỉnh nếu bạn muốn tất cả trạng thái
     return pdo_query($sql);
 }
+
+function slkho($id)
+{
+    $sql = "SELECT `soluong` FROM `san_pham` WHERE `id_sp` = " . (int)$id;
+    $result = pdo_query($sql);
+
+    // Giả sử pdo_query trả về một mảng với kết quả
+    if (count($result) > 0) {
+        return $result[0]['soluong']; // Trả về số lượng tồn kho
+    } else {
+        return 0; // Nếu không tìm thấy sản phẩm
+    }
+}
+
+function updatesl($id, $sltronggio)
+{
+    // Kiểm tra số lượng tồn kho hiện tại
+    $stock_quantity = slkho($id);
+
+    // Nếu số lượng yêu cầu lớn hơn số lượng tồn kho, trả về false
+    if ($sltronggio > $stock_quantity) {
+        return false; // Không đủ hàng để cập nhật
+    }
+
+    // Trừ số lượng trong kho
+    $sql = "UPDATE `san_pham` SET `soluong` = `soluong` - :sltronggio WHERE `id_sp` = :id";
+    pdo_execute($sql, ['sltronggio' => $sltronggio, 'id' => $id]);
+    
+    return true; // Cập nhật thành công
+}
+
