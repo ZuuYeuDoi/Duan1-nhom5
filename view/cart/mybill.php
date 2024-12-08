@@ -46,40 +46,40 @@
                                         <a class="btn btn-info btn-sm" href="index.php?act=chitietdonhang&id=<?php echo $id; ?>">Chi Tiết Đơn</a>
                                     </td>
                                     <td class="text-center">
-    <?php 
-        // Kiểm tra trạng thái đơn hàng
-        if (strtolower(trim($ttdh)) === '<div class="text-danger" >Đã huỷ</div>') {
-    ?>
-        <button class="btn btn-secondary btn-sm" disabled>Đã huỷ</button>
-    <?php 
-        } elseif (strtolower(trim($ttdh)) === '<div class="text-success">giao hàng thành công</div>') {
-    ?>
-        <button class="btn btn-secondary btn-sm" disabled>Giao hàng thành công</button>
-        <?php 
-        } elseif (strtolower(trim($ttdh)) === '<div class="text-primary">Đang giao hàng</div>') {
-    ?>
-        <button class="btn btn-secondary btn-sm" disabled>Đang Giao Hàng</button>
-        <?php 
-        } elseif (strtolower(trim($ttdh)) === '<div class="text-primary">chờ lấy hàng</div>') {
-    ?>
-        <button class="btn btn-secondary btn-sm" disabled>Chờ lấy hàng</button>
-        <?php 
-        } elseif (strtolower(trim($ttdh)) === '<div class="text-primary">Đã xác nhận</div>') {
-    ?>
-        <button class="btn btn-secondary btn-sm" disabled>Đã xác nhận</button>
-    <?php 
-    
-        } else { 
-    ?>
-        <a href="index.php?act=deldh&id=<?php echo $id; ?>" class="btn btn-danger btn-sm">Huỷ Đơn</a>
-    <?php 
-        }
-    ?>
-</td>
-
-
-
-
+                                        <?php
+                                        // Kiểm tra trạng thái đơn hàng
+                                        if (strtolower(trim($ttdh)) === '<div class="text-danger" >Đã huỷ</div>') {
+                                        ?>
+                                            <button class="btn btn-secondary btn-sm" disabled>Đã huỷ</button>
+                                        <?php
+                                        } elseif (strtolower(trim($ttdh)) === '<div class="text-success">giao hàng thành công</div>') {
+                                        ?>
+                                            <button class="btn btn-secondary btn-sm" disabled>Giao hàng thành công</button>
+                                            <a href="index.php?act=return&id=<?php echo $id; ?>" class="btn btn-warning btn-sm">Trả hàng</a>
+                                        <?php
+                                        } elseif (strtolower(trim($ttdh)) === '<div class="text-primary">Đang giao hàng</div>') {
+                                        ?>
+                                            <button class="btn btn-secondary btn-sm" disabled>Đang Giao Hàng</button>
+                                        <?php
+                                        } elseif (strtolower(trim($ttdh)) === '<div class="text-primary">chờ lấy hàng</div>') {
+                                        ?>
+                                            <button class="btn btn-secondary btn-sm" disabled>Chờ lấy hàng</button>
+                                        <?php
+                                        } elseif (strtolower(trim($ttdh)) === '<div class="text-primary">Đã xác nhận</div>') {
+                                        ?>
+                                            <button class="btn btn-secondary btn-sm" disabled>Đã xác nhận</button>
+                                            <?php
+                                        } elseif (strtolower(trim($ttdh)) === '<div class="text-warning">trả hàng</div>') {
+                                        ?>
+                                            <button class="btn btn-secondary btn-sm" disabled>Trả Hàng</button>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <a href="index.php?act=deldh&id=<?php echo $id; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có đồng ý huỷ không!!!')">Huỷ Đơn</a>
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
                                 </tr>
                         <?php
                             }
