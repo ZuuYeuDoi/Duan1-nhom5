@@ -7,7 +7,7 @@ ob_start();
 include '../model/pdo.php';
 include '../model/danhmuc.php';
 include '../model/product.php';
-
+include '../model/comment.php';
 include "../model/cart.php"; 
 
 // include '../model/bill.php';
@@ -278,11 +278,24 @@ if (isset($_GET['act'])) {
             
                 // // Tải tất cả trạng thái cho dropdown
                 // $statuses = load_trang_thai();
-            
                 include "./bill/updatett.php";
                 break;
         case 'thongke':
             include './home.php';
+            break;
+
+        case 'listcomment':
+            $comments = list_binhluan(0);
+            include './comment/listcomment.php';
+            break;
+        case 'deleteComment':
+            if (isset($_GET['id_bl']) && ($_GET['id_bl'] > 0)) {
+                $id_bl = $_GET['id_bl'];
+                $xoadm = delete_binhluan($id_bl);
+            }
+            $comments = list_binhluan(0);
+            include './comment/listcomment.php';
+
             break;
             
         default:
