@@ -108,6 +108,13 @@ function shop()  {
     $listshop = pdo_query($sql);
     return $listshop;
 }
+function demohome()  {
+
+    $sql = "select * from san_pham order by ngaytao desc limit 11";
+    $demohome = pdo_query($sql );
+    return $demohome;
+}
+
 
 ?>
 

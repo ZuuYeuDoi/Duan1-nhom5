@@ -172,3 +172,4 @@ function pdo_get_user_info($userId)
     $stmt->execute([$userId]);
     return $stmt->fetch(PDO::FETCH_ASSOC); // Trả về thông tin user dưới dạng mảng kết hợp
 }
+

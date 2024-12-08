@@ -96,7 +96,10 @@ if (isset($_GET['act'])) {
             include './view/dkdn/register.php';
             break;
         case 'trangchu':
-            $listsanpham = GetAllProduct();
+            
+                 $demohome = demohome();
+            
+           
             include './view/home.php';
 
             break;
@@ -308,7 +311,11 @@ if (isset($_GET['act'])) {
             include './view/cart/ctdh.php';
             break;
         case 'shop':
-            $listshop = shop();
+            
+ 
+            
+             $listshop = shop();
+            
             include './view/page/shop.php';
             break;
 

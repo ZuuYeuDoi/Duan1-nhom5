@@ -71,11 +71,12 @@
 </section>
 
 </form>
-<div class="indor-plant-product">
-
-<div class="border border-danger rounded shadow-lg p-4 mb-4 bg-danger" style="border-width: 3px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
+<div class="border border-danger rounded shadow-lg p-4 mb-4 bg-danger" style="border-width: 2px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
     <h1 class="text-center text-white">Sản Phẩm Mới Nhất</h1>
 </div>
+<div class="indor-plant-product">
+
+
 
 <br>
             <div class="row">
@@ -91,7 +92,7 @@
                         <input type="hidden" name="id_sp" value="<?= $value['id_sp']?>">
                         <input type="hidden" name="tensp" value="<?= $value['tensp']?>">
                         <input type="hidden" name="anhsp" value="<?= $value['anhsp']?>">
-                        <input type="hidden" name="giamgia" value="<?= $value['giamgia']?>">
+                        <input type="hidden" name="giamgia" value="<?= $value['giatien']?>">
 
                         <div class="col-xs-6 col-md-4">
 
@@ -123,7 +124,7 @@
                                         <div class="price-box">
 
 
-                                            <span class="regular-price"><?php echo number_format($value['giamgia'], 0, ',', '.'); ?> VNĐ </span>
+                                            <span class="regular-price"><?php echo number_format($value['giatien'], 0, ',', '.'); ?> VNĐ </span>
 
                                             <span class="price ml5" style = "color: red"><?php echo number_format($value['giamgia'], 0, ',', '.'); ?></span>
 
