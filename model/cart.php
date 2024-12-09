@@ -175,6 +175,16 @@ function loadall_bill($id_nguoidung) {
     $sql .= " ORDER BY id_donhang DESC";
     return pdo_query($sql);
 }
+
+function loadall_bill_admin($status = 0) {
+    $sql = "SELECT * FROM don_hang";
+    if ($status > 0) {
+        $sql .= " WHERE id_trangthai = $status";
+    }
+    $sql .= " ORDER BY ngaydathang DESC";
+    return pdo_query($sql);
+}
+
 function loadall_ttdh($id) {
     $sql = "SELECT * FROM trang_thai_don_hang WHERE id = " . $id;
     return pdo_query($sql);

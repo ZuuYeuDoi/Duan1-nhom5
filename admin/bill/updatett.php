@@ -22,13 +22,28 @@ if (!$order) {
 }
 
 // Xử lý cập nhật trạng thái
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//     $status = isset($_POST['status']) ? (int)$_POST['status'] : $order['id_trangthai'];
+//     $updateStmt = $conn->prepare("UPDATE don_hang SET id_trangthai = ? WHERE id_donhang = ?");
+//     $updateStmt->bind_param("ii", $status, $id);
+//     $updateStmt->execute();
+//     header("Location: index.php?act=listdh");
+//     exit();
+// }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = isset($_POST['status']) ? (int)$_POST['status'] : $order['id_trangthai'];
-    $updateStmt = $conn->prepare("UPDATE don_hang SET id_trangthai = ? WHERE id_donhang = ?");
-    $updateStmt->bind_param("ii", $status, $id);
-    $updateStmt->execute();
-    header("Location: index.php?act=listdh");
-    exit();
+
+    // Kiểm tra nếu trạng thái mới nhỏ hơn trạng thái hiện tại
+    if ($status < $order['id_trangthai']) {
+        echo "<script>alert('Không thể quay lại trạng thái trước.');</script>";
+    } else {
+        $updateStmt = $conn->prepare("UPDATE don_hang SET id_trangthai = ? WHERE id_donhang = ?");
+        $updateStmt->bind_param("ii", $status, $id);
+        $updateStmt->execute();
+        header("Location: index.php?act=listdh");
+        exit();
+    }
 }
 
 // Hàm trạng thái đơn hàng
@@ -49,24 +64,42 @@ function getOrderStatusOptions($currentStatus) {
 
 <script>
     // Hàm xử lý sự thay đổi của trạng thái
+    // function handleStatusChange() {
+    //     const statusSelect = document.getElementById('status');
+    //     const selectedStatus = parseInt(statusSelect.value);
+
+    //     for (let option of statusSelect.options) {
+    //         const optionValue = parseInt(option.value);
+
+    //         // Ẩn các trạng thái nhỏ hơn giá trị đã chọn
+    //         if (optionValue < selectedStatus) {
+    //             option.style.display = 'none';
+    //         } else {
+    //             option.style.display = 'block';
+    //         }
+    //     }
+    // }
+
+    // // Đảm bảo khi trang được tải, sự kiện được gọi
+    // window.onload = handleStatusChange;
+
+
     function handleStatusChange() {
-        const statusSelect = document.getElementById('status');
-        const selectedStatus = parseInt(statusSelect.value);
+    const statusSelect = document.getElementById('status');
+    const currentStatus = parseInt(statusSelect.dataset.currentStatus, 10);
+    const selectedStatus = parseInt(statusSelect.value, 10);
 
-        for (let option of statusSelect.options) {
-            const optionValue = parseInt(option.value);
-
-            // Ẩn các trạng thái nhỏ hơn giá trị đã chọn
-            if (optionValue < selectedStatus) {
-                option.style.display = 'none';
-            } else {
-                option.style.display = 'block';
-            }
-        }
+    if (selectedStatus < currentStatus) {
+        alert('Không thể chọn trạng thái trước.');
+        statusSelect.value = currentStatus; // Reset về trạng thái hiện tại
     }
+}
 
-    // Đảm bảo khi trang được tải, sự kiện được gọi
-    window.onload = handleStatusChange;
+// Gán giá trị hiện tại vào data attribute
+document.addEventListener("DOMContentLoaded", function () {
+    const statusSelect = document.getElementById('status');
+    statusSelect.dataset.currentStatus = statusSelect.value;
+});
 </script>
 
 <!DOCTYPE html>
@@ -83,9 +116,12 @@ function getOrderStatusOptions($currentStatus) {
     <form method="POST">
         <div class="form-group">
             <label for="status">Trạng thái:</label>
-            <select class="form-control" id="status" name="status" onchange="handleStatusChange()">
-                <?php getOrderStatusOptions($order['id_trangthai']); ?>
-            </select>
+            <!-- <select class="form-control" id="status" name="status" onchange="handleStatusChange()">
+
+            </select> -->
+            <select class="form-control" id="status" name="status" data-current-status="<?php echo $order['id_trangthai']; ?>" onchange="handleStatusChange()">
+    <?php getOrderStatusOptions($order['id_trangthai']); ?>
+</select>
         </div>
         <div style="margin-top: 10px">
         <button type="submit" class="btn btn-success">Cập nhật</button>

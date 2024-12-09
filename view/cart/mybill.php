@@ -46,7 +46,7 @@
                                 <a class="btn btn-info btn-sm" href="index.php?act=chitietdonhang&id=<?php echo $id; ?>">Chi Tiết Đơn</a>
                             </td>
                             <?php 
-                                if($ttdh !== 'Đã huỷ') {
+                                if($bill['id_trangthai']!=5 && $bill['id_trangthai']!=6) {
                             ?>
                             <td class="text-center">
                                 <a href="index.php?act=deldh&id=<?php echo $id; ?>" class="btn btn-danger btn-sm">Huỷ Đơn</a>

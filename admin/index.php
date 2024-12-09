@@ -258,7 +258,9 @@ if (isset($_GET['act'])) {
                 header("Location:index.php?act=trangchu"); // Hoặc trang chủ index.php
                 break;
         case "listdh":
-            $listbill = loadall_bill(0);
+            $filter_status = isset($_GET['filter_status']) ? trim($_GET['filter_status']) : '';
+            
+            $listbill = loadall_bill_admin(0);
             include "./bill/listbill.php";
             break;
         case "updateBill":
@@ -297,6 +299,22 @@ if (isset($_GET['act'])) {
             include './comment/listcomment.php';
 
             break;
+            
+            case 'filter':
+                $filter_status = isset($_GET['filter_status']) ? trim($_GET['filter_status']) : '';
+            
+                // Lấy danh sách tất cả các đơn hàng
+                $listbill = loadall_bill_admin(0);
+            
+                // Nếu có trạng thái được chọn, lọc danh sách
+                if ($filter_status !== '') {
+                    $listbill = array_filter($listbill, function ($bill) use ($filter_status) {
+                        return $bill['id_trangthai'] == $filter_status;
+                    });
+                }
+            
+                include "./bill/listbill.php";
+                break;
             
         default:
             include 'home.php';
