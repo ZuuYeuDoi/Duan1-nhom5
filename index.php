@@ -374,7 +374,7 @@ if (isset($_GET['act'])) {
             case 'timkiemsp':
                 if (isset($_POST['kw'])) {
                     // Kiểm tra dữ liệu POST
-                    var_dump($_POST);  // Đảm bảo dữ liệu đúng được truyền từ form
+                    // var_dump($_POST);  // Đảm bảo dữ liệu đúng được truyền từ form
             
                     $conn = pdo_get_connection();
                     if ($conn === null) {
