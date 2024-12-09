@@ -18,51 +18,52 @@
 
 </head>
 <style>
-   /* CSS cho phần tử chứa account icon */
-.search.fixacc {
-    position: relative;
-}
+    /* CSS cho phần tử chứa account icon */
+    .search.fixacc {
+        position: relative;
+    }
 
-/* Dropdown menu ẩn mặc định */
-.dropdown-menu {
-    display: none; /* Ẩn menu khi chưa hover */
-    position: absolute;
-    top: 30px; /* Điều chỉnh khoảng cách từ icon */
-    left: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-}
+    /* Dropdown menu ẩn mặc định */
+    .dropdown-menu {
+        display: none;
+        /* Ẩn menu khi chưa hover */
+        position: absolute;
+        top: 30px;
+        /* Điều chỉnh khoảng cách từ icon */
+        left: 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
 
-.dropdown-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
+    .dropdown-menu ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
 
-.dropdown-menu ul li {
-    padding: 8px 16px;
-}
+    .dropdown-menu ul li {
+        padding: 8px 16px;
+    }
 
-.dropdown-menu ul li a {
-    text-decoration: none;
-    color: #333;
-    display: block;
-}
+    .dropdown-menu ul li a {
+        text-decoration: none;
+        color: #333;
+        display: block;
+    }
 
-.dropdown-menu ul li a:hover {
-    background-color: pink;
-}
+    .dropdown-menu ul li a:hover {
+        background-color: pink;
+    }
 
-/* Hiển thị dropdown khi hover vào icon tài khoản hoặc dropdown */
-.search.fixacc:hover .dropdown-menu,
-.cart-head:hover + .dropdown-menu {
-    display: block;
-}
-
-
+    /* Hiển thị dropdown khi hover vào icon tài khoản hoặc dropdown */
+    .search.fixacc:hover .dropdown-menu,
+    .cart-head:hover+.dropdown-menu {
+        display: block;
+    }
 </style>
+
 <body>
 
     <body class="stBody stHome index">
@@ -289,62 +290,65 @@
                                 <div class="ct">
 
 
-                                <form class="search-fr" action="index.php?act=timkiemsp" method="POST">
-    <div class="form-input">
-        <input name="kw" id="search" placeholder="Tìm kiếm..." value="" type="text" required="required">
-        <button type="submit">
-            <i class="fa fa-search"></i>
-        </button>
-    </div>
-</form>
+
+                                    <form method="post" class="search-fr" action="index.php?act=shop">
+                                        <div class="form-input">
+                                            <input name="tksp" id="tksp" placeholder="Tìm kiếm..." value="" type="text"
+                                                required="required">
+                                            <button type="submit" name="tksp">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+
                                 </div>
                             </div>
-                          
+
                             <?php
-            if (isset($_SESSION['user'])) {
-                extract($_SESSION['user']);
-                ?>
-                
-                <div class="search fixacc">
-                                <a class="cart-head" href="index.php?act=login" style="position:relative;">
-                                    <img src="./view/images/iconfinder-41-user-2123927.png" alt="Account"
-                                        title="Account" style="padding-top: 6px;margin-right: 8px;">
-                                </a>
-                                <!-- Dropdown Menu -->
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li style="background-color:black ; color:white ; margin-top:-5px ; boder-radius:10px" >Xin Chào <?= $hoten ?></li>
-                                        <li><a href="#">Profile</a></li>
-                                        <li><a href="index.php?act=mybill">Đơn Hàng</a></li>
+                            if (isset($_SESSION['user'])) {
+                                extract($_SESSION['user']);
+                            ?>
 
-                                        <li><a href="index.php?act=logout">Logout</a></li>
-                                    </ul>
+                                <div class="search fixacc">
+                                    <a class="cart-head" href="index.php?act=login" style="position:relative;">
+                                        <img src="./view/images/iconfinder-41-user-2123927.png" alt="Account"
+                                            title="Account" style="padding-top: 6px;margin-right: 8px;">
+                                    </a>
+                                    <!-- Dropdown Menu -->
+                                    <div class="dropdown-menu">
+                                        <ul>
+                                            <li style="background-color:black ; color:white ; margin-top:-5px ; boder-radius:10px">Xin Chào <?= $hoten ?></li>
+                                            <li><a href="#">Profile</a></li>
+                                            <li><a href="index.php?act=mybill">Đơn Hàng</a></li>
+
+                                            <li><a href="index.php?act=logout">Logout</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-           
-            <?php
-            } else {
-                ?>
-            <div class="search fixacc">
-                                <a class="cart-head" href="index.php?act=login" style="position:relative;">
-                                    <img src="./view/images/iconfinder-41-user-2123927.png" alt="Account"
-                                        title="Account" style="padding-top: 6px;margin-right: 8px;">
-                                </a>
-                                <!-- Dropdown Menu -->
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li><a href="index.php?act=login">Profile</a></li>
-                                        <li><a href="index.php?act=mybill">Đơn Hàng</a></li>
 
-                                        <li><a href="index.php?act=logout">Logout</a></li>
-                                    </ul>
+                            <?php
+                            } else {
+                            ?>
+                                <div class="search fixacc">
+                                    <a class="cart-head" href="index.php?act=login" style="position:relative;">
+                                        <img src="./view/images/iconfinder-41-user-2123927.png" alt="Account"
+                                            title="Account" style="padding-top: 6px;margin-right: 8px;">
+                                    </a>
+                                    <!-- Dropdown Menu -->
+                                    <div class="dropdown-menu">
+                                        <ul>
+                                            <li><a href="index.php?act=login">Profile</a></li>
+                                            <li><a href="index.php?act=mybill">Đơn Hàng</a></li>
+
+                                            <li><a href="index.php?act=logout">Logout</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
 
-                <?php
-            }
-            ?>
-                           
+                            <?php
+                            }
+                            ?>
+
 
 
 
@@ -364,7 +368,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="sub-head">
+                <div class="sub-head">
                     <button class="snav-btn">
                         <i></i>
                         <i></i>
@@ -375,10 +379,9 @@
                             <a class="nv-logo" href="/" title="">
                                 <img style="max-width: 90px;" src="images/logo.png" alt="logo ">
                             </a>
-                            <form class="search-fr" action="/search">
-                                <input name="q" id="search2" placeholder="Tìm kiếm..." value="" type="text"
-                                    required="required">
-                                <button type="submit">
+                            <form class="search-fr" action="/search" method="GET">
+                                <input name="q" id="search2" placeholder="Tìm kiếm..." value="" type="text" required="required">
+                                <button type="submit" name="btn_tksp">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </form>
@@ -572,4 +575,3 @@
                     </div>
                 </div>
             </header>
-

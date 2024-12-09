@@ -4,7 +4,7 @@
 <div class="indor-plant-product">
 
 <div class="border border-danger rounded shadow-lg p-4 mb-4 bg-danger" style="border-width: 3px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
-    <h1 class="text-center text-white">Rượu Thượng Hạng</h1>
+    <h1 class="text-center text-white bold ">WineKing Thế Giới Rượu </h1>
 </div>
 
 <br>
@@ -53,7 +53,7 @@
                                         <div class="price-box">
 
 
-                                            <span class="regular-price"><?php echo number_format($value['giamgia'], 0, ',', '.'); ?> VNĐ </span>
+                                            <span class="regular-price"><?php echo number_format($value['giatien'], 0, ',', '.'); ?> VNĐ </span>
 
                                             <span class="price ml5" style = "color: red"><?php echo number_format($value['giamgia'], 0, ',', '.'); ?></span>
 

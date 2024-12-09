@@ -86,7 +86,7 @@
                                         <div class="price-box">
 
 
-                                            <span class="regular-price"><?php echo number_format($value['giamgia'], 0, ',', '.'); ?> VNĐ </span>
+                                            <span class="regular-price"><?php echo number_format($value['giatien'], 0, ',', '.'); ?> VNĐ </span>
 
                                             <span class="price ml5" style = "color: red"><?php echo number_format($value['giamgia'], 0, ',', '.'); ?></span>
 
