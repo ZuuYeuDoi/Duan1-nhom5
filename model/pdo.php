@@ -173,6 +173,7 @@ function pdo_get_user_info($userId)
     return $stmt->fetch(PDO::FETCH_ASSOC); // Trả về thông tin user dưới dạng mảng kết hợp
 }
 
+
 function pdo_return_order($orderId)
 {
     // Kiểm tra trạng thái đơn hàng trước khi thực hiện trả hàng
@@ -205,3 +206,4 @@ function pdo_return_order($orderId)
         unset($conn);
     }
 }
+

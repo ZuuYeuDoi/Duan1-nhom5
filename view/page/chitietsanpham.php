@@ -72,12 +72,19 @@
 
 </form>
 
+
+
+
+
+
+
 <div class="indor-plant-product">
     <div class="container mt-5">
 
         <div class="border border-danger rounded shadow-lg p-4 mb-4 bg-danger" style="border-width: 3px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
             <h1 class="text-center text-white">Sản Phẩm Mới Nhất</h1>
         </div>
+
 
         <br>
         <div class="row">
@@ -88,12 +95,15 @@
 
                 <?php foreach ($list9sp as $key => $sp9) {
 
-                ?>
+
+                    ?>
+
                     <form action="index.php?act=addtocart" method="post">
                         <input type="hidden" name="id_sp" sp9="<?= $sp9['id_sp'] ?>">
                         <input type="hidden" name="tensp" sp9="<?= $sp9['tensp'] ?>">
                         <input type="hidden" name="anhsp" sp9="<?= $sp9['anhsp'] ?>">
                         <input type="hidden" name="giamgia" sp9="<?= $sp9['giamgia'] ?>">
+
 
                         <div class="col-xs-6 col-md-4">
 
@@ -127,8 +137,10 @@
 
                                             <span class="regular-price"><?php echo number_format($sp9['giatien'], 0, ',', '.'); ?> VNĐ </span>
 
+
                                             <span class="price ml5" style = "color: red"><?php echo number_format($sp9['giamgia'], 0, ',', '.'); ?></span>
-                                            <span class="price ml5" style="color: red"><?php echo number_format($sp9['giatien'], 0, ',', '.'); ?></span>
+
+
 
                                         </div>
 
