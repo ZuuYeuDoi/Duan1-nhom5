@@ -290,6 +290,7 @@
                                 <div class="ct">
 
 
+
                                     <form method="post" class="search-fr" action="index.php?act=shop">
                                         <div class="form-input">
                                             <input name="tksp" id="tksp" placeholder="Tìm kiếm..." value="" type="text"
@@ -299,6 +300,7 @@
                                             </button>
                                         </div>
                                     </form>
+
                                 </div>
                             </div>
 

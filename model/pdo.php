@@ -173,3 +173,37 @@ function pdo_get_user_info($userId)
     return $stmt->fetch(PDO::FETCH_ASSOC); // Trả về thông tin user dưới dạng mảng kết hợp
 }
 
+
+function pdo_return_order($orderId)
+{
+    // Kiểm tra trạng thái đơn hàng trước khi thực hiện trả hàng
+    $sql = "SELECT id_trangthai FROM don_hang WHERE id_donhang = ?";
+    $conn = pdo_get_connection();
+    
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$orderId]);
+        $order = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($order) {
+            // Kiểm tra trạng thái "Giao hàng thành công" có id_trangthai là 5
+            if ($order['id_trangthai'] == 5) {
+                // Cập nhật trạng thái đơn hàng thành "Đã Huỷ" (giả sử id_trangthai cho trạng thái này là 6)
+                $update_sql = "UPDATE don_hang SET id_trangthai = 7 WHERE id_donhang = ?";
+                $update_stmt = $conn->prepare($update_sql);
+                $update_stmt->execute([$orderId]);
+                return "Đơn hàng đã được trả thành công.";
+            } else {
+                return "Đơn hàng không đủ điều kiện để trả.";
+            }
+        } else {
+            return "Không tìm thấy đơn hàng.";
+        }
+    } catch (PDOException $e) {
+        error_log("PDO Error: " . $e->getMessage());
+        return "Có lỗi xảy ra trong quá trình thực hiện.";
+    } finally {
+        unset($conn);
+    }
+}
+
