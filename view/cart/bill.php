@@ -122,10 +122,10 @@
                                 <input id="httt-2" name="httt_ma" type="radio" class="custom-control-input" required value="0">
                                 <label class="custom-control-label" for="httt">Ship COD</label>
                             </div>
-                            <div class="custom-control custom-radio">
+                            <!-- <div class="custom-control custom-radio">
                                 <input id="httt-3" name="httt_ma" type="radio" class="custom-control-input" required value="1">
                                 <label class="custom-control-label" for="httt">Thanh toán online</label>
-                            </div>
+                            </div> -->
                         </div>
 
                         <hr class="mb-4">

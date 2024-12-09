@@ -74,7 +74,7 @@ function loadone_bill($id)
 
 function loadone_billuser($id_nguoidung)
 {
-    $sql = "SELECT * FROM don_hang WHERE id_nguoidung = $id_nguoidung";
+    $sql = "SELECT * FROM don_hang WHERE id_nguoidung = $id_nguoidung ORDER BY id_donhang DESC";
     $listBill = pdo_query1($sql);
     return $listBill;
 }
