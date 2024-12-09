@@ -55,6 +55,7 @@ function getOrderStatusOptions($currentStatus) {
         4 => "Đang giao hàng",
         5 => "Giao hàng thành công",
         6 => "Đã huỷ",
+        7 => "Trả hàng"
     ];
     foreach ($statusDescriptions as $key => $value) {
         echo "<option value='$key' " . ($currentStatus == $key ? 'selected' : '') . ">$value</option>";
