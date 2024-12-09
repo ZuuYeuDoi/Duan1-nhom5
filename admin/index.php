@@ -8,7 +8,7 @@ include '../model/pdo.php';
 include '../model/danhmuc.php';
 include '../model/product.php';
 include '../model/comment.php';
-include "../model/cart.php"; 
+include "../model/cart.php";
 
 // include '../model/bill.php';
 include_once '../model/taikhoan.php';
@@ -187,7 +187,7 @@ if (isset($_GET['act'])) {
                 $mota = $_POST['motasp'];
                 $ngaytao = $_POST['ngaytaosp'];
 
-                add_sanpham($id_dm, $hang, $tensp, $giatien, $soluong, $giamgia, $mota, $anhsp, $ngaytao,$nongdo,$dungluong);
+                add_sanpham($id_dm, $hang, $tensp, $giatien, $soluong, $giamgia, $mota, $anhsp, $ngaytao, $nongdo, $dungluong);
                 $_SESSION['success'] = "";
                 header('location:index.php?act=listsp');
                 exit();
@@ -248,38 +248,39 @@ if (isset($_GET['act'])) {
                 $phone = $_POST['sdt'];
                 $address = $_POST['diachi'];
                 $role = $_POST['phanquyen'];
-                update_taikhoan( $user, $password, $email, $address, $phone, $role, $id);
+                update_taikhoan($user, $password, $email, $address, $phone, $role, $id);
                 header('location:index.php?act=listtk');
             }
             include "./taikhoan/update.php";
             break;
-            case 'logout':
-                session_unset();
-                header("Location:index.php?act=trangchu"); // Hoặc trang chủ index.php
-                break;
+        case 'logout':
+            session_unset();
+            header("Location:index.php?act=trangchu"); // Hoặc trang chủ index.php
+            break;
         case "listdh":
-            $listbill = loadall_bill(0);
+            $filter_status = isset($_GET['filter_status']) ? trim($_GET['filter_status']) : '';
+            
+            $listbill = loadall_bill_admin(0);
             include "./bill/listbill.php";
             break;
         case "updateBill":
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $id = $_GET['id'];
                 $ctdh = chitietdon($id);
-               
             }
             include "./bill/updatebill.php";
             break;
-            
-            case "ttdh":
-                // if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                //     $id = $_GET['id'];
-                //     $ttdh = loadall_ttdh($id);
-                // }
-            
-                // // Tải tất cả trạng thái cho dropdown
-                // $statuses = load_trang_thai();
-                include "./bill/updatett.php";
-                break;
+
+        case "ttdh":
+            // if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+            //     $id = $_GET['id'];
+            //     $ttdh = loadall_ttdh($id);
+            // }
+
+            // // Tải tất cả trạng thái cho dropdown
+            // $statuses = load_trang_thai();
+            include "./bill/updatett.php";
+            break;
         case 'thongke':
            
             
@@ -299,6 +300,22 @@ if (isset($_GET['act'])) {
             include './comment/listcomment.php';
 
             break;
+            
+            case 'filter':
+                $filter_status = isset($_GET['filter_status']) ? trim($_GET['filter_status']) : '';
+            
+                // Lấy danh sách tất cả các đơn hàng
+                $listbill = loadall_bill_admin(0);
+            
+                // Nếu có trạng thái được chọn, lọc danh sách
+                if ($filter_status !== '') {
+                    $listbill = array_filter($listbill, function ($bill) use ($filter_status) {
+                        return $bill['id_trangthai'] == $filter_status;
+                    });
+                }
+            
+                include "./bill/listbill.php";
+                break;
             
         default:
             include 'home.php';
