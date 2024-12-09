@@ -37,6 +37,24 @@
                                 $pttt = get_pttt($bill['pttt']);
                                 $id = $bill['id_donhang'];
                         ?>
+<<<<<<< HEAD
+                        <tr>
+                            <td class="text-start"><?php echo $madh; ?></td>
+                            <td class="text-center"><?php echo $pttt; ?></td>
+                            <td class="text-center"><?php echo $ttdh; ?></td>
+                            <td class="text-center"><?php echo $ngaydathang; ?></td>
+                            <td class="text-center">
+                                <a class="btn btn-info btn-sm" href="index.php?act=chitietdonhang&id=<?php echo $id; ?>">Chi Tiết Đơn</a>
+                            </td>
+                            <?php 
+                                if($bill['id_trangthai']!=5 && $bill['id_trangthai']!=6) {
+                            ?>
+                            <td class="text-center">
+                                <a href="index.php?act=deldh&id=<?php echo $id; ?>" class="btn btn-danger btn-sm">Huỷ Đơn</a>
+                            </td>
+                            <?php } ?>
+                        </tr>
+=======
                                 <tr>
                                     <td class="text-start"><?php echo $madh; ?></td>
                                     <td class="text-center"><?php echo $pttt; ?></td>
@@ -81,6 +99,7 @@
                                         ?>
                                     </td>
                                 </tr>
+>>>>>>> 15ecfa764b8afdcac00305fba2e01e9d2ebe2b37
                         <?php
                             }
                         } else {

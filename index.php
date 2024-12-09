@@ -364,6 +364,37 @@ if (isset($_GET['act'])) {
             $listshop = shop();
             include './view/page/shop.php';
             break;
+            case 'timkiemsp':
+                if (isset($_POST['kw'])) {
+                    // Kiểm tra dữ liệu POST
+                    var_dump($_POST);  // Đảm bảo dữ liệu đúng được truyền từ form
+            
+                    $conn = pdo_get_connection();
+                    if ($conn === null) {
+                        echo "Không thể kết nối đến cơ sở dữ liệu!";
+                        exit; // Dừng lại nếu không thể kết nối
+                    }
+            
+                    $keyword = isset($_POST['kw']) ? trim($_POST['kw']) : '';
+                    if (!empty($keyword)) {
+                        // Truy vấn cơ sở dữ liệu tìm sản phẩm theo tên
+                        $sql = "SELECT * FROM san_pham WHERE tensp LIKE :keyword";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute(['keyword' => '%' . $keyword . '%']);
+                        $listshop = $stmt->fetchAll();
+                    } else {
+                        // Lấy tất cả sản phẩm nếu không có từ khóa tìm kiếm
+                        $sql = "SELECT * FROM san_pham";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute();
+                        $listshop = $stmt->fetchAll();
+                    }
+            
+                    // Gọi view shop để hiển thị sản phẩm
+                    include './view/page/shop.php';
+                }
+                break;
+            
 
         case 'return':
             if (isset($_GET['act']) && $_GET['act'] === 'return' && isset($_GET['id'])) {

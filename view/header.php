@@ -289,15 +289,14 @@
                                 <div class="ct">
 
 
-                                    <form class="search-fr" action="index.php?act=product">
-                                        <div class="form-input">
-                                            <input name="kw" id="search" placeholder="Tìm kiếm..." value="" type="text"
-                                                required="required">
-                                            <button type="submit" name="timkiem">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </form>
+                                <form class="search-fr" action="index.php?act=timkiemsp" method="POST">
+    <div class="form-input">
+        <input name="kw" id="search" placeholder="Tìm kiếm..." value="" type="text" required="required">
+        <button type="submit">
+            <i class="fa fa-search"></i>
+        </button>
+    </div>
+</form>
                                 </div>
                             </div>
                           
