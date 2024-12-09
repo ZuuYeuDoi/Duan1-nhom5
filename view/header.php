@@ -290,17 +290,14 @@
                                 <div class="ct">
 
 
-
-                                    <form method="post" class="search-fr" action="index.php?act=shop">
-                                        <div class="form-input">
-                                            <input name="tksp" id="tksp" placeholder="Tìm kiếm..." value="" type="text"
-                                                required="required">
-                                            <button type="submit" name="tksp">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </form>
-
+                                <form class="search-fr" action="index.php?act=timkiemsp" method="POST">
+    <div class="form-input">
+        <input name="kw" id="search" placeholder="Tìm kiếm..." value="" type="text" required="required">
+        <button type="submit">
+            <i class="fa fa-search"></i>
+        </button>
+    </div>
+</form>
                                 </div>
                             </div>
 
